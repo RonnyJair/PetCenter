@@ -18,6 +18,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+
         public AccountController()
         {
         }
