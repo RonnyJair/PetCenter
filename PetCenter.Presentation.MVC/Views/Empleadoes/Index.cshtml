@@ -1,0 +1,131 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Empleado>
+
+@{
+    ViewBag.Title = "Listado de Empleados";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="page-header">
+                <h1>Listado de Empleados</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @Html.ActionLink("Nuevo Empleado", "Create")
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                    <th>
+                                                        Código
+                                                    </th>
+                                                    <th>
+                                                        Tip Dcto
+                                                    </th>
+                                                    <th>
+                                                        Nro Dcto
+                                                    </th>
+                                                    <th>
+                                                        Apellido Paterno
+                                                    </th>
+                                                    <th>
+                                                        Apellido Materno
+                                                    </th>
+                                                    <th>
+                                                        Nombres
+                                                    </th>
+                                                    <th>
+                                                        Fch Nacimiento
+                                                    </th>
+                                                    <th>
+                                                        Dirección
+                                                    </th>
+                                                    <th>
+                                                        Teléfono
+                                                    </th>
+                                                    <th>
+                                                        Movil
+                                                    </th>
+                                                    <th>
+                                                        Correo
+                                                    </th>
+                                                    <th>
+                                                        Hijos
+                                                    </th>
+                                                    <th>
+                                                        Habilitado
+                                                    </th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.TipoDocumento.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Documento)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Nombres)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Direccion)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Telefono)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Movil)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Correo)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.TieneHijo)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Habilitado)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Editar", "Edit", new { id = item.EmpleadoId })
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Eliminar", "Delete", new { id = item.EmpleadoId })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </div>
+                                        <div id="autoPag"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

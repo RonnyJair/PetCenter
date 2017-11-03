@@ -1,0 +1,235 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Empleado>
+
+@{
+    ViewBag.Title = "Procesar Planilla";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="page-header">
+                <h1>Procesar Planilla</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div id="optCmb">
+                                    @using (Html.BeginForm("Consultar", "Planillas"))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                Periodo Laboral
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" value="" id="ano1" name="ano1" class="form-control input-sm" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <select id="mes1" name="mes1" class="form-control input-sm">
+                                                    <option value="01">Enero</option>
+                                                    <option value="02">Febrero</option>
+                                                    <option value="03">Marzo</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Mayo</option>
+                                                    <option value="06">Junio</option>
+                                                    <option value="07">Julio</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="submit" value="Consultar" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover nowrap" id="myTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Tipo Documento
+                                                        </th>
+                                                        <th>
+                                                            Número
+                                                        </th>
+                                                        <th>
+                                                            Nombre Completo
+                                                        </th>
+                                                        <th>
+                                                            Sueldo Base
+                                                        </th>
+                                                        <th>
+                                                            Ingresos
+                                                        </th>
+                                                        <th>
+                                                            Descuentos
+                                                        </th>
+                                                        <th>
+                                                            Neto
+                                                        </th>
+                                                        <th>
+                                                            Aporte
+                                                        </th>
+                                                        <th>
+                                                            Sueldo Diario
+                                                        </th>
+                                                        <th>
+                                                            Sueldo Hora
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.XNombreCompleto)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xSueldoBase)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xIngresos)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xDescuento)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xNeto)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xAporte)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xSueldoDiario)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.xSueldoHora)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="autoPag"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="optBtn">
+                    @using (Html.BeginForm("Eliminar", "Planillas"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8">
+                                <input type="hidden" value="" id="ano" name="ano" />
+                                <input type="hidden" value="" id="mes" name="mes" />
+                                <input type="button" value="Procesar" class="btn btn-default" disabled="disabled" />
+                                <input type="button" value="Eliminar" class="btn btn-default" onclick="enviar()" />
+                                <!-- input type="submit" value="Aprobar" class="btn btn-default" /-->
+                                <input type="button" value="Regresar" class="btn btn-default" onclick="regresar()" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div>
+        @Html.ActionLink("Regresar :)", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script type="text/javascript" language="javascript">
+    var regresar = function () {
+        window.history.back();
+    }
+
+    var validation = function () {
+        $($("#optCmb").find("form")).validate({
+            lang: 'es',
+            rules: {
+                'ano1': {
+                    minlength: 4,
+                    maxlength: 4,
+                    required: true,
+                    digits: true
+                },
+                'mes1': {
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    };
+
+    var validateForm = function () {
+        return $($("#optCmb").find("form")).valid();
+    };
+
+    var enviar = function () {
+        if (validateForm()) {
+            $("#ano").val($("#ano1").val());
+            $("#mes").val($("#mes1").val());
+            $("#optBtn").find("form").submit();
+        }
+    }
+
+    $(document).ready(function () {
+        validation();
+        setAno('@ViewData["ano"]');
+        setMes('@ViewData["mes"]');
+        setErrorPro('@ViewData["errorPro"]');
+        setProcesado('@ViewData["procesado"]');
+        setErrorExiste('@ViewData["errorExiste"]');
+        setErrorAprobado('@ViewData["errorAprobado"]');
+        setBorrado('@ViewData["borrado"]');
+    });
+</script>
+
+
+
+
+
+
+
+

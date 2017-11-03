@@ -1,0 +1,58 @@
+﻿@model PetCenter.Common.Core.Entities.Planilla
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Planilla</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SueldoMinimo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SueldoMinimo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uit.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uit.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpleadoId_Aprueba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpleadoId_Aprueba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aprobado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aprobado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pagado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlanillaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

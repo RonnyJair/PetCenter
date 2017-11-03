@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Empleado>
+
+@{
+    ViewBag.Title = "Planilla";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="page-header">
+                <h1>Planilla</h1>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Aviso de planilla
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        Ya existe una planilla con el periodo @ViewData["Fecha"]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="button" value="Regresar" class="btn btn-default" onclick="regresar()" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@*<div>
+        @Html.ActionLink("Regresar :)", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    var regresar = function () {
+        window.history.back();
+    }
+</script>

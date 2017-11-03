@@ -1,0 +1,1604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BdPetCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afp">
+          <Key>
+            <PropertyRef Name="AfpId" />
+          </Key>
+          <Property Name="AfpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Aporte" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Comision" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Seguro" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asistencia">
+          <Key>
+            <PropertyRef Name="AsistenciaId" />
+          </Key>
+          <Property Name="AsistenciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaSalida" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="BancoId" />
+          </Key>
+          <Property Name="BancoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Concepto">
+          <Key>
+            <PropertyRef Name="ConceptoId" />
+          </Key>
+          <Property Name="ConceptoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Tipo" Type="smallint" Nullable="false" />
+          <Property Name="TipoConcepto" Type="smallint" />
+          <Property Name="calculo1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo5" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo6" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador5" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Escala1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="int" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="Sexo" Type="bit" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Movil" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TieneHijo" Type="bit" Nullable="false" />
+          <Property Name="Documento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" />
+          <Property Name="EsAfp" Type="bit" />
+          <Property Name="LugarNacimiento" Type="varchar" MaxLength="150" />
+          <Property Name="CodigoEsSalud" Type="varchar" MaxLength="50" />
+          <Property Name="UbigeoId" Type="int" />
+          <Property Name="Referencia" Type="varchar" MaxLength="250" />
+          <Property Name="BancoId" Type="int" />
+          <Property Name="TipoCuentaId" Type="int" />
+          <Property Name="NumeroCuenta" Type="varchar" MaxLength="50" />
+          <Property Name="MonedaId" Type="int" />
+          <Property Name="FechaIngreso" Type="date" />
+          <Property Name="CUSSP" Type="varchar" MaxLength="50" />
+          <Property Name="FechaInicioContrato" Type="date" />
+          <Property Name="FechaFinContrato" Type="date" />
+          <Property Name="EstadoCivil" Type="smallint" />
+        </EntityType>
+        <EntityType Name="EmpleadoAfp">
+          <Key>
+            <PropertyRef Name="EmpleadoAfpId" />
+          </Key>
+          <Property Name="EmpleadoAfpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="AfpId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpleadoOnp">
+          <Key>
+            <PropertyRef Name="EmpleadoOnpId" />
+          </Key>
+          <Property Name="EmpleadoOnpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="OnpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpleadoSueldoBase">
+          <Key>
+            <PropertyRef Name="EmpleadoSueldoBaseId" />
+          </Key>
+          <Property Name="EmpleadoSueldoBaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="SueldoBase" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EsSalud">
+          <Key>
+            <PropertyRef Name="EsSaludId" />
+          </Key>
+          <Property Name="EsSaludId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Falta">
+          <Key>
+            <PropertyRef Name="FaltaId" />
+          </Key>
+          <Property Name="FaltaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Onp">
+          <Key>
+            <PropertyRef Name="OnpId" />
+          </Key>
+          <Property Name="OnpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Aporte" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Planilla">
+          <Key>
+            <PropertyRef Name="PlanillaId" />
+          </Key>
+          <Property Name="PlanillaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId_Aprueba" Type="int" />
+          <Property Name="UitId" Type="int" Nullable="false" />
+          <Property Name="SueldoMinimoId" Type="int" Nullable="false" />
+          <Property Name="Aprobado" Type="bit" Nullable="false" />
+          <Property Name="Pagado" Type="bit" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="PlanillaEmpleado">
+          <Key>
+            <PropertyRef Name="PlanillaEmpleadoId" />
+          </Key>
+          <Property Name="PlanillaEmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanillaId" Type="int" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="AfpId" Type="int" Nullable="false" />
+          <Property Name="OnpId" Type="int" Nullable="false" />
+          <Property Name="TotalIngreso" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalDescuento" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalNeto" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalAporte" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanillaEmpleadoConcepto">
+          <Key>
+            <PropertyRef Name="PlanillaEmpleadoConceptoId" />
+          </Key>
+          <Property Name="PlanillaEmpleadoConceptoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanillaEmpleadoId" Type="int" Nullable="false" />
+          <Property Name="ConceptoId" Type="int" Nullable="false" />
+          <Property Name="Importe" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeguroVidaLey">
+          <Key>
+            <PropertyRef Name="SeguroVidaLeyId" />
+          </Key>
+          <Property Name="SeguroVidaLeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SueldoMinimo">
+          <Key>
+            <PropertyRef Name="SueldoMinimoId" />
+          </Key>
+          <Property Name="SueldoMinimoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tardanza">
+          <Key>
+            <PropertyRef Name="TardanzaId" />
+          </Key>
+          <Property Name="TardanzaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="FechaTardanza" Type="datetime" Nullable="false" />
+          <Property Name="Minutos" Type="decimal" Precision="13" Scale="3" />
+        </EntityType>
+        <EntityType Name="TipoCuenta">
+          <Key>
+            <PropertyRef Name="TipoCuentaId" />
+          </Key>
+          <Property Name="TipoCuentaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="TipoDocumentoId" />
+          </Key>
+          <Property Name="TipoDocumentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="UbigeoId" />
+          </Key>
+          <Property Name="UbigeoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Departamento" Type="varchar" MaxLength="100" />
+          <Property Name="Provincia" Type="varchar" MaxLength="100" />
+          <Property Name="Distrito" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Uit">
+          <Key>
+            <PropertyRef Name="UitId" />
+          </Key>
+          <Property Name="UitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Asistencia_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Asistencia">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Banco">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="BancoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="BancoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Moneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_TipoCuenta">
+          <End Role="TipoCuenta" Type="Self.TipoCuenta" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuenta">
+              <PropertyRef Name="TipoCuentaId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoCuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="UbigeoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="UbigeoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoAfp_Afp">
+          <End Role="Afp" Type="Self.Afp" Multiplicity="1" />
+          <End Role="EmpleadoAfp" Type="Self.EmpleadoAfp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afp">
+              <PropertyRef Name="AfpId" />
+            </Principal>
+            <Dependent Role="EmpleadoAfp">
+              <PropertyRef Name="AfpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoAfp_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoAfp" Type="Self.EmpleadoAfp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoAfp">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoOnp_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoOnp" Type="Self.EmpleadoOnp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoOnp">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoOnp_Onp">
+          <End Role="Onp" Type="Self.Onp" Multiplicity="1" />
+          <End Role="EmpleadoOnp" Type="Self.EmpleadoOnp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Onp">
+              <PropertyRef Name="OnpId" />
+            </Principal>
+            <Dependent Role="EmpleadoOnp">
+              <PropertyRef Name="OnpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoSueldoBase_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoSueldoBase" Type="Self.EmpleadoSueldoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoSueldoBase">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Falta_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Falta" Type="Self.Falta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Falta">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="EmpleadoId_Aprueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_SueldoMinimo">
+          <End Role="SueldoMinimo" Type="Self.SueldoMinimo" Multiplicity="1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SueldoMinimo">
+              <PropertyRef Name="SueldoMinimoId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="SueldoMinimoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_Uit">
+          <End Role="Uit" Type="Self.Uit" Multiplicity="1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uit">
+              <PropertyRef Name="UitId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="UitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleado_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleado_Planilla">
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="1" />
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planilla">
+              <PropertyRef Name="PlanillaId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleado">
+              <PropertyRef Name="PlanillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleadoConcepto_Concepto">
+          <End Role="Concepto" Type="Self.Concepto" Multiplicity="1" />
+          <End Role="PlanillaEmpleadoConcepto" Type="Self.PlanillaEmpleadoConcepto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Concepto">
+              <PropertyRef Name="ConceptoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleadoConcepto">
+              <PropertyRef Name="ConceptoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleadoConcepto_PlanillaEmpleado">
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="1" />
+          <End Role="PlanillaEmpleadoConcepto" Type="Self.PlanillaEmpleadoConcepto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanillaEmpleado">
+              <PropertyRef Name="PlanillaEmpleadoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleadoConcepto">
+              <PropertyRef Name="PlanillaEmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tardanza_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Tardanza" Type="Self.Tardanza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Tardanza">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BdPetCenterModelStoreContainer">
+          <EntitySet Name="Afp" EntityType="Self.Afp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asistencia" EntityType="Self.Asistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Concepto" EntityType="Self.Concepto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadoAfp" EntityType="Self.EmpleadoAfp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadoOnp" EntityType="Self.EmpleadoOnp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadoSueldoBase" EntityType="Self.EmpleadoSueldoBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EsSalud" EntityType="Self.EsSalud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Falta" EntityType="Self.Falta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moneda" EntityType="Self.Moneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Onp" EntityType="Self.Onp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planilla" EntityType="Self.Planilla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanillaEmpleado" EntityType="Self.PlanillaEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanillaEmpleadoConcepto" EntityType="Self.PlanillaEmpleadoConcepto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeguroVidaLey" EntityType="Self.SeguroVidaLey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SueldoMinimo" EntityType="Self.SueldoMinimo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tardanza" EntityType="Self.Tardanza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDocumento" EntityType="Self.TipoDocumento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uit" EntityType="Self.Uit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Asistencia_Empleado" Association="Self.FK_Asistencia_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Asistencia" EntitySet="Asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Banco" Association="Self.FK_Empleado_Banco">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Moneda" Association="Self.FK_Empleado_Moneda">
+            <End Role="Moneda" EntitySet="Moneda" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_TipoCuenta" Association="Self.FK_Empleado_TipoCuenta">
+            <End Role="TipoCuenta" EntitySet="TipoCuenta" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_TipoDocumento" Association="Self.FK_Empleado_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoAfp_Afp" Association="Self.FK_EmpleadoAfp_Afp">
+            <End Role="Afp" EntitySet="Afp" />
+            <End Role="EmpleadoAfp" EntitySet="EmpleadoAfp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoAfp_Empleado" Association="Self.FK_EmpleadoAfp_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="EmpleadoAfp" EntitySet="EmpleadoAfp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoOnp_Empleado" Association="Self.FK_EmpleadoOnp_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="EmpleadoOnp" EntitySet="EmpleadoOnp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoOnp_Onp" Association="Self.FK_EmpleadoOnp_Onp">
+            <End Role="Onp" EntitySet="Onp" />
+            <End Role="EmpleadoOnp" EntitySet="EmpleadoOnp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoSueldoBase_Empleado" Association="Self.FK_EmpleadoSueldoBase_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="EmpleadoSueldoBase" EntitySet="EmpleadoSueldoBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Falta_Empleado" Association="Self.FK_Falta_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Falta" EntitySet="Falta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_Empleado" Association="Self.FK_Planilla_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Planilla" EntitySet="Planilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_SueldoMinimo" Association="Self.FK_Planilla_SueldoMinimo">
+            <End Role="SueldoMinimo" EntitySet="SueldoMinimo" />
+            <End Role="Planilla" EntitySet="Planilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_Uit" Association="Self.FK_Planilla_Uit">
+            <End Role="Uit" EntitySet="Uit" />
+            <End Role="Planilla" EntitySet="Planilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleado_Empleado" Association="Self.FK_PlanillaEmpleado_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleado_Planilla" Association="Self.FK_PlanillaEmpleado_Planilla">
+            <End Role="Planilla" EntitySet="Planilla" />
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleadoConcepto_Concepto" Association="Self.FK_PlanillaEmpleadoConcepto_Concepto">
+            <End Role="Concepto" EntitySet="Concepto" />
+            <End Role="PlanillaEmpleadoConcepto" EntitySet="PlanillaEmpleadoConcepto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" Association="Self.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado">
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleado" />
+            <End Role="PlanillaEmpleadoConcepto" EntitySet="PlanillaEmpleadoConcepto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tardanza_Empleado" Association="Self.FK_Tardanza_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Tardanza" EntitySet="Tardanza" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BdPetCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Afp">
+          <Key>
+            <PropertyRef Name="AfpId" />
+          </Key>
+          <Property Name="AfpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Aporte" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Comision" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Seguro" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmpleadoAfps" Relationship="Self.FK_EmpleadoAfp_Afp" FromRole="Afp" ToRole="EmpleadoAfp" />
+        </EntityType>
+        <EntityType Name="Asistencia">
+          <Key>
+            <PropertyRef Name="AsistenciaId" />
+          </Key>
+          <Property Name="AsistenciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Asistencia_Empleado" FromRole="Asistencia" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="BancoId" />
+          </Key>
+          <Property Name="BancoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Banco" FromRole="Banco" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Concepto">
+          <Key>
+            <PropertyRef Name="ConceptoId" />
+          </Key>
+          <Property Name="ConceptoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="Int16" Nullable="false" />
+          <Property Name="TipoConcepto" Type="Int16" />
+          <Property Name="calculo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calculo2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calculo3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calculo4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calculo5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calculo6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operador1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operador2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operador3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operador4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operador5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Escala1" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala2" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala3" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala4" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala5" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala6" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje1" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje2" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje3" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje4" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje5" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje6" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe1" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe2" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe3" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe4" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe5" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe6" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <NavigationProperty Name="PlanillaEmpleadoConceptoes" Relationship="Self.FK_PlanillaEmpleadoConcepto_Concepto" FromRole="Concepto" ToRole="PlanillaEmpleadoConcepto" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sexo" Type="Boolean" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Movil" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TieneHijo" Type="Boolean" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" />
+          <Property Name="EsAfp" Type="Boolean" />
+          <Property Name="LugarNacimiento" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoEsSalud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UbigeoId" Type="Int32" />
+          <Property Name="Referencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BancoId" Type="Int32" />
+          <Property Name="TipoCuentaId" Type="Int32" />
+          <Property Name="NumeroCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MonedaId" Type="Int32" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="CUSSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicioContrato" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinContrato" Type="DateTime" Precision="0" />
+          <Property Name="EstadoCivil" Type="Int16" />
+          <NavigationProperty Name="Asistencias" Relationship="Self.FK_Asistencia_Empleado" FromRole="Empleado" ToRole="Asistencia" />
+          <NavigationProperty Name="Banco" Relationship="Self.FK_Empleado_Banco" FromRole="Empleado" ToRole="Banco" />
+          <NavigationProperty Name="Moneda" Relationship="Self.FK_Empleado_Moneda" FromRole="Empleado" ToRole="Moneda" />
+          <NavigationProperty Name="TipoCuenta" Relationship="Self.FK_Empleado_TipoCuenta" FromRole="Empleado" ToRole="TipoCuenta" />
+          <NavigationProperty Name="TipoDocumento" Relationship="Self.FK_Empleado_TipoDocumento" FromRole="Empleado" ToRole="TipoDocumento" />
+          <NavigationProperty Name="Ubigeo" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Empleado" ToRole="Ubigeo" />
+          <NavigationProperty Name="EmpleadoAfps" Relationship="Self.FK_EmpleadoAfp_Empleado" FromRole="Empleado" ToRole="EmpleadoAfp" />
+          <NavigationProperty Name="EmpleadoOnps" Relationship="Self.FK_EmpleadoOnp_Empleado" FromRole="Empleado" ToRole="EmpleadoOnp" />
+          <NavigationProperty Name="EmpleadoSueldoBases" Relationship="Self.FK_EmpleadoSueldoBase_Empleado" FromRole="Empleado" ToRole="EmpleadoSueldoBase" />
+          <NavigationProperty Name="Faltas" Relationship="Self.FK_Falta_Empleado" FromRole="Empleado" ToRole="Falta" />
+          <NavigationProperty Name="Planillas" Relationship="Self.FK_Planilla_Empleado" FromRole="Empleado" ToRole="Planilla" />
+          <NavigationProperty Name="PlanillaEmpleadoes" Relationship="Self.FK_PlanillaEmpleado_Empleado" FromRole="Empleado" ToRole="PlanillaEmpleado" />
+          <NavigationProperty Name="Tardanzas" Relationship="Self.FK_Tardanza_Empleado" FromRole="Empleado" ToRole="Tardanza" />
+        </EntityType>
+        <EntityType Name="EmpleadoAfp">
+          <Key>
+            <PropertyRef Name="EmpleadoAfpId" />
+          </Key>
+          <Property Name="EmpleadoAfpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="AfpId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Afp" Relationship="Self.FK_EmpleadoAfp_Afp" FromRole="EmpleadoAfp" ToRole="Afp" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_EmpleadoAfp_Empleado" FromRole="EmpleadoAfp" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="EmpleadoOnp">
+          <Key>
+            <PropertyRef Name="EmpleadoOnpId" />
+          </Key>
+          <Property Name="EmpleadoOnpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="OnpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_EmpleadoOnp_Empleado" FromRole="EmpleadoOnp" ToRole="Empleado" />
+          <NavigationProperty Name="Onp" Relationship="Self.FK_EmpleadoOnp_Onp" FromRole="EmpleadoOnp" ToRole="Onp" />
+        </EntityType>
+        <EntityType Name="EmpleadoSueldoBase">
+          <Key>
+            <PropertyRef Name="EmpleadoSueldoBaseId" />
+          </Key>
+          <Property Name="EmpleadoSueldoBaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="SueldoBase" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_EmpleadoSueldoBase_Empleado" FromRole="EmpleadoSueldoBase" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="EsSalud">
+          <Key>
+            <PropertyRef Name="EsSaludId" />
+          </Key>
+          <Property Name="EsSaludId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Falta">
+          <Key>
+            <PropertyRef Name="FaltaId" />
+          </Key>
+          <Property Name="FaltaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Falta_Empleado" FromRole="Falta" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Moneda" FromRole="Moneda" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Onp">
+          <Key>
+            <PropertyRef Name="OnpId" />
+          </Key>
+          <Property Name="OnpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Aporte" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmpleadoOnps" Relationship="Self.FK_EmpleadoOnp_Onp" FromRole="Onp" ToRole="EmpleadoOnp" />
+        </EntityType>
+        <EntityType Name="Planilla">
+          <Key>
+            <PropertyRef Name="PlanillaId" />
+          </Key>
+          <Property Name="PlanillaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId_Aprueba" Type="Int32" />
+          <Property Name="UitId" Type="Int32" Nullable="false" />
+          <Property Name="SueldoMinimoId" Type="Int32" Nullable="false" />
+          <Property Name="Aprobado" Type="Boolean" Nullable="false" />
+          <Property Name="Pagado" Type="Boolean" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Planilla_Empleado" FromRole="Planilla" ToRole="Empleado" />
+          <NavigationProperty Name="SueldoMinimo" Relationship="Self.FK_Planilla_SueldoMinimo" FromRole="Planilla" ToRole="SueldoMinimo" />
+          <NavigationProperty Name="Uit" Relationship="Self.FK_Planilla_Uit" FromRole="Planilla" ToRole="Uit" />
+          <NavigationProperty Name="PlanillaEmpleadoes" Relationship="Self.FK_PlanillaEmpleado_Planilla" FromRole="Planilla" ToRole="PlanillaEmpleado" />
+        </EntityType>
+        <EntityType Name="PlanillaEmpleado">
+          <Key>
+            <PropertyRef Name="PlanillaEmpleadoId" />
+          </Key>
+          <Property Name="PlanillaEmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanillaId" Type="Int32" Nullable="false" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="AfpId" Type="Int32" Nullable="false" />
+          <Property Name="OnpId" Type="Int32" Nullable="false" />
+          <Property Name="TotalIngreso" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalDescuento" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalNeto" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="TotalAporte" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_PlanillaEmpleado_Empleado" FromRole="PlanillaEmpleado" ToRole="Empleado" />
+          <NavigationProperty Name="Planilla" Relationship="Self.FK_PlanillaEmpleado_Planilla" FromRole="PlanillaEmpleado" ToRole="Planilla" />
+          <NavigationProperty Name="PlanillaEmpleadoConceptoes" Relationship="Self.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" FromRole="PlanillaEmpleado" ToRole="PlanillaEmpleadoConcepto" />
+        </EntityType>
+        <EntityType Name="PlanillaEmpleadoConcepto">
+          <Key>
+            <PropertyRef Name="PlanillaEmpleadoConceptoId" />
+          </Key>
+          <Property Name="PlanillaEmpleadoConceptoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanillaEmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="ConceptoId" Type="Int32" Nullable="false" />
+          <Property Name="Importe" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Concepto" Relationship="Self.FK_PlanillaEmpleadoConcepto_Concepto" FromRole="PlanillaEmpleadoConcepto" ToRole="Concepto" />
+          <NavigationProperty Name="PlanillaEmpleado" Relationship="Self.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" FromRole="PlanillaEmpleadoConcepto" ToRole="PlanillaEmpleado" />
+        </EntityType>
+        <EntityType Name="SeguroVidaLey">
+          <Key>
+            <PropertyRef Name="SeguroVidaLeyId" />
+          </Key>
+          <Property Name="SeguroVidaLeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SueldoMinimo">
+          <Key>
+            <PropertyRef Name="SueldoMinimoId" />
+          </Key>
+          <Property Name="SueldoMinimoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Planillas" Relationship="Self.FK_Planilla_SueldoMinimo" FromRole="SueldoMinimo" ToRole="Planilla" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tardanza">
+          <Key>
+            <PropertyRef Name="TardanzaId" />
+          </Key>
+          <Property Name="TardanzaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="FechaTardanza" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Minutos" Type="Decimal" Precision="13" Scale="3" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Tardanza_Empleado" FromRole="Tardanza" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="TipoCuenta">
+          <Key>
+            <PropertyRef Name="TipoCuentaId" />
+          </Key>
+          <Property Name="TipoCuentaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_TipoCuenta" FromRole="TipoCuenta" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="TipoDocumentoId" />
+          </Key>
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_TipoDocumento" FromRole="TipoDocumento" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="UbigeoId" />
+          </Key>
+          <Property Name="UbigeoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Ubigeo" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Uit">
+          <Key>
+            <PropertyRef Name="UitId" />
+          </Key>
+          <Property Name="UitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Planillas" Relationship="Self.FK_Planilla_Uit" FromRole="Uit" ToRole="Planilla" />
+        </EntityType>
+        <Association Name="FK_EmpleadoAfp_Afp">
+          <End Role="Afp" Type="Self.Afp" Multiplicity="1" />
+          <End Role="EmpleadoAfp" Type="Self.EmpleadoAfp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afp">
+              <PropertyRef Name="AfpId" />
+            </Principal>
+            <Dependent Role="EmpleadoAfp">
+              <PropertyRef Name="AfpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asistencia_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Asistencia">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Banco">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="BancoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="BancoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleadoConcepto_Concepto">
+          <End Role="Concepto" Type="Self.Concepto" Multiplicity="1" />
+          <End Role="PlanillaEmpleadoConcepto" Type="Self.PlanillaEmpleadoConcepto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Concepto">
+              <PropertyRef Name="ConceptoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleadoConcepto">
+              <PropertyRef Name="ConceptoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Moneda">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="MonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_TipoCuenta">
+          <End Role="TipoCuenta" Type="Self.TipoCuenta" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuenta">
+              <PropertyRef Name="TipoCuentaId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoCuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="UbigeoId" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="UbigeoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoAfp_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoAfp" Type="Self.EmpleadoAfp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoAfp">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoOnp_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoOnp" Type="Self.EmpleadoOnp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoOnp">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoSueldoBase_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoSueldoBase" Type="Self.EmpleadoSueldoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="EmpleadoSueldoBase">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Falta_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Falta" Type="Self.Falta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Falta">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="EmpleadoId_Aprueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleado_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tardanza_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Tardanza" Type="Self.Tardanza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Tardanza">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoOnp_Onp">
+          <End Role="Onp" Type="Self.Onp" Multiplicity="1" />
+          <End Role="EmpleadoOnp" Type="Self.EmpleadoOnp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Onp">
+              <PropertyRef Name="OnpId" />
+            </Principal>
+            <Dependent Role="EmpleadoOnp">
+              <PropertyRef Name="OnpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_SueldoMinimo">
+          <End Role="SueldoMinimo" Type="Self.SueldoMinimo" Multiplicity="1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SueldoMinimo">
+              <PropertyRef Name="SueldoMinimoId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="SueldoMinimoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planilla_Uit">
+          <End Role="Uit" Type="Self.Uit" Multiplicity="1" />
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uit">
+              <PropertyRef Name="UitId" />
+            </Principal>
+            <Dependent Role="Planilla">
+              <PropertyRef Name="UitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleado_Planilla">
+          <End Role="Planilla" Type="Self.Planilla" Multiplicity="1" />
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planilla">
+              <PropertyRef Name="PlanillaId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleado">
+              <PropertyRef Name="PlanillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaEmpleadoConcepto_PlanillaEmpleado">
+          <End Role="PlanillaEmpleado" Type="Self.PlanillaEmpleado" Multiplicity="1" />
+          <End Role="PlanillaEmpleadoConcepto" Type="Self.PlanillaEmpleadoConcepto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanillaEmpleado">
+              <PropertyRef Name="PlanillaEmpleadoId" />
+            </Principal>
+            <Dependent Role="PlanillaEmpleadoConcepto">
+              <PropertyRef Name="PlanillaEmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BdPetCenterEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Afps" EntityType="Self.Afp" />
+          <EntitySet Name="Asistencias" EntityType="Self.Asistencia" />
+          <EntitySet Name="Bancoes" EntityType="Self.Banco" />
+          <EntitySet Name="Conceptoes" EntityType="Self.Concepto" />
+          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+          <EntitySet Name="EmpleadoAfps" EntityType="Self.EmpleadoAfp" />
+          <EntitySet Name="EmpleadoOnps" EntityType="Self.EmpleadoOnp" />
+          <EntitySet Name="EmpleadoSueldoBases" EntityType="Self.EmpleadoSueldoBase" />
+          <EntitySet Name="EsSaluds" EntityType="Self.EsSalud" />
+          <EntitySet Name="Faltas" EntityType="Self.Falta" />
+          <EntitySet Name="Monedas" EntityType="Self.Moneda" />
+          <EntitySet Name="Onps" EntityType="Self.Onp" />
+          <EntitySet Name="Planillas" EntityType="Self.Planilla" />
+          <EntitySet Name="PlanillaEmpleadoes" EntityType="Self.PlanillaEmpleado" />
+          <EntitySet Name="PlanillaEmpleadoConceptoes" EntityType="Self.PlanillaEmpleadoConcepto" />
+          <EntitySet Name="SeguroVidaLeys" EntityType="Self.SeguroVidaLey" />
+          <EntitySet Name="SueldoMinimoes" EntityType="Self.SueldoMinimo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tardanzas" EntityType="Self.Tardanza" />
+          <EntitySet Name="TipoCuentas" EntityType="Self.TipoCuenta" />
+          <EntitySet Name="TipoDocumentoes" EntityType="Self.TipoDocumento" />
+          <EntitySet Name="Ubigeos" EntityType="Self.Ubigeo" />
+          <EntitySet Name="Uits" EntityType="Self.Uit" />
+          <AssociationSet Name="FK_EmpleadoAfp_Afp" Association="Self.FK_EmpleadoAfp_Afp">
+            <End Role="Afp" EntitySet="Afps" />
+            <End Role="EmpleadoAfp" EntitySet="EmpleadoAfps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asistencia_Empleado" Association="Self.FK_Asistencia_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Asistencia" EntitySet="Asistencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Banco" Association="Self.FK_Empleado_Banco">
+            <End Role="Banco" EntitySet="Bancoes" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleadoConcepto_Concepto" Association="Self.FK_PlanillaEmpleadoConcepto_Concepto">
+            <End Role="Concepto" EntitySet="Conceptoes" />
+            <End Role="PlanillaEmpleadoConcepto" EntitySet="PlanillaEmpleadoConceptoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Moneda" Association="Self.FK_Empleado_Moneda">
+            <End Role="Moneda" EntitySet="Monedas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_TipoCuenta" Association="Self.FK_Empleado_TipoCuenta">
+            <End Role="TipoCuenta" EntitySet="TipoCuentas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_TipoDocumento" Association="Self.FK_Empleado_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumentoes" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Ubigeo" EntitySet="Ubigeos" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoAfp_Empleado" Association="Self.FK_EmpleadoAfp_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="EmpleadoAfp" EntitySet="EmpleadoAfps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoOnp_Empleado" Association="Self.FK_EmpleadoOnp_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="EmpleadoOnp" EntitySet="EmpleadoOnps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoSueldoBase_Empleado" Association="Self.FK_EmpleadoSueldoBase_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="EmpleadoSueldoBase" EntitySet="EmpleadoSueldoBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Falta_Empleado" Association="Self.FK_Falta_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Falta" EntitySet="Faltas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_Empleado" Association="Self.FK_Planilla_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Planilla" EntitySet="Planillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleado_Empleado" Association="Self.FK_PlanillaEmpleado_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tardanza_Empleado" Association="Self.FK_Tardanza_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Tardanza" EntitySet="Tardanzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoOnp_Onp" Association="Self.FK_EmpleadoOnp_Onp">
+            <End Role="Onp" EntitySet="Onps" />
+            <End Role="EmpleadoOnp" EntitySet="EmpleadoOnps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_SueldoMinimo" Association="Self.FK_Planilla_SueldoMinimo">
+            <End Role="SueldoMinimo" EntitySet="SueldoMinimoes" />
+            <End Role="Planilla" EntitySet="Planillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planilla_Uit" Association="Self.FK_Planilla_Uit">
+            <End Role="Uit" EntitySet="Uits" />
+            <End Role="Planilla" EntitySet="Planillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleado_Planilla" Association="Self.FK_PlanillaEmpleado_Planilla">
+            <End Role="Planilla" EntitySet="Planillas" />
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" Association="Self.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado">
+            <End Role="PlanillaEmpleado" EntitySet="PlanillaEmpleadoes" />
+            <End Role="PlanillaEmpleadoConcepto" EntitySet="PlanillaEmpleadoConceptoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BdPetCenterModelStoreContainer" CdmEntityContainer="BdPetCenterEntities1">
+          <EntitySetMapping Name="Afps">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Afp">
+              <MappingFragment StoreEntitySet="Afp">
+                <ScalarProperty Name="AfpId" ColumnName="AfpId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Aporte" ColumnName="Aporte" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="Seguro" ColumnName="Seguro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asistencias">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Asistencia">
+              <MappingFragment StoreEntitySet="Asistencia">
+                <ScalarProperty Name="AsistenciaId" ColumnName="AsistenciaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bancoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Banco">
+              <MappingFragment StoreEntitySet="Banco">
+                <ScalarProperty Name="BancoId" ColumnName="BancoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conceptoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Concepto">
+              <MappingFragment StoreEntitySet="Concepto">
+                <ScalarProperty Name="ConceptoId" ColumnName="ConceptoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="TipoConcepto" ColumnName="TipoConcepto" />
+                <ScalarProperty Name="calculo1" ColumnName="calculo1" />
+                <ScalarProperty Name="calculo2" ColumnName="calculo2" />
+                <ScalarProperty Name="calculo3" ColumnName="calculo3" />
+                <ScalarProperty Name="calculo4" ColumnName="calculo4" />
+                <ScalarProperty Name="calculo5" ColumnName="calculo5" />
+                <ScalarProperty Name="calculo6" ColumnName="calculo6" />
+                <ScalarProperty Name="Operador1" ColumnName="Operador1" />
+                <ScalarProperty Name="Operador2" ColumnName="Operador2" />
+                <ScalarProperty Name="Operador3" ColumnName="Operador3" />
+                <ScalarProperty Name="Operador4" ColumnName="Operador4" />
+                <ScalarProperty Name="Operador5" ColumnName="Operador5" />
+                <ScalarProperty Name="Escala1" ColumnName="Escala1" />
+                <ScalarProperty Name="Escala2" ColumnName="Escala2" />
+                <ScalarProperty Name="Escala3" ColumnName="Escala3" />
+                <ScalarProperty Name="Escala4" ColumnName="Escala4" />
+                <ScalarProperty Name="Escala5" ColumnName="Escala5" />
+                <ScalarProperty Name="Escala6" ColumnName="Escala6" />
+                <ScalarProperty Name="Porcentaje1" ColumnName="Porcentaje1" />
+                <ScalarProperty Name="Porcentaje2" ColumnName="Porcentaje2" />
+                <ScalarProperty Name="Porcentaje3" ColumnName="Porcentaje3" />
+                <ScalarProperty Name="Porcentaje4" ColumnName="Porcentaje4" />
+                <ScalarProperty Name="Porcentaje5" ColumnName="Porcentaje5" />
+                <ScalarProperty Name="Porcentaje6" ColumnName="Porcentaje6" />
+                <ScalarProperty Name="Importe1" ColumnName="Importe1" />
+                <ScalarProperty Name="Importe2" ColumnName="Importe2" />
+                <ScalarProperty Name="Importe3" ColumnName="Importe3" />
+                <ScalarProperty Name="Importe4" ColumnName="Importe4" />
+                <ScalarProperty Name="Importe5" ColumnName="Importe5" />
+                <ScalarProperty Name="Importe6" ColumnName="Importe6" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="TieneHijo" ColumnName="TieneHijo" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+                <ScalarProperty Name="EsAfp" ColumnName="EsAfp" />
+                <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+                <ScalarProperty Name="CodigoEsSalud" ColumnName="CodigoEsSalud" />
+                <ScalarProperty Name="UbigeoId" ColumnName="UbigeoId" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="BancoId" ColumnName="BancoId" />
+                <ScalarProperty Name="TipoCuentaId" ColumnName="TipoCuentaId" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="CUSSP" ColumnName="CUSSP" />
+                <ScalarProperty Name="FechaInicioContrato" ColumnName="FechaInicioContrato" />
+                <ScalarProperty Name="FechaFinContrato" ColumnName="FechaFinContrato" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoAfps">
+            <EntityTypeMapping TypeName="BdPetCenterModel.EmpleadoAfp">
+              <MappingFragment StoreEntitySet="EmpleadoAfp">
+                <ScalarProperty Name="EmpleadoAfpId" ColumnName="EmpleadoAfpId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="AfpId" ColumnName="AfpId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoOnps">
+            <EntityTypeMapping TypeName="BdPetCenterModel.EmpleadoOnp">
+              <MappingFragment StoreEntitySet="EmpleadoOnp">
+                <ScalarProperty Name="EmpleadoOnpId" ColumnName="EmpleadoOnpId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="OnpId" ColumnName="OnpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoSueldoBases">
+            <EntityTypeMapping TypeName="BdPetCenterModel.EmpleadoSueldoBase">
+              <MappingFragment StoreEntitySet="EmpleadoSueldoBase">
+                <ScalarProperty Name="EmpleadoSueldoBaseId" ColumnName="EmpleadoSueldoBaseId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="SueldoBase" ColumnName="SueldoBase" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EsSaluds">
+            <EntityTypeMapping TypeName="BdPetCenterModel.EsSalud">
+              <MappingFragment StoreEntitySet="EsSalud">
+                <ScalarProperty Name="EsSaludId" ColumnName="EsSaludId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faltas">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Falta">
+              <MappingFragment StoreEntitySet="Falta">
+                <ScalarProperty Name="FaltaId" ColumnName="FaltaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monedas">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Moneda">
+              <MappingFragment StoreEntitySet="Moneda">
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Onps">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Onp">
+              <MappingFragment StoreEntitySet="Onp">
+                <ScalarProperty Name="OnpId" ColumnName="OnpId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Aporte" ColumnName="Aporte" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planillas">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Planilla">
+              <MappingFragment StoreEntitySet="Planilla">
+                <ScalarProperty Name="PlanillaId" ColumnName="PlanillaId" />
+                <ScalarProperty Name="EmpleadoId_Aprueba" ColumnName="EmpleadoId_Aprueba" />
+                <ScalarProperty Name="UitId" ColumnName="UitId" />
+                <ScalarProperty Name="SueldoMinimoId" ColumnName="SueldoMinimoId" />
+                <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanillaEmpleadoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.PlanillaEmpleado">
+              <MappingFragment StoreEntitySet="PlanillaEmpleado">
+                <ScalarProperty Name="PlanillaEmpleadoId" ColumnName="PlanillaEmpleadoId" />
+                <ScalarProperty Name="PlanillaId" ColumnName="PlanillaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="AfpId" ColumnName="AfpId" />
+                <ScalarProperty Name="OnpId" ColumnName="OnpId" />
+                <ScalarProperty Name="TotalIngreso" ColumnName="TotalIngreso" />
+                <ScalarProperty Name="TotalDescuento" ColumnName="TotalDescuento" />
+                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
+                <ScalarProperty Name="TotalAporte" ColumnName="TotalAporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanillaEmpleadoConceptoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.PlanillaEmpleadoConcepto">
+              <MappingFragment StoreEntitySet="PlanillaEmpleadoConcepto">
+                <ScalarProperty Name="PlanillaEmpleadoConceptoId" ColumnName="PlanillaEmpleadoConceptoId" />
+                <ScalarProperty Name="PlanillaEmpleadoId" ColumnName="PlanillaEmpleadoId" />
+                <ScalarProperty Name="ConceptoId" ColumnName="ConceptoId" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeguroVidaLeys">
+            <EntityTypeMapping TypeName="BdPetCenterModel.SeguroVidaLey">
+              <MappingFragment StoreEntitySet="SeguroVidaLey">
+                <ScalarProperty Name="SeguroVidaLeyId" ColumnName="SeguroVidaLeyId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SueldoMinimoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.SueldoMinimo">
+              <MappingFragment StoreEntitySet="SueldoMinimo">
+                <ScalarProperty Name="SueldoMinimoId" ColumnName="SueldoMinimoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BdPetCenterModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tardanzas">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Tardanza">
+              <MappingFragment StoreEntitySet="Tardanza">
+                <ScalarProperty Name="TardanzaId" ColumnName="TardanzaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="FechaTardanza" ColumnName="FechaTardanza" />
+                <ScalarProperty Name="Minutos" ColumnName="Minutos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCuentas">
+            <EntityTypeMapping TypeName="BdPetCenterModel.TipoCuenta">
+              <MappingFragment StoreEntitySet="TipoCuenta">
+                <ScalarProperty Name="TipoCuentaId" ColumnName="TipoCuentaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumentoes">
+            <EntityTypeMapping TypeName="BdPetCenterModel.TipoDocumento">
+              <MappingFragment StoreEntitySet="TipoDocumento">
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubigeos">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Ubigeo">
+              <MappingFragment StoreEntitySet="Ubigeo">
+                <ScalarProperty Name="UbigeoId" ColumnName="UbigeoId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uits">
+            <EntityTypeMapping TypeName="BdPetCenterModel.Uit">
+              <MappingFragment StoreEntitySet="Uit">
+                <ScalarProperty Name="UitId" ColumnName="UitId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

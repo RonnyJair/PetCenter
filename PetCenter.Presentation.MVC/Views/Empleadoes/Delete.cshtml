@@ -1,0 +1,48 @@
+﻿@model PetCenter.Common.Core.Entities.Empleado
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="page-header">
+                <h1>
+                    Eliminar Empleado
+                </h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @Html.ActionLink("Regresar", "Index")
+                            </div>
+                            <div class="panel-body">
+
+                                <h3>¿Está seguro de eliminar al empleado?</h3>
+                                <div>                                  
+                                    Codigo: @Html.DisplayFor(model => model.CodigoEmpleado)  <br />  
+                                    Empleado: @Html.DisplayFor(model => model.ApellidoPaterno) @Html.DisplayFor(model => model.ApellidoMaterno), @Html.DisplayFor(model => model.Nombres)
+                                    <br />  
+                                    <br />   
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-actions no-color">
+                                            <input type="submit" value="Aceptar" class="btn btn-default" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

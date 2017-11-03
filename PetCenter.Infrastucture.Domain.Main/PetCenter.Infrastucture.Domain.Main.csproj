@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C79192F-64C7-40C1-A7ED-9CDEF878E497}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PetCenter.Infrastucture.Domain.Main</RootNamespace>
+    <AssemblyName>PetCenter.Infrastucture.Domain.Main</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL_Banco.cs" />
+    <Compile Include="BL_Empleado.cs" />
+    <Compile Include="BL_Moneda.cs" />
+    <Compile Include="BL_Planilla.cs" />
+    <Compile Include="BL_EsSalud.cs" />
+    <Compile Include="BL_SeguroVidaLey.cs" />
+    <Compile Include="BL_TipoCuenta.cs" />
+    <Compile Include="BL_TipoDocumento.cs" />
+    <Compile Include="BL_Ubigeo.cs" />
+    <Compile Include="BL_Uit.cs" />
+    <Compile Include="BL_Falta.cs" />
+    <Compile Include="BL_SueldoMinimo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PetCenter.Common.Core.Entities\PetCenter.Common.Core.Entities.csproj">
+      <Project>{73359b0e-9a6b-48df-bc4e-d2cc88bc8e5f}</Project>
+      <Name>PetCenter.Common.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetCenter.Common.Core.ORM\PetCenter.Common.Core.ORM.csproj">
+      <Project>{21fedd4b-aed3-4e5c-aad2-195557ec359f}</Project>
+      <Name>PetCenter.Common.Core.ORM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetCenter.Common.Utilities\PetCenter.Common.Utilities.csproj">
+      <Project>{1379882b-72e4-497b-8b5a-ef3580260bc6}</Project>
+      <Name>PetCenter.Common.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetCenter.Infrastucture.Data\PetCenter.Infrastucture.Data.csproj">
+      <Project>{92137026-9643-44C1-BA84-FD604579CD59}</Project>
+      <Name>PetCenter.Infrastucture.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

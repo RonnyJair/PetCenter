@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Planilla>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Procesar Planilla", "ProcesarPlanilla")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SueldoMinimo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uit.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpleadoId_Aprueba)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aprobado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pagado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SueldoMinimo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uit.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpleadoId_Aprueba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aprobado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pagado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlanillaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PlanillaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlanillaId })
+        </td>
+    </tr>
+}
+
+</table>
