@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Concepto>
+
+@{
+    ViewBag.Title = "Listado de Conceptos";
+}
+
+<h2>Listado de Conceptos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo concepto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Tipo Concepto
+        </th>
+        <th>Calculo 1</th> <th>Operador 1</th><th>Escala 1</th><th>Porcentaje 1</th><th>Importe 1</th>
+        <th>Calculo 2</th><th>Operador 2</th><th>Escala 2</th><th>Porcentaje 2</th><th>Importe 2</th>
+        <th>Calculo 3</th><th>Operador 3</th><th>Escala 3</th><th>Porcentaje 3</th><th>Importe 3</th>
+        <th>Calculo 4</th><th>Operador 4</th><th>Escala 4</th><th>Porcentaje 4</th><th>Importe 4</th>
+        <th>Calculo 5</th><th>Operador 5</th><th>Escala 5</th><th>Porcentaje 5</th><th>Importe 5</th>
+        <th>Calculo 6</th><th>Porcentaje 6</th><th>Importe 6</th>       
+        <th>Acción</th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoConcepto)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.calculo1)</td><td>@Html.DisplayFor(modelItem => item.Operador1)</td><td>@Html.DisplayFor(modelItem => item.Escala1)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje1)</td><td>@Html.DisplayFor(modelItem => item.Importe1)</td>
+            <td>@Html.DisplayFor(modelItem => item.calculo2)</td><td>@Html.DisplayFor(modelItem => item.Operador2)</td><td>@Html.DisplayFor(modelItem => item.Escala2)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje2)</td><td>@Html.DisplayFor(modelItem => item.Importe2)</td>
+            <td>@Html.DisplayFor(modelItem => item.calculo3)</td><td>@Html.DisplayFor(modelItem => item.Operador3)</td><td>@Html.DisplayFor(modelItem => item.Escala3)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje3)</td><td>@Html.DisplayFor(modelItem => item.Importe3)</td>
+            <td>@Html.DisplayFor(modelItem => item.calculo4)</td><td>@Html.DisplayFor(modelItem => item.Operador4)</td><td>@Html.DisplayFor(modelItem => item.Escala4)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje4)</td><td>@Html.DisplayFor(modelItem => item.Importe4)</td>
+            <td>@Html.DisplayFor(modelItem => item.calculo5)</td><td>@Html.DisplayFor(modelItem => item.Operador5)</td><td>@Html.DisplayFor(modelItem => item.Escala5)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje5)</td><td>@Html.DisplayFor(modelItem => item.Importe5)</td>
+            <td>@Html.DisplayFor(modelItem => item.calculo6)</td><td>@Html.DisplayFor(modelItem => item.Porcentaje6)</td><td>@Html.DisplayFor(modelItem => item.Importe6)</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ConceptoId }) |
+                @Html.ActionLink("Ver", "Details", new { id = item.ConceptoId }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ConceptoId })
+            </td>
+        </tr>
+    }
+
+</table>
