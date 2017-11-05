@@ -33,8 +33,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             }
             BL_Concepto BLConcepto = new BL_Concepto();
             Concepto concepto = BLConcepto.GetConcepto((Int32)id);
-            concepto = BLConcepto.EliminarConcepto(concepto);
-            if(concepto == null)
+             if(concepto == null)
             {
                 return HttpNotFound();
             }
@@ -117,7 +116,8 @@ namespace PetCenter.Presentation.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             BL_Concepto BLConcepto = new BL_Concepto();
-            Concepto concepto = BLConcepto.EliminarConcepto(id);
+            Concepto concepto = BLConcepto.GetConcepto((Int32)id);
+            concepto = BLConcepto.EliminarConcepto(concepto);
            
             return RedirectToAction("Index");
         }
