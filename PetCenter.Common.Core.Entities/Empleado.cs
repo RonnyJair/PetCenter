@@ -14,12 +14,12 @@ namespace PetCenter.Common.Core.Entities
     
     public partial class Empleado
     {
-        
-        
-    
+           
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Asistencia> Asistencias { get; set; }
         public virtual Banco Banco { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contrato> Contratoes { get; set; }
         public virtual Moneda Moneda { get; set; }
         public virtual TipoCuenta TipoCuenta { get; set; }
         public virtual TipoDocumento TipoDocumento { get; set; }

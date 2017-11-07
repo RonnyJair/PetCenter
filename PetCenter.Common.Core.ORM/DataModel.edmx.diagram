@@ -5,49 +5,53 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0112c1ec432242b9bfeb1b83022ce841" Name="Diagram1">
-        <EntityTypeShape EntityType="BdPetCenterModel.Afp" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Asistencia" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Banco" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Concepto" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Empleado" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoAfp" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoOnp" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoSueldoBase" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EsSalud" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Falta" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Moneda" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Onp" Width="1.5" PointX="6" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Planilla" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleado" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleadoConcepto" Width="1.5" PointX="12.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.SeguroVidaLey" Width="1.5" PointX="2.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.SueldoMinimo" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.sysdiagram" Width="1.5" PointX="12.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Tardanza" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.TipoDocumento" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Ubigeo" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Uit" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoAfp_Afp" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Asistencia_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Banco" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleadoConcepto_Concepto" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Moneda" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_TipoCuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_TipoDocumento" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Ubigeo" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoAfp_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoOnp_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoSueldoBase_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Falta_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleado_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Tardanza_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoOnp_Onp" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_SueldoMinimo" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_Uit" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleado_Planilla" ManuallyRouted="false" />
-        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Afp" Width="1.5" PointX="6" PointY="5.375" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Asistencia" Width="1.5" PointX="5.25" PointY="27.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Banco" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Concepto" Width="1.5" PointX="10.5" PointY="2.375" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Contrato" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Empleado" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoAfp" Width="1.5" PointX="8.25" PointY="10.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoOnp" Width="1.5" PointX="8.25" PointY="13.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoSueldoBase" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EsSalud" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Falta" Width="1.5" PointX="5.25" PointY="21.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Justificacion" Width="1.5" PointX="7.5" PointY="21.25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Moneda" Width="1.5" PointX="0.75" PointY="21.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Onp" Width="1.5" PointX="6" PointY="1.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Planilla" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleado" Width="1.5" PointX="10.5" PointY="11.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleadoConcepto" Width="1.5" PointX="12.75" PointY="12.125" />
+        <EntityTypeShape EntityType="BdPetCenterModel.SeguroVidaLey" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BdPetCenterModel.SueldoMinimo" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Tardanza" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.TipoDocumento" Width="1.5" PointX="0.75" PointY="18.875" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Ubigeo" Width="1.5" PointX="0.75" PointY="13.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Uit" Width="1.5" PointX="3" PointY="3.875" />
+        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoAfp_Afp" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Asistencia_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Banco" />
+        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleadoConcepto_Concepto" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Contrato_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Contrato_Ubigeo" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Moneda" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_TipoCuenta" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_TipoDocumento" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Ubigeo" />
+        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoAfp_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoOnp_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoSueldoBase_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Falta_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleado_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Tardanza_Empleado" />
+        <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoOnp_Onp" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Justificacion_Falta" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_SueldoMinimo" />
+        <AssociationConnector Association="BdPetCenterModel.FK_Planilla_Uit" />
+        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleado_Planilla" />
+        <AssociationConnector Association="BdPetCenterModel.FK_PlanillaEmpleadoConcepto_PlanillaEmpleado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

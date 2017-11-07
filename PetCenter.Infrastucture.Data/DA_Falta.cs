@@ -12,10 +12,11 @@ namespace PetCenter.Infrastucture.Data
     {
         public List<Falta> ListarFaltasPorMesAndEmpleado(DateTime Fecha, Int32 EmpleadoId)
         {
-            using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+            // && x.FechaInicio.Month == Fecha.Month && x.Fecha.Year == Fecha.Year
+            using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
             {
                 List<Falta> items = (from x in contexto.Faltas
-                                     where x.EmpleadoId == EmpleadoId && x.Fecha.Month == Fecha.Month && x.Fecha.Year == Fecha.Year
+                                     where x.EmpleadoId == EmpleadoId 
                                      select x).ToList();
 
                 return items;

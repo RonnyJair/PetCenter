@@ -17,6 +17,7 @@ namespace PetCenter.Common.Core.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ubigeo()
         {
+            this.Contratoes = new HashSet<Contrato>();
             this.Empleadoes = new HashSet<Empleado>();
         }
     
@@ -26,6 +27,8 @@ namespace PetCenter.Common.Core.Entities
         public string Provincia { get; set; }
         public string Distrito { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contrato> Contratoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado> Empleadoes { get; set; }
     }

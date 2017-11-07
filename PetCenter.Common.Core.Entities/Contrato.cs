@@ -12,22 +12,20 @@ namespace PetCenter.Common.Core.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Falta
+    public partial class Contrato
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Falta()
-        {
-            this.Justificacions = new HashSet<Justificacion>();
-        }
-    
-        public int FaltaId { get; set; }
+        public int ContratoId { get; set; }
         public int EmpleadoId { get; set; }
-        public System.DateTime FechaInicio { get; set; }
+        public Nullable<bool> EsAfp { get; set; }
+        public decimal SueldoBase { get; set; }
+        public int UbigeoId { get; set; }
+        public Nullable<decimal> JornadaTrabajo { get; set; }
+        public string RenumeracionLetra { get; set; }
+        public Nullable<System.DateTime> FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaTermino { get; set; }
-        public Nullable<System.DateTime> CantidadDias { get; set; }
+        public string Estado { get; set; }
     
         public virtual Empleado Empleado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Justificacion> Justificacions { get; set; }
+        public virtual Ubigeo Ubigeo { get; set; }
     }
 }

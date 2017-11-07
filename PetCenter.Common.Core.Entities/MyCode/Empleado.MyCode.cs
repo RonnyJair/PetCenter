@@ -38,6 +38,10 @@ namespace PetCenter.Common.Core.Entities
         [Required(ErrorMessage = "Ingresar Fecha de Nacimiento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FechaNacimiento { get; set; }
+
+         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public System.DateTime Fecha{ get; set; }
+
         public bool Sexo { get; set; }
         [Required(ErrorMessage = "Ingresar Direccion")]
         public string Direccion { get; set; }
