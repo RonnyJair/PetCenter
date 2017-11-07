@@ -43,34 +43,35 @@
           <Property Name="Tipo" Type="smallint" Nullable="false" />
           <Property Name="TipoConcepto" Type="smallint" />
           <Property Name="calculo1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="calculo2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo2" Type="varchar" MaxLength="50" />
           <Property Name="calculo3" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="calculo4" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="calculo5" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="calculo6" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo4" Type="varchar" MaxLength="50" />
+          <Property Name="calculo5" Type="varchar" MaxLength="50" />
+          <Property Name="calculo6" Type="varchar" MaxLength="50" />
           <Property Name="Operador1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Operador2" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Operador3" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Operador4" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Operador5" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operador2" Type="varchar" MaxLength="50" />
+          <Property Name="Operador3" Type="varchar" MaxLength="50" />
+          <Property Name="Operador4" Type="varchar" MaxLength="50" />
+          <Property Name="Operador5" Type="varchar" MaxLength="50" />
           <Property Name="Escala1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Escala2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Escala3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Escala4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Escala5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Escala6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Escala2" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Escala3" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Escala4" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Escala5" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Escala6" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Porcentaje1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Porcentaje2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Porcentaje3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Porcentaje4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Porcentaje5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Porcentaje6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Porcentaje2" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje3" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje4" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje5" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje6" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Importe2" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe2" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Importe4" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Importe5" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="Importe6" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe4" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Importe5" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Importe6" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="Aprobado" Type="bit" />
         </EntityType>
         <EntityType Name="Contrato">
           <Key>
@@ -163,6 +164,7 @@
           </Key>
           <Property Name="FaltaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
           <Property Name="FechaInicio" Type="datetime" Nullable="false" />
           <Property Name="FechaTermino" Type="datetime" />
           <Property Name="CantidadDias" Type="datetime" />
@@ -853,34 +855,35 @@
           <Property Name="Tipo" Type="Int16" Nullable="false" />
           <Property Name="TipoConcepto" Type="Int16" />
           <Property Name="calculo1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="calculo2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="calculo2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="calculo3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="calculo4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="calculo5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="calculo6" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="calculo4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="calculo5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="calculo6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Operador1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Operador2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Operador3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Operador4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Operador5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operador2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operador3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operador4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operador5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Escala1" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Escala2" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Escala3" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Escala4" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Escala5" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Escala6" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Escala2" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Escala3" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Escala4" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Escala5" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Escala6" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Porcentaje1" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Porcentaje2" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Porcentaje3" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Porcentaje4" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Porcentaje5" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Porcentaje6" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Porcentaje2" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje3" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje4" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje5" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Porcentaje6" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe1" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Importe2" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Importe2" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe3" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Importe4" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Importe5" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="Importe6" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Importe4" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Importe5" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Importe6" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Aprobado" Type="Boolean" />
           <NavigationProperty Name="PlanillaEmpleadoConceptoes" Relationship="BdPetCenterModel.FK_PlanillaEmpleadoConcepto_Concepto" FromRole="Concepto" ToRole="PlanillaEmpleadoConcepto" />
         </EntityType>
         <EntityType Name="Contrato">
@@ -995,6 +998,7 @@
           </Key>
           <Property Name="FaltaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaTermino" Type="DateTime" Precision="3" />
           <Property Name="CantidadDias" Type="DateTime" Precision="3" />
@@ -1425,7 +1429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1466,6 +1470,7 @@
           <EntitySetMapping Name="Conceptoes">
             <EntityTypeMapping TypeName="BdPetCenterModel.Concepto">
               <MappingFragment StoreEntitySet="Concepto">
+                <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
                 <ScalarProperty Name="Importe6" ColumnName="Importe6" />
                 <ScalarProperty Name="Importe5" ColumnName="Importe5" />
                 <ScalarProperty Name="Importe4" ColumnName="Importe4" />
@@ -1599,6 +1604,7 @@
                 <ScalarProperty Name="CantidadDias" ColumnName="CantidadDias" />
                 <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
                 <ScalarProperty Name="FaltaId" ColumnName="FaltaId" />
               </MappingFragment>

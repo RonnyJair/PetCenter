@@ -12,6 +12,7 @@ using PetCenter.Infrastucture.Domain.Main;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
+    [Authorize]
     public class PlanillasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -194,7 +195,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         }
 
         /***********/
-
+       
         public ActionResult ProcesarPlanilla()
         {
             BL_Empleado BLEmpleado = new BL_Empleado();

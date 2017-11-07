@@ -1,0 +1,285 @@
+﻿@model PetCenter.Common.Core.Entities.Concepto
+
+@{
+    ViewBag.Title = "Aprobar";
+}
+
+<h2>Aprobar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Concepto</h4>
+        <hr />
+        @Html.HiddenFor(model => model.ConceptoId)
+         <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tipo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoConcepto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoConcepto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.calculo6)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.calculo6)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operador1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operador2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operador3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operador4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operador5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operador5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Escala6)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Escala6)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Porcentaje6)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Porcentaje6)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe6)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Importe6)
+            </dd>
+
+        </dl>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

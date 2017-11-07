@@ -36,23 +36,24 @@ namespace PetCenter.Common.Core.Entities
         public string Operador4 { get; set; }
         public string Operador5 { get; set; }
         public decimal Escala1 { get; set; }
-        public decimal Escala2 { get; set; }
-        public decimal Escala3 { get; set; }
-        public decimal Escala4 { get; set; }
-        public decimal Escala5 { get; set; }
-        public decimal Escala6 { get; set; }
+        public Nullable<decimal> Escala2 { get; set; }
+        public Nullable<decimal> Escala3 { get; set; }
+        public Nullable<decimal> Escala4 { get; set; }
+        public Nullable<decimal> Escala5 { get; set; }
+        public Nullable<decimal> Escala6 { get; set; }
         public decimal Porcentaje1 { get; set; }
-        public decimal Porcentaje2 { get; set; }
-        public decimal Porcentaje3 { get; set; }
-        public decimal Porcentaje4 { get; set; }
-        public decimal Porcentaje5 { get; set; }
-        public decimal Porcentaje6 { get; set; }
+        public Nullable<decimal> Porcentaje2 { get; set; }
+        public Nullable<decimal> Porcentaje3 { get; set; }
+        public Nullable<decimal> Porcentaje4 { get; set; }
+        public Nullable<decimal> Porcentaje5 { get; set; }
+        public Nullable<decimal> Porcentaje6 { get; set; }
         public decimal Importe1 { get; set; }
-        public decimal Importe2 { get; set; }
+        public Nullable<decimal> Importe2 { get; set; }
         public decimal Importe3 { get; set; }
-        public decimal Importe4 { get; set; }
-        public decimal Importe5 { get; set; }
-        public decimal Importe6 { get; set; }
+        public Nullable<decimal> Importe4 { get; set; }
+        public Nullable<decimal> Importe5 { get; set; }
+        public Nullable<decimal> Importe6 { get; set; }
+        public Nullable<bool> Aprobado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlanillaEmpleadoConcepto> PlanillaEmpleadoConceptoes { get; set; }

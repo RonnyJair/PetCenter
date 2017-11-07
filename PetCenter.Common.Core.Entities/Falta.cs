@@ -22,6 +22,7 @@ namespace PetCenter.Common.Core.Entities
     
         public int FaltaId { get; set; }
         public int EmpleadoId { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaTermino { get; set; }
         public Nullable<System.DateTime> CantidadDias { get; set; }

@@ -5,30 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0112c1ec432242b9bfeb1b83022ce841" Name="Diagram1">
-        <EntityTypeShape EntityType="BdPetCenterModel.Afp" Width="1.5" PointX="6" PointY="5.375" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Asistencia" Width="1.5" PointX="5.25" PointY="27.625" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Banco" Width="1.5" PointX="0.75" PointY="10.25" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Concepto" Width="1.5" PointX="10.5" PointY="2.375" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Afp" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Asistencia" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Banco" Width="1.5" PointX="0.75" PointY="21.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Concepto" Width="1.5" PointX="10.5" PointY="5.25" />
         <EntityTypeShape EntityType="BdPetCenterModel.Contrato" Width="1.5" PointX="5.25" PointY="13" />
         <EntityTypeShape EntityType="BdPetCenterModel.Empleado" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoAfp" Width="1.5" PointX="8.25" PointY="10.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoOnp" Width="1.5" PointX="8.25" PointY="13.625" />
-        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoSueldoBase" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoAfp" Width="1.5" PointX="8.25" PointY="13.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoOnp" Width="1.5" PointX="8.25" PointY="10.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.EmpleadoSueldoBase" Width="1.5" PointX="5.25" PointY="9" />
         <EntityTypeShape EntityType="BdPetCenterModel.EsSalud" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BdPetCenterModel.Falta" Width="1.5" PointX="5.25" PointY="21.5" />
         <EntityTypeShape EntityType="BdPetCenterModel.Justificacion" Width="1.5" PointX="7.5" PointY="21.25" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Moneda" Width="1.5" PointX="0.75" PointY="21.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Onp" Width="1.5" PointX="6" PointY="1.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Planilla" Width="1.5" PointX="5.25" PointY="9.125" />
-        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleado" Width="1.5" PointX="10.5" PointY="11.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleadoConcepto" Width="1.5" PointX="12.75" PointY="12.125" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Moneda" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Onp" Width="1.5" PointX="6" PointY="5.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Planilla" Width="1.5" PointX="5.25" PointY="17.125" />
+        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleado" Width="1.5" PointX="10.5" PointY="14.5" />
+        <EntityTypeShape EntityType="BdPetCenterModel.PlanillaEmpleadoConcepto" Width="1.5" PointX="12.75" PointY="15" />
         <EntityTypeShape EntityType="BdPetCenterModel.SeguroVidaLey" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BdPetCenterModel.SueldoMinimo" Width="1.5" PointX="3" PointY="7.25" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Tardanza" Width="1.5" PointX="5.25" PointY="18.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="BdPetCenterModel.SueldoMinimo" Width="1.5" PointX="3" PointY="23.125" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Tardanza" Width="1.5" PointX="5.25" PointY="27.875" />
+        <EntityTypeShape EntityType="BdPetCenterModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="10.25" />
         <EntityTypeShape EntityType="BdPetCenterModel.TipoDocumento" Width="1.5" PointX="0.75" PointY="18.875" />
         <EntityTypeShape EntityType="BdPetCenterModel.Ubigeo" Width="1.5" PointX="0.75" PointY="13.5" />
-        <EntityTypeShape EntityType="BdPetCenterModel.Uit" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="BdPetCenterModel.Uit" Width="1.5" PointX="3" PointY="20.25" />
         <AssociationConnector Association="BdPetCenterModel.FK_EmpleadoAfp_Afp" />
         <AssociationConnector Association="BdPetCenterModel.FK_Asistencia_Empleado" />
         <AssociationConnector Association="BdPetCenterModel.FK_Empleado_Banco" />

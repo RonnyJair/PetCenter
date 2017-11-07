@@ -47,10 +47,8 @@ namespace PetCenter.Infrastucture.Data
             }
             catch(Exception ex)
             {
-                throw new Exception(ex.Message.ToString());
-
+                throw new Exception(ex.Message.ToString()); 
             }
-            return null;
         }
 
         public List<Empleado> ListarEmpleadosActivosDetallado()
