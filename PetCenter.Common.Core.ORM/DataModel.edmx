@@ -40,11 +40,11 @@
           </Key>
           <Property Name="ConceptoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="Tipo" Type="smallint" Nullable="false" />
+          <Property Name="Tipo" Type="smallint" />
           <Property Name="TipoConcepto" Type="smallint" />
           <Property Name="calculo1" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="calculo2" Type="varchar" MaxLength="50" />
-          <Property Name="calculo3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="calculo3" Type="varchar" MaxLength="50" />
           <Property Name="calculo4" Type="varchar" MaxLength="50" />
           <Property Name="calculo5" Type="varchar" MaxLength="50" />
           <Property Name="calculo6" Type="varchar" MaxLength="50" />
@@ -67,7 +67,7 @@
           <Property Name="Porcentaje6" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe1" Type="decimal" Precision="10" Scale="3" Nullable="false" />
           <Property Name="Importe2" Type="decimal" Precision="10" Scale="3" />
-          <Property Name="Importe3" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Importe3" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe4" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe5" Type="decimal" Precision="10" Scale="3" />
           <Property Name="Importe6" Type="decimal" Precision="10" Scale="3" />
@@ -852,11 +852,11 @@
           </Key>
           <Property Name="ConceptoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="Int16" Nullable="false" />
+          <Property Name="Tipo" Type="Int16" />
           <Property Name="TipoConcepto" Type="Int16" />
           <Property Name="calculo1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="calculo2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="calculo3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="calculo3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="calculo4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="calculo5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="calculo6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -879,7 +879,7 @@
           <Property Name="Porcentaje6" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe1" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
           <Property Name="Importe2" Type="Decimal" Precision="10" Scale="3" />
-          <Property Name="Importe3" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Importe3" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe4" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe5" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Importe6" Type="Decimal" Precision="10" Scale="3" />

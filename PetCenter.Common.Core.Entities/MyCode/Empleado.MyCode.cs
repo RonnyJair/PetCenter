@@ -20,7 +20,7 @@ namespace PetCenter.Common.Core.Entities
             this.Planillas = new HashSet<Planilla>();
             this.PlanillaEmpleadoes = new HashSet<PlanillaEmpleado>();
             this.Tardanzas = new HashSet<Tardanza>();
-            this.EstadoCivil = 0;
+            this.EstadoCivil = null;
         }
 
         public int EmpleadoId { get; set; }

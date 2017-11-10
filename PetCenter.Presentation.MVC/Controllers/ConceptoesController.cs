@@ -155,7 +155,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                 concepto.Aprobado = true;
                 var conceptos = BLConcepto.GuardarConcepto(concepto);
             }
-            return View(concepto);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

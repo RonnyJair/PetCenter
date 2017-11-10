@@ -14,7 +14,7 @@ namespace PetCenter.Common.Core.Entities
     
     public partial class Empleado
     {
-        
+       
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Asistencia> Asistencias { get; set; }
