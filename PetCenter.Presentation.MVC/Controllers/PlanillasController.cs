@@ -242,6 +242,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             DateTime Fecha = new DateTime();
             try
             {
+
                 Fecha = DateTime.ParseExact(ano + "-" + mes + "-01 00:00:00,000", "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
                 Fecha = Fecha.AddMonths(1).AddDays(-1);
                 BL_Planilla BLPlanilla = new BL_Planilla();
