@@ -1,0 +1,88 @@
+﻿@model PetCenter.Common.Core.Entities.Justificacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Justificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Falta.FaltaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falta.FaltaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioAprueba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAprueba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAprobacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAprobacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioNiega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioNiega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNegacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNegacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

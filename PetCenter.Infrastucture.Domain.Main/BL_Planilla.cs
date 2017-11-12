@@ -262,6 +262,37 @@ namespace PetCenter.Infrastucture.Domain.Main
             }
         }
 
+        public Planilla getPlanillaCompleto(DateTime Fecha)
+        {
+            DA_Planilla DAPlanilla = new DA_Planilla();
+            try
+            {
+                return DAPlanilla.findPlanilla(Fecha);
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+        public List<Planilla> getPlanillaAndDetalle(DateTime Fecha)
+        {
+            DA_Planilla DAPlanilla = new DA_Planilla();
+            
+            try
+            {
+                var planilla = DAPlanilla.findPlanillas(Fecha);
+                //planilla.PlanillaEmpleadoes = DAPlanilla.findPlanillaDetalle(planilla);
+                return planilla;
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
         public Planilla delPlanilla(Planilla planilla)
         {
             DA_Planilla DAPlanilla = new DA_Planilla();

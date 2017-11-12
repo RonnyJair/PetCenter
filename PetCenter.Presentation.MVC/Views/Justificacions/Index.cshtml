@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Justificacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Falta.FaltaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Documento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioAprueba)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAprobacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioNiega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNegacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Falta.FaltaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioAprueba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAprobacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioNiega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNegacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JustificacionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JustificacionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JustificacionId })
+        </td>
+    </tr>
+}
+
+</table>

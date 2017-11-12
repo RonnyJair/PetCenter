@@ -1,0 +1,82 @@
+﻿@model PetCenter.Common.Core.Entities.Justificacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Justificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Falta.FaltaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falta.FaltaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioAprueba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAprueba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAprobacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAprobacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioNiega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioNiega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNegacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNegacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JustificacionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

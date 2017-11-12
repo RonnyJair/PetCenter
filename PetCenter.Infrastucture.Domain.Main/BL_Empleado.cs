@@ -19,7 +19,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             {
                 return DAEmpleado.ListarEmpleadosActivos();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -33,7 +33,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             {
                 return DAEmpleado.ListarEmpleados();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -47,7 +47,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             {
                 var empleados = DAEmpleado.ListarEmpleadosActivosConsueldoBase();
 
-                foreach (var item in planilla.PlanillaEmpleadoes)
+                foreach(var item in planilla.PlanillaEmpleadoes)
                 {
                     var empleado = empleados.Where(s => s.EmpleadoId == item.EmpleadoId).FirstOrDefault();
                     empleado.xAporte = item.TotalAporte;
@@ -62,7 +62,60 @@ namespace PetCenter.Infrastucture.Domain.Main
 
                 return empleados;
             }
-            catch (Exception e)
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+        public List<Empleado> ListarEmpleadosActivoporPlanilla(List<Planilla> planilla)
+        {
+            DA_Empleado DAEmpleado = new DA_Empleado();
+            try
+            {
+                var empleados = DAEmpleado.ListarEmpleadosActivosConsueldoBase();
+                foreach(var itemplanilla in planilla)
+                {
+                    foreach(var item in itemplanilla.PlanillaEmpleadoes)
+                    {
+                        var empleado = empleados.Where(s => s.EmpleadoId == item.EmpleadoId).FirstOrDefault();
+                        empleado.xAporte = item.TotalAporte;
+                        empleado.xDescuento = item.TotalDescuento;
+                        empleado.xIngresos = item.TotalIngreso;
+                        decimal sueldobase = empleado.EmpleadoSueldoBases.Where(s => s.Estado).FirstOrDefault().SueldoBase;
+                        empleado.xNeto = empleado.xIngresos - empleado.xDescuento;
+                        empleado.xSueldoBase = sueldobase;
+                        empleado.xSueldoDiario = empleado.xNeto / 30;
+                        empleado.xSueldoHora = empleado.xSueldoDiario / 8;
+                    }
+                }
+
+                return empleados;
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+        public List<Empleado> ListarEmpleadosActivoWhithPlanilla(Planilla planilla)
+        {
+            DA_Empleado DAEmpleado = new DA_Empleado();
+            try
+            {
+                var empleados = DAEmpleado.ListarEmpleadosActivosConsueldoBase();
+
+                foreach(var item in planilla.PlanillaEmpleadoes)
+                {
+                    var empleado = empleados.Where(s => s.EmpleadoId == item.EmpleadoId).FirstOrDefault();
+
+                }
+
+                return empleados;
+            }
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -76,7 +129,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             {
                 return DAEmpleado.GetEmpleadoId(EmpleadoId);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -88,7 +141,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             DA_Empleado DAEmpleado = new DA_Empleado();
             try
             {
-                if (String.IsNullOrEmpty(empleado.EmpleadoId.ToString()))
+                if(String.IsNullOrEmpty(empleado.EmpleadoId.ToString()))
                 {
                     //GPE_RN0011_Codigo de empleado
                     Empleado UltimoEmpleado = DAEmpleado.GetUltimoEmpleado();
@@ -99,7 +152,7 @@ namespace PetCenter.Infrastucture.Domain.Main
                 }
                 return DAEmpleado.GuardarEmpleado(empleado);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -114,7 +167,7 @@ namespace PetCenter.Infrastucture.Domain.Main
                 Empleado.Habilitado = false;
                 return DAEmpleado.GuardarEmpleado(Empleado);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());

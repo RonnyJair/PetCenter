@@ -15,10 +15,9 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div id="optCmb">
-                                    @using(Html.BeginForm("ConsultaempleadoPLanilla", "Empleado"))
+                                    @using(Html.BeginForm("IndexReporte", "Empleadoes", FormMethod.Get))
                                     {
-                                        @Html.AntiForgeryToken()
-                                        <div class="row">
+                                         <div class="row">
                                             <div class="col-sm-2">
                                                 Periodo Laboral(año)
                                             </div>
@@ -58,9 +57,6 @@
                                                         Código
                                                     </th>
                                                     <th>
-                                                        Tip Dcto
-                                                    </th>
-                                                    <th>
                                                         Nro Dcto
                                                     </th>
                                                     <th>
@@ -72,42 +68,33 @@
                                                     <th>
                                                         Nombres
                                                     </th>
-                                                    <th>
-                                                        Fch Nacimiento
-                                                    </th>
-                                                   
-                                                    <th>
-                                                        Habilitado
-                                                    </th>
+                                                    
                                                     <th></th>
                                                     <th></th>
                                                 </tr>
 
                                                 @foreach(var item in Model)
                                                 {
-                                                    <tr>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.TipoDocumento.Nombre)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Documento)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Nombres)
-                                                        </td>                                                        
-                                                        <td>
-                                                            @Html.ActionLink("Ver Reporte", "Edit", new { id = item.EmpleadoId })
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                                    </td>
+                                                     <td>
+                                                        @Html.DisplayFor(modelItem => item.Documento)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Nombres)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Ver Reporte", "Edit", new { id = item.EmpleadoId })
+                                                    </td>
+                                                </tr>
                                                 }
                                             </table>
                                         </div>

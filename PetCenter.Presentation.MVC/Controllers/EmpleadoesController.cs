@@ -157,15 +157,16 @@ namespace PetCenter.Presentation.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult IndexReporte()
-        {
-            List<Empleado> empelados = new List<Empleado>();
-            return View(empelados.ToList());
-        }
+        //public ActionResult IndexReporte()
+        //{
+        //    List<Empleado> empelados = new List<Empleado>();
+        //    return View(empelados.ToList());
+        //}
 
-       
-        public ActionResult ConsultaempleadoPLanilla(String ano1, String mes1)
+
+        public ViewResult IndexReporte(String ano1, String mes1)
         {
+            if(String.IsNullOrEmpty(ano1) || String.IsNullOrEmpty(mes1)) return View(new List<Empleado>());
             DateTime Fecha = new DateTime();
             TempData["ano"] = ano1;
             TempData["mes"] = mes1;
@@ -175,14 +176,14 @@ namespace PetCenter.Presentation.MVC.Controllers
                 Fecha = Fecha.AddMonths(1).AddDays(-1);
                 BL_Planilla BLPlanilla = new BL_Planilla();
                 BL_Empleado BLEmpleado = new BL_Empleado();
-                Planilla Planilla = BLPlanilla.getPlanilla(Fecha);
-                var empleadoes = BLEmpleado.ListarEmpleadosActivosRecalculados(Planilla);
+                List<Planilla> Planilla = BLPlanilla.getPlanillaAndDetalle(Fecha);
+                var empleadoes = BLEmpleado.ListarEmpleadosActivoporPlanilla(Planilla);
                 return View(empleadoes.ToList());
 
             }
             catch(Exception es)
             {
-                return RedirectToAction("Index");
+                return null;
             }
         }
 
