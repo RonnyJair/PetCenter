@@ -68,5 +68,20 @@ namespace PetCenter.Infrastucture.Domain.Main
                 throw new Exception(e.Message.ToString());
             }
         }
+
+        public List<Concepto> ListarConceptosFiltro(String Nombre)
+        {
+            DA_Concepto DAConcepto = new DA_Concepto();
+            try
+            {
+                return DAConcepto.ListarConceptosFiltro(Nombre);
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
     }
 }

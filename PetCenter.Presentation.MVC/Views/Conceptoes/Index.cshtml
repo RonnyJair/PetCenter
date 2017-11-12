@@ -1,4 +1,6 @@
-﻿@model IEnumerable<PetCenter.Common.Core.Entities.Concepto>
+﻿@model PagedList.IPagedList<PetCenter.Common.Core.Entities.Concepto>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Listado de Conceptos";
@@ -9,10 +11,19 @@
 <p>
     @Html.ActionLink("Crear nuevo concepto", "Create")
 </p>
+
+@using(Html.BeginForm("Index", "Conceptoes", FormMethod.Get))
+{
+    <p>
+        Buscar por Concepto: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            Nombre
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Tipo
@@ -105,3 +116,16 @@
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+@if(ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}

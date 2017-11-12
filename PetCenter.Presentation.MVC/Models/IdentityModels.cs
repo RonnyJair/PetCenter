@@ -49,5 +49,7 @@ namespace PetCenter.Presentation.MVC.Models
         public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Ubigeo> Ubigeos { get; set; }
 
         public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Concepto> Conceptoes { get; set; }
+
+        public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Asistencia> Asistencias { get; set; }
     }
 }

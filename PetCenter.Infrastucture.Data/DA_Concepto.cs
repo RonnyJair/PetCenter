@@ -31,6 +31,26 @@ namespace PetCenter.Infrastucture.Data
             }
         }
 
+        public List<Concepto> ListarConceptosFiltro(String Nombre)
+        {
+            try
+            {
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    List<Concepto> Conceptos = (from x in contexto.Conceptoes
+                                                where x.Nombre.Contains(Nombre)
+                                                select x).ToList();
+
+                    return Conceptos;
+                }
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
         public Concepto GetConcepto(int ConceptoId)
         {
             try

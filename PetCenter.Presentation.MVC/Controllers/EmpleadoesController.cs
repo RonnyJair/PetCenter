@@ -41,7 +41,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             ViewBag.TipoCuentaId = new SelectList(BLTipoCuenta.ListarTipoCuenta(), "TipoCuentaId", "Nombre");
             ViewBag.TipoDocumentoId = new SelectList(BLTipoDocumento.ListarTipoDocumento(), "TipoDocumentoId", "Nombre");
             ViewBag.UbigeoId = new SelectList(BLUbigeo.ListarUbigeo(), "UbigeoId", "Codigo");
-           
+
             return View();
         }
 
@@ -52,7 +52,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EmpleadoId,TipoDocumentoId,CodigoEmpleado,ApellidoPaterno,ApellidoMaterno,Nombres,FechaNacimiento,Sexo,Direccion,Telefono,Movil,Correo,TieneHijo,Documento,Habilitado,EsAfp,LugarNacimiento,CodigoEsSalud,UbigeoId,Referencia,BancoId,TipoCuentaId,NumeroCuenta,MonedaId,TipoRegimen,FechaIngreso,CUSSP,FechaInicioContrato,FechaFinContrato,EstadoCivil,xSueldoBase,xIngresos,xDescuento,xNeto,xAporte,xSueldoDiario,xSueldoHora,xFechaPago,XNombreCompleto")] Empleado empleado)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 BL_Empleado BLEmpleado = new BL_Empleado();
                 empleado.Habilitado = true;
@@ -78,13 +78,13 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Empleadoes/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             Empleado empleado = BLEmpleado.GetEmpleadoId((Int32)id);
-            if (empleado == null)
+            if(empleado == null)
             {
                 return HttpNotFound();
             }
@@ -110,7 +110,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EmpleadoId,TipoDocumentoId,CodigoEmpleado,ApellidoPaterno,ApellidoMaterno,Nombres,FechaNacimiento,Sexo,Direccion,Telefono,Movil,Correo,TieneHijo,Documento,Habilitado,EsAfp,LugarNacimiento,CodigoEsSalud,UbigeoId,Referencia,BancoId,TipoCuentaId,NumeroCuenta,MonedaId,TipoRegimen,FechaIngreso,CUSSP,FechaInicioContrato,FechaFinContrato,EstadoCivil,xSueldoBase,xIngresos,xDescuento,xNeto,xAporte,xSueldoDiario,xSueldoHora,xFechaPago,XNombreCompleto")] Empleado empleado)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 BL_Empleado BLEmpleado = new BL_Empleado();
                 BLEmpleado.GuardarEmpleado(empleado);
@@ -133,13 +133,13 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Empleadoes/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             Empleado empleado = BLEmpleado.GetEmpleadoId((Int32)id);
-            if (empleado == null)
+            if(empleado == null)
             {
                 return HttpNotFound();
             }
@@ -157,9 +157,38 @@ namespace PetCenter.Presentation.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult IndexReporte()
+        {
+            List<Empleado> empelados = new List<Empleado>();
+            return View(empelados.ToList());
+        }
+
+       
+        public ActionResult ConsultaempleadoPLanilla(String ano1, String mes1)
+        {
+            DateTime Fecha = new DateTime();
+            TempData["ano"] = ano1;
+            TempData["mes"] = mes1;
+            try
+            {
+                Fecha = DateTime.ParseExact(ano1 + "-" + mes1 + "-01 00:00:00,000", "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+                Fecha = Fecha.AddMonths(1).AddDays(-1);
+                BL_Planilla BLPlanilla = new BL_Planilla();
+                BL_Empleado BLEmpleado = new BL_Empleado();
+                Planilla Planilla = BLPlanilla.getPlanilla(Fecha);
+                var empleadoes = BLEmpleado.ListarEmpleadosActivosRecalculados(Planilla);
+                return View(empleadoes.ToList());
+
+            }
+            catch(Exception es)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if(disposing)
             {
                 db.Dispose();
             }

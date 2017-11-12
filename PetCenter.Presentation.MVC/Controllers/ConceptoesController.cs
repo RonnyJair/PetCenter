@@ -9,20 +9,46 @@ using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
+using PagedList;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
     [Authorize]
-    public class ConceptoesController : Controller
+    public class ConceptoesController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Conceptoes
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Nombre" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if(searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             BL_Concepto BLConcepto = new BL_Concepto();
-            var conceptos = BLConcepto.ListarConceptos();
-            return View(conceptos.ToList());
+            var conceptos = searchString == null ? BLConcepto.ListarConceptos() : BLConcepto.ListarConceptosFiltro(searchString);
+
+            switch(sortOrder)
+            {
+                case "Nombre":
+                    conceptos = conceptos.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(conceptos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Conceptoes/Details/5
@@ -34,7 +60,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             }
             BL_Concepto BLConcepto = new BL_Concepto();
             Concepto concepto = BLConcepto.GetConcepto((Int32)id);
-             if(concepto == null)
+            if(concepto == null)
             {
                 return HttpNotFound();
             }
@@ -58,6 +84,9 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 BL_Concepto BLConcepto = new BL_Concepto();
                 var conceptos = BLConcepto.GuardarConcepto(concepto);
+
+                Success(string.Format("El Concepto {0} a sido creado perfectamente", conceptos.Nombre), true);
+
                 return RedirectToAction("Index");
             }
 
@@ -91,7 +120,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 BL_Concepto BLConcepto = new BL_Concepto();
                 var conceptos = BLConcepto.GuardarConcepto(concepto);
-           }
+            }
             return View(concepto);
         }
 
@@ -119,7 +148,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             BL_Concepto BLConcepto = new BL_Concepto();
             Concepto concepto = BLConcepto.GetConcepto((Int32)id);
             concepto = BLConcepto.EliminarConcepto(concepto);
-           
+
             return RedirectToAction("Index");
         }
 

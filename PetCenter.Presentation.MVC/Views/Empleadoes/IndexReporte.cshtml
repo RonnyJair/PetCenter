@@ -1,0 +1,193 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Empleado>
+
+@{
+    ViewBag.Title = "Listado de Empleados";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="page-header">
+                <h1>Listado de Empleados</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div id="optCmb">
+                                    @using(Html.BeginForm("ConsultaempleadoPLanilla", "Empleado"))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                Periodo Laboral(año)
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" value="" id="ano1" name="ano1" class="form-control input-sm" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <select id="mes1" name="mes1" class="form-control input-sm">
+                                                    <option value="01">Enero</option>
+                                                    <option value="02">Febrero</option>
+                                                    <option value="03">Marzo</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Mayo</option>
+                                                    <option value="06">Junio</option>
+                                                    <option value="07">Julio</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="submit" value="Consultar" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                    <th>
+                                                        Código
+                                                    </th>
+                                                    <th>
+                                                        Tip Dcto
+                                                    </th>
+                                                    <th>
+                                                        Nro Dcto
+                                                    </th>
+                                                    <th>
+                                                        Apellido Paterno
+                                                    </th>
+                                                    <th>
+                                                        Apellido Materno
+                                                    </th>
+                                                    <th>
+                                                        Nombres
+                                                    </th>
+                                                    <th>
+                                                        Fch Nacimiento
+                                                    </th>
+                                                   
+                                                    <th>
+                                                        Habilitado
+                                                    </th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+
+                                                @foreach(var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.TipoDocumento.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Documento)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Nombres)
+                                                        </td>                                                        
+                                                        <td>
+                                                            @Html.ActionLink("Ver Reporte", "Edit", new { id = item.EmpleadoId })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </div>
+                                        <div id="autoPag"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+<script type="text/javascript" language="javascript">
+    var regresar = function () {
+        window.history.back();
+    }
+
+    var validation = function () {
+        $($("#optCmb").find("form")).validate({
+            lang: 'es',
+            rules: {
+                'ano1': {
+                    minlength: 4,
+                    maxlength: 4,
+                    required: true,
+                    digits: true
+                },
+                'mes1': {
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    };
+
+    var validateForm = function () {
+        return $($("#optCmb").find("form")).valid();
+    };
+
+    var enviar = function () {
+        if (validateForm()) {
+            $("#ano").val($("#ano1").val());
+            $("#mes").val($("#mes1").val());
+            $("#optBtn").find("form").submit();
+        }
+    }
+
+    $(document).ready(function () {
+        validation();
+        setAno('@ViewData["ano"]');
+        setMes('@ViewData["mes"]');
+        setErrorPro('@ViewData["errorPro"]');
+        setProcesado('@ViewData["procesado"]');
+        setErrorExiste('@ViewData["errorExiste"]');
+        setErrorAprobado('@ViewData["errorAprobado"]');
+        setBorrado('@ViewData["borrado"]');
+    });
+</script>
+
