@@ -18,12 +18,19 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Domain", "2 Domain", "{BB80DB73-4DCA-4057-BB10-2D9B1DC0624F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCenter.Infrastucture.Domain.Main", "PetCenter.Infrastucture.Domain.Main\PetCenter.Infrastucture.Domain.Main.csproj", "{7C79192F-64C7-40C1-A7ED-9CDEF878E497}"
+	ProjectSection(ProjectDependencies) = postProject
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3} = {12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCenter.Infrastucture.Querys", "PetCenter.Infrastucture.Querys\PetCenter.Infrastucture.Querys.csproj", "{CA3A6233-D511-4F9A-A30A-DAC320B68E1A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Presentation", "1 Presentation", "{9AC48E9C-D4A9-4CE3-A4D9-69BC56AF1B15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCenter.Presentation.MVC", "PetCenter.Presentation.MVC\PetCenter.Presentation.MVC.csproj", "{C1DE22DC-A68C-42BB-8E0C-4C2D88AF27EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 Rest", "5 Rest", "{57C60ECF-33E1-4FA2-A737-25CE5908B7A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\RestService.csproj", "{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +66,10 @@ Global
 		{C1DE22DC-A68C-42BB-8E0C-4C2D88AF27EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1DE22DC-A68C-42BB-8E0C-4C2D88AF27EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1DE22DC-A68C-42BB-8E0C-4C2D88AF27EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +82,6 @@ Global
 		{7C79192F-64C7-40C1-A7ED-9CDEF878E497} = {BB80DB73-4DCA-4057-BB10-2D9B1DC0624F}
 		{CA3A6233-D511-4F9A-A30A-DAC320B68E1A} = {D438C3A8-C72F-4D4D-8C55-4E9E6A106219}
 		{C1DE22DC-A68C-42BB-8E0C-4C2D88AF27EA} = {9AC48E9C-D4A9-4CE3-A4D9-69BC56AF1B15}
+		{12BC6BEF-775A-44F1-BA3B-3DDAE205B9F3} = {57C60ECF-33E1-4FA2-A737-25CE5908B7A8}
 	EndGlobalSection
 EndGlobal

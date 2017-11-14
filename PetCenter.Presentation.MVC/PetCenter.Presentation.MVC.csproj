@@ -175,11 +175,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BdPetCenterDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsistenciasController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -218,17 +213,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="BdPetCenterDataSet.xsc">
-      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="BdPetCenterDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BdPetCenterDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="BdPetCenterDataSet.xss">
-      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Mascota.jpg" />
     <Content Include="Images\Mascota2.jpg" />
@@ -313,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Reports\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -337,9 +322,6 @@
       <Project>{ca3a6233-d511-4f9a-a30a-dac320b68e1a}</Project>
       <Name>PetCenter.Infrastucture.Querys</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reports\RptBoleta.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

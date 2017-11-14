@@ -16,6 +16,8 @@ namespace PetCenter.Infrastucture.Domain.Main
             DA_Concepto DAConcepto = new DA_Concepto();
             try
             {
+                BL_Asistencia BlAsistencia = new BL_Asistencia();
+                var asistencias = BlAsistencia.GetAsistenciasDesdeServicio("1");
                 return DAConcepto.ListarConceptos();
             }
             catch(Exception e)
@@ -30,7 +32,7 @@ namespace PetCenter.Infrastucture.Domain.Main
             DA_Concepto DAConcepto = new DA_Concepto();
             try
             {
-                return DAConcepto.GetConcepto( ConceptoId);
+                return DAConcepto.GetConcepto(ConceptoId);
             }
             catch(Exception e)
             {
