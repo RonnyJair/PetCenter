@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DA_Asistencia.cs" />
     <Compile Include="DA_Banco.cs" />
     <Compile Include="DA_Falta.cs" />
     <Compile Include="DA_Moneda.cs" />

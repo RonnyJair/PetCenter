@@ -95,10 +95,18 @@ namespace PetCenter.Infrastucture.Domain.Main.ServiceRest {
     public interface IRestServiceImplementacion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestServiceImplementacion/GetArchivo", ReplyAction="http://tempuri.org/IRestServiceImplementacion/GetArchivoResponse")]
-        System.Collections.Generic.List<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo> GetArchivo(string id);
+        [return: System.ServiceModel.MessageParameterAttribute(Name="BE_AsistenciaArchivo")]
+        PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo[] GetArchivo(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestServiceImplementacion/GetArchivo", ReplyAction="http://tempuri.org/IRestServiceImplementacion/GetArchivoResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo>> GetArchivoAsync(string id);
+        [return: System.ServiceModel.MessageParameterAttribute(Name="BE_AsistenciaArchivo")]
+        System.Threading.Tasks.Task<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo[]> GetArchivoAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistencia", ReplyAction="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistenciaResponse")]
+        bool ProcesarAsistencia(string Mes, string Anio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistencia", ReplyAction="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistenciaResponse")]
+        System.Threading.Tasks.Task<bool> ProcesarAsistenciaAsync(string Mes, string Anio);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -128,12 +136,20 @@ namespace PetCenter.Infrastucture.Domain.Main.ServiceRest {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo> GetArchivo(string id) {
+        public PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo[] GetArchivo(string id) {
             return base.Channel.GetArchivo(id);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo>> GetArchivoAsync(string id) {
+        public System.Threading.Tasks.Task<PetCenter.Infrastucture.Domain.Main.ServiceRest.BE_AsistenciaArchivo[]> GetArchivoAsync(string id) {
             return base.Channel.GetArchivoAsync(id);
+        }
+        
+        public bool ProcesarAsistencia(string Mes, string Anio) {
+            return base.Channel.ProcesarAsistencia(Mes, Anio);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProcesarAsistenciaAsync(string Mes, string Anio) {
+            return base.Channel.ProcesarAsistenciaAsync(Mes, Anio);
         }
     }
 }

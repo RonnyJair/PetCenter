@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6b2de247-92ab-47be-b52d-7d178b441c51" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b1f5a3c4-4d0a-4ce3-9b99-085994cb26be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -9,9 +9,7 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
-    </CollectionMappings>
+    <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -24,11 +22,11 @@
     <MetadataSource Address="http://localhost:15721/RestServiceImplementacion.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RestServiceImplementacion.xsd" MetadataType="Schema" ID="5da6b662-0c4a-481e-b46b-6f864496a01f" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd2" />
-    <MetadataFile FileName="RestServiceImplementacion.wsdl" MetadataType="Wsdl" ID="ac58a6bd-36af-48cf-b2cd-ac6e960cf1aa" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?wsdl" />
-    <MetadataFile FileName="RestServiceImplementacion1.xsd" MetadataType="Schema" ID="e59bf8ef-f368-4423-9db2-65531d974648" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd0" />
-    <MetadataFile FileName="RestServiceImplementacion2.xsd" MetadataType="Schema" ID="369d7b28-e2e9-4315-b7df-46fa30f5200a" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd1" />
-    <MetadataFile FileName="RestServiceImplementacion.disco" MetadataType="Disco" ID="7d2ccdaa-b2cc-43be-8c2a-a5eef5ab263d" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?disco" />
+    <MetadataFile FileName="RestServiceImplementacion.xsd" MetadataType="Schema" ID="baaaa307-da3c-4d9e-b9b0-bd7a991a6d26" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd2" />
+    <MetadataFile FileName="RestServiceImplementacion.wsdl" MetadataType="Wsdl" ID="fc301aea-e36d-428a-b8db-9b60b1e4be87" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?wsdl" />
+    <MetadataFile FileName="RestServiceImplementacion1.xsd" MetadataType="Schema" ID="247adec7-48f0-44c0-a8e7-cb8fe9795ac6" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd0" />
+    <MetadataFile FileName="RestServiceImplementacion2.xsd" MetadataType="Schema" ID="10eabc15-4e41-47f3-ac6e-4f91d3c85ae0" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?xsd=xsd1" />
+    <MetadataFile FileName="RestServiceImplementacion.disco" MetadataType="Disco" ID="8b0d8854-425b-4674-818f-48f97da86f7f" SourceId="1" SourceUrl="http://localhost:15721/RestServiceImplementacion.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using PetCenter.Infrastucture.Data;
+using PetCenter.Common.Core.Entities;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace RestService
 {
@@ -20,11 +24,47 @@ namespace RestService
                 items.Add(new BE_AsistenciaArchivo()
                 {
                     Dni = "46560233",
-                    Fecha = String.Format("{2}_{1}_{0}", date.Year, date.Month,date.Day),
+                    Fecha = String.Format("{2}_{1}_{0}", date.Year, date.Month, date.Day),
                     Nombre = "Ronny Jair Ruiz Andia"
                 });
             }
             return items;
         }
+
+        public bool ProcesarAsistencia(string Mes, string Anio)
+        {
+            string line;
+
+            using(StreamReader sr = new StreamReader(String.Format(@"D:\DataJson\{0}{1}.txt", Mes, Anio)))
+            {
+                // Read the stream to a string, and write the string to the console.
+                 line = sr.ReadToEnd();
+            }
+            
+            string[] items = line.Split('@');
+            List<Asistencia> asistencias = new List<Asistencia>();
+            foreach(string item in items)
+            {
+                string[] detalle = item.Split(',');
+                asistencias.Add(new Asistencia()
+                {
+                    DNI = detalle[0].Trim(),
+                    FechaSalida = Convert.ToDateTime(detalle[1]),
+                    Fecha = Convert.ToDateTime(detalle[1]),
+                    FechaIngreso = Convert.ToDateTime(detalle[1])
+                });
+            }
+            
+            DA_Asistencia DAAsistencia = new DA_Asistencia();
+            foreach(var item in asistencias)
+            {
+
+                DAAsistencia.GuardarAsistencia(item);
+            }
+
+            return false;
+        }
+
+       
     }
 }

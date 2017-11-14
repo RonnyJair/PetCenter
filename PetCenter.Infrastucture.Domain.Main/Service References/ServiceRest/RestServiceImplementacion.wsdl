@@ -13,10 +13,20 @@
   <wsdl:message name="IRestServiceImplementacion_GetArchivo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetArchivoResponse" />
   </wsdl:message>
+  <wsdl:message name="IRestServiceImplementacion_ProcesarAsistencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarAsistencia" />
+  </wsdl:message>
+  <wsdl:message name="IRestServiceImplementacion_ProcesarAsistencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarAsistenciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRestServiceImplementacion">
     <wsdl:operation name="GetArchivo">
       <wsdl:input wsaw:Action="http://tempuri.org/IRestServiceImplementacion/GetArchivo" message="tns:IRestServiceImplementacion_GetArchivo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRestServiceImplementacion/GetArchivoResponse" message="tns:IRestServiceImplementacion_GetArchivo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarAsistencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistencia" message="tns:IRestServiceImplementacion_ProcesarAsistencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRestServiceImplementacion/ProcesarAsistenciaResponse" message="tns:IRestServiceImplementacion_ProcesarAsistencia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="RestServiceImplementacion" />

@@ -17,6 +17,14 @@ namespace RestService
              ResponseFormat = WebMessageFormat.Json,
              BodyStyle = WebMessageBodyStyle.Wrapped,
              UriTemplate = "GetArchivo/{id}")]
+        [return: MessageParameter(Name = "BE_AsistenciaArchivo")]
         List<BE_AsistenciaArchivo> GetArchivo(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+             ResponseFormat = WebMessageFormat.Json,
+             BodyStyle = WebMessageBodyStyle.Wrapped,
+             UriTemplate = "ProcesarAsistencia/{Mes}/{Anio}")]
+        bool ProcesarAsistencia(string Mes, string Anio);
     }
 }

@@ -11,7 +11,22 @@
   <xs:element name="GetArchivoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RestService" minOccurs="0" name="GetArchivoResult" nillable="true" type="q1:ArrayOfBE_AsistenciaArchivo" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RestService" minOccurs="0" name="BE_AsistenciaArchivo" nillable="true" type="q1:ArrayOfBE_AsistenciaArchivo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcesarAsistencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Mes" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Anio" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcesarAsistenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProcesarAsistenciaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
