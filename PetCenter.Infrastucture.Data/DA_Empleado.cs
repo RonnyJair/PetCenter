@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PetCenter.Common.Core.Entities.MyCode;
 
 namespace PetCenter.Infrastucture.Data
 {
@@ -29,7 +30,7 @@ namespace PetCenter.Infrastucture.Data
             {
                 throw new Exception(ex.Message.ToString());
 
-            }                 
+            }
         }
 
         public List<Empleado> ListarEmpleadosActivosConsueldoBase()
@@ -47,7 +48,7 @@ namespace PetCenter.Infrastucture.Data
             }
             catch(Exception ex)
             {
-                throw new Exception(ex.Message.ToString()); 
+                throw new Exception(ex.Message.ToString());
             }
         }
 
@@ -122,6 +123,46 @@ namespace PetCenter.Infrastucture.Data
                                          where x.EmpleadoId == EmpleadoId
                                          select x).ToList().FirstOrDefault();
                     return Empleado;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<ConceptoDetalleBoleta> GetConceptoPorEmpleado(Int32 EmpleadoId)
+        {
+            try
+            {
+                List<ConceptoDetalleBoleta> itemx = new List<ConceptoDetalleBoleta>();
+
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    var items = (from a in contexto.Planillas.Include("Empleado")
+                                 join b in contexto.PlanillaEmpleadoes
+                                 on a.PlanillaId equals b.PlanillaId
+                                 join c in contexto.PlanillaEmpleadoConceptoes
+                                 on b.PlanillaEmpleadoId equals c.PlanillaEmpleadoId
+                                 join d in contexto.Conceptoes
+                                 on c.ConceptoId equals d.ConceptoId
+                                 where b.EmpleadoId == EmpleadoId
+                                 group new { c, d } by new { d.Nombre, c.Importe } into g
+                                 select new
+                                 {
+                                     g.Key.Nombre,
+                                     g.Key.Importe
+                                 }).ToList();
+
+                    foreach(var item in items)
+                    {
+                        itemx.Add(new ConceptoDetalleBoleta()
+                        {
+                            Concepto = item.Nombre,
+                            Importe = item.Importe.ToString()
+                        });
+                    }
+                    return itemx;
                 }
             }
             catch(Exception ex)

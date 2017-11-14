@@ -49,6 +49,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -175,6 +176,21 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BdPetCenterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BdPetCenterDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdPetCenterDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BdPetCenterDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdPetCenterDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsistenciasController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -213,6 +229,39 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="BdPetCenterDataSet.xsc">
+      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="BdPetCenterDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BdPetCenterDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="BdPetCenterDataSet.xss">
+      <DependentUpon>BdPetCenterDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="BdPetCenterDataSet2.xsc">
+      <DependentUpon>BdPetCenterDataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="BdPetCenterDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BdPetCenterDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="BdPetCenterDataSet2.xss">
+      <DependentUpon>BdPetCenterDataSet2.xsd</DependentUpon>
+    </Content>
+    <Content Include="BdPetCenterDataSet3.xsc">
+      <DependentUpon>BdPetCenterDataSet3.xsd</DependentUpon>
+    </Content>
+    <None Include="BdPetCenterDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BdPetCenterDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="BdPetCenterDataSet3.xss">
+      <DependentUpon>BdPetCenterDataSet3.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Mascota.jpg" />
     <Content Include="Images\Mascota2.jpg" />
@@ -297,7 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Reports\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +370,9 @@
       <Project>{ca3a6233-d511-4f9a-a30a-dac320b68e1a}</Project>
       <Name>PetCenter.Infrastucture.Querys</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\bol.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

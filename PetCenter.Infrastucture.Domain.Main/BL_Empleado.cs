@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PetCenter.Common.Core.Entities.MyCode;
 
 namespace PetCenter.Infrastucture.Domain.Main
 {
@@ -135,6 +136,22 @@ namespace PetCenter.Infrastucture.Domain.Main
                 throw new Exception(e.Message.ToString());
             }
         }
+
+        public List<ConceptoDetalleBoleta> GetConceptoPorEmpleado(Int32 EmpleadoId)
+        {
+            DA_Empleado DAEmpleado = new DA_Empleado();
+            try
+            {
+                return DAEmpleado.GetConceptoPorEmpleado(EmpleadoId);
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+        
 
         public Empleado GuardarEmpleado(Empleado empleado)
         {

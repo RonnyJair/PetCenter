@@ -62,7 +62,7 @@ namespace RestService
                 DAAsistencia.GuardarAsistencia(item);
             }
 
-            return false;
+            return true;
         }
 
        

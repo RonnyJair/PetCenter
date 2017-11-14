@@ -18,7 +18,7 @@ namespace PetCenter.Infrastucture.Data
             {
                 using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
-                    List<Asistencia> Bancos = (from x in contexto.Asistencias
+                    List<Asistencia> Bancos = (from x in contexto.Asistencias.Include("Empleado")
                                                select x).ToList();
 
                     return Bancos;

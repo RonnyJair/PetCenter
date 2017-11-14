@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Presentation.MVC.Models;
 using PetCenter.Infrastucture.Domain.Main;
+using Microsoft.Reporting.WebForms;
+using System.IO;
+using PetCenter.Common.Core.Entities.MyCode;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
@@ -185,6 +188,43 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 return null;
             }
+        }
+
+        public ActionResult Indexrep(int? id)
+        {
+            #region Datos dummy
+            BL_Empleado BLEmpleado = new BL_Empleado();
+
+            List<Empleado> Empleado = new List<Empleado>();
+            Empleado.Add(BLEmpleado.GetEmpleadoId((int)id));
+
+            List<ConceptoDetalleBoleta> conceptos = BLEmpleado.GetConceptoPorEmpleado((int)id);
+            
+
+            #endregion Datos dummy
+
+            string DirectorioReportesRelativo = "~/Reports/";
+            string urlArchivo = string.Format("{0}.{1}", "bol", "rdlc");
+
+            string FullPathReport = string.Format("{0}{1}",
+                                    this.HttpContext.Server.MapPath(DirectorioReportesRelativo),
+                                     urlArchivo);
+
+            ReportViewer Reporte = new ReportViewer();
+
+            Reporte.Reset();
+            Reporte.LocalReport.ReportPath = FullPathReport;
+            ReportDataSource DataSource = new ReportDataSource("DataSet2", Empleado);
+            ReportDataSource DataSource2 = new ReportDataSource("DataSet1", conceptos);
+            Reporte.LocalReport.DataSources.Add(DataSource);
+            Reporte.LocalReport.DataSources.Add(DataSource2);
+            Reporte.LocalReport.Refresh();
+            byte[] file = Reporte.LocalReport.Render("PDF");
+
+            return File(new MemoryStream(file).ToArray(),
+                      System.Net.Mime.MediaTypeNames.Application.Octet,
+                      /*Esto para forzar la descarga del archivo*/
+                      string.Format("{0}{1}", "archivoprueba.", "PDF"));
         }
 
         protected override void Dispose(bool disposing)

@@ -17,7 +17,6 @@ namespace PetCenter.Infrastucture.Domain.Main
             try
             {
                 BL_Asistencia BlAsistencia = new BL_Asistencia();
-                var asistencias = BlAsistencia.GetAsistenciasDesdeServicio("1");
                 return DAConcepto.ListarConceptos();
             }
             catch(Exception e)

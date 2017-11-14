@@ -86,6 +86,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MyCode\Concepto.MyCode.cs" />
+    <Compile Include="MyCode\ConceptoDetalleBoleta.cs" />
     <Compile Include="MyCode\Empleado.MyCode.cs" />
     <Compile Include="MyCode\Repository.MyCode.cs" />
     <Compile Include="MyCode\User.MyCode.cs" />

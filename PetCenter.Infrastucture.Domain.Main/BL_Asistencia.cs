@@ -6,6 +6,8 @@ using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using PetCenter.Common.Core.Entities;
+using PetCenter.Common.Utilities;
+using PetCenter.Infrastucture.Data;
 using PetCenter.Infrastucture.Domain.Main.ServiceRest;
 
 namespace PetCenter.Infrastucture.Domain.Main
@@ -17,9 +19,23 @@ namespace PetCenter.Infrastucture.Domain.Main
 
         }
 
-        public object GetAsistenciasDesdeServicio(String Fecha)
+        public List<Asistencia> ListarAsistencias()
         {
-            string serviceUrl = "http://localhost:15721/RestServiceImplementacion.svc/ProcesarAsistencia/" + "11" + "/"+ "2017";
+            DA_Asistencia DAAsistencia = new DA_Asistencia();
+            try
+            {
+                return DAAsistencia.ListarAsistencias();
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+        public object ProcesarAsistencia(String mes, String anio)
+        {
+            string serviceUrl = "http://localhost:15721/RestServiceImplementacion.svc/ProcesarAsistencia/" + mes + "/"+ anio;
             using(WebClient client = new WebClient() { })
             {
                 try

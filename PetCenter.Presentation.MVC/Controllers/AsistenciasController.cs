@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
+using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
 
 namespace PetCenter.Presentation.MVC.Controllers
@@ -18,8 +19,19 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Asistencias
         public ActionResult Index()
         {
-            var asistencias = db.Asistencias.Include(a => a.Empleado);
-            return View(asistencias.ToList());
+            BL_Asistencia BLAsistencia = new BL_Asistencia();
+
+
+            return View(BLAsistencia.ListarAsistencias().ToList());
+        }
+
+        public ActionResult ProcesarAsistencias()
+        {
+            BL_Asistencia BLAsistencia = new BL_Asistencia();
+            var a = BLAsistencia.ProcesarAsistencia("11", "2017");
+
+
+            return RedirectToAction("Index");
         }
 
         // GET: Asistencias/Details/5
