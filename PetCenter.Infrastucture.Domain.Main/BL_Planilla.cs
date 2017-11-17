@@ -86,16 +86,16 @@ namespace PetCenter.Infrastucture.Domain.Main
                     if(!concepto.Operador1.Trim().Equals(""))
                     {
                         calculo = operar(Empleado, calculo, concepto.Operador1, concepto.calculo2);
-                        if(!concepto.Operador2.Trim().Equals(""))
+                        if(concepto.Operador2 != null && !concepto.Operador2.Trim().Equals(""))
                         {
                             calculo = operar(Empleado, calculo, concepto.Operador2, concepto.calculo3);
-                            if(!concepto.Operador3.Trim().Equals(""))
+                            if(concepto.Operador3 != null && !concepto.Operador3.Trim().Equals(""))
                             {
                                 calculo = operar(Empleado, calculo, concepto.Operador3, concepto.calculo4);
-                                if(!concepto.Operador4.Trim().Equals(""))
+                                if(concepto.Operador4 != null && !concepto.Operador4.Trim().Equals(""))
                                 {
                                     calculo = operar(Empleado, calculo, concepto.Operador4, concepto.calculo5);
-                                    if(!concepto.Operador5.Trim().Equals(""))
+                                    if(concepto.Operador5 != null && !concepto.Operador5.Trim().Equals(""))
                                     {
                                         calculo = operar(Empleado, calculo, concepto.Operador5, concepto.calculo6);
                                     }
@@ -192,6 +192,7 @@ namespace PetCenter.Infrastucture.Domain.Main
         private static decimal getImporte(Empleado empleado, String campo, DateTime? Fecha = null)
         {
             decimal importe = 0;
+            if(campo == null) return importe;
             if(campo.Equals("TOTFAL"))
             {
                 importe = getTotalFaltas(empleado);

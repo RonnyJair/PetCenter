@@ -52,6 +52,7 @@
     <Compile Include="BL_Banco.cs" />
     <Compile Include="BL_Concepto.cs" />
     <Compile Include="BL_Empleado.cs" />
+    <Compile Include="BL_Justificacion.cs" />
     <Compile Include="BL_Moneda.cs" />
     <Compile Include="BL_Planilla.cs" />
     <Compile Include="BL_EsSalud.cs" />

@@ -45,6 +45,7 @@
     <Compile Include="DA_Asistencia.cs" />
     <Compile Include="DA_Banco.cs" />
     <Compile Include="DA_Falta.cs" />
+    <Compile Include="DA_Justificacion.cs" />
     <Compile Include="DA_Moneda.cs" />
     <Compile Include="DA_Onp.cs" />
     <Compile Include="DA_EsSalud.cs" />

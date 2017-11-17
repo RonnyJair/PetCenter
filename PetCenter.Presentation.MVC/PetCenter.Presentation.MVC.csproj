@@ -343,6 +343,7 @@
     <Content Include="Views\Justificacions\Details.cshtml" />
     <Content Include="Views\Justificacions\Edit.cshtml" />
     <Content Include="Views\Justificacions\Index.cshtml" />
+    <Content Include="Views\Justificacions\Justificar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

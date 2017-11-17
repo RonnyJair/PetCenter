@@ -7,29 +7,57 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
+using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
+using PagedList;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
-    public class JustificacionsController : Controller
+    public class JustificacionsController :BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Justificacions
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var justificacions = db.Justificacions.Include(j => j.Falta);
-            return View(justificacions.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Descripcion" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            BL_Justificacion BLJustificacion = new BL_Justificacion();
+            var justificacion = searchString == null ? BLJustificacion.ListarJustificacion() : BLJustificacion.ListarJustificacionFiltro(searchString);
+
+            switch (sortOrder)
+            {
+                case "Descripcion":
+                    justificacion = justificacion.OrderByDescending(s => s.Descripcion).ToList();
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(justificacion.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Justificacions/Details/5
+        // GET: Conceptoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Justificacion justificacion = db.Justificacions.Find(id);
+            BL_Justificacion BLJustificacion = new BL_Justificacion();
+            Justificacion justificacion = BLJustificacion.GetJustificacion((Int32)id);
             if (justificacion == null)
             {
                 return HttpNotFound();
@@ -37,97 +65,12 @@ namespace PetCenter.Presentation.MVC.Controllers
             return View(justificacion);
         }
 
-        // GET: Justificacions/Create
-        public ActionResult Create()
+        public ActionResult Justificar()
         {
-            ViewBag.FaltaId = new SelectList(db.Faltas, "FaltaId", "FaltaId");
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
 
-        // POST: Justificacions/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "JustificacionId,FaltaId,Descripcion,Documento,Estado,UsuarioAprueba,FechaAprobacion,UsuarioNiega,FechaNegacion")] Justificacion justificacion)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Justificacions.Add(justificacion);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.FaltaId = new SelectList(db.Faltas, "FaltaId", "FaltaId", justificacion.FaltaId);
-            return View(justificacion);
-        }
-
-        // GET: Justificacions/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Justificacion justificacion = db.Justificacions.Find(id);
-            if (justificacion == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.FaltaId = new SelectList(db.Faltas, "FaltaId", "FaltaId", justificacion.FaltaId);
-            return View(justificacion);
-        }
-
-        // POST: Justificacions/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JustificacionId,FaltaId,Descripcion,Documento,Estado,UsuarioAprueba,FechaAprobacion,UsuarioNiega,FechaNegacion")] Justificacion justificacion)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(justificacion).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.FaltaId = new SelectList(db.Faltas, "FaltaId", "FaltaId", justificacion.FaltaId);
-            return View(justificacion);
-        }
-
-        // GET: Justificacions/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Justificacion justificacion = db.Justificacions.Find(id);
-            if (justificacion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(justificacion);
-        }
-
-        // POST: Justificacions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Justificacion justificacion = db.Justificacions.Find(id);
-            db.Justificacions.Remove(justificacion);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
