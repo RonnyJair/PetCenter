@@ -48,7 +48,7 @@ namespace RestService
                 string[] detalle = item.Split(',');
                 asistencias.Add(new Asistencia()
                 {
-                    AsistenciaId = Convert.ToInt32(detalle[0]),
+                    DNI = Convert.ToString(detalle[0].Trim()),
                     FechaSalida = Convert.ToDateTime(detalle[1]),
                     Fecha = Convert.ToDateTime(detalle[1]),
                     FechaIngreso = Convert.ToDateTime(detalle[1])

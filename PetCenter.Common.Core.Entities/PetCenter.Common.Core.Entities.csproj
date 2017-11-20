@@ -85,6 +85,7 @@
     <Compile Include="Moneda.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyCode\Asistencia.MyCode.cs" />
     <Compile Include="MyCode\Concepto.MyCode.cs" />
     <Compile Include="MyCode\ConceptoDetalleBoleta.cs" />
     <Compile Include="MyCode\Empleado.MyCode.cs" />

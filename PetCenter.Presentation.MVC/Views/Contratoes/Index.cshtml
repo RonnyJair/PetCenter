@@ -12,31 +12,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Empleado.CodigoEmpleado)
+            Codigo Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ubigeo.Codigo)
+            Ubigeo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EsAfp)
+            Es AFP
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SueldoBase)
+            Sueldo Base
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.JornadaTrabajo)
+            Jornada de Trabajo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RenumeracionLetra)
+            Renumeración 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaInicio)
+            Fecha Inicio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaTermino)
+            Fecha Termino
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            Estado
         </th>
         <th></th>
     </tr>
@@ -71,9 +71,8 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContratoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContratoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContratoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ContratoId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ContratoId })
         </td>
     </tr>
 }
