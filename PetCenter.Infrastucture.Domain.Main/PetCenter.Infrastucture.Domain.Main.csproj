@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL_Asistencia.cs" />
+    <Compile Include="BL_Contrato.cs" />
     <Compile Include="BL_Banco.cs" />
     <Compile Include="BL_Concepto.cs" />
     <Compile Include="BL_Empleado.cs" />

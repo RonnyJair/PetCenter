@@ -10,13 +10,15 @@ using PetCenter.Common.Core.Entities;
 using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
 using PagedList;
+using IronPdf;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
+    [Authorize]
     public class JustificacionsController :BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        IronPdf.HtmlToPdf Renderer = new IronPdf.HtmlToPdf();
         // GET: Justificacions
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -72,5 +74,25 @@ namespace PetCenter.Presentation.MVC.Controllers
             return View();
         }
 
+        //Get Subir Archivo
+        public ActionResult SubirArchivo()
+        {
+            return View();
+        }
+        //Post SubirArchivo
+        [HttpPost]
+        public ActionResult SubirArchivo(HttpPostedFileBase file)
+        {
+            SubirArchivosModelo modelo = new SubirArchivosModelo();
+            if(file != null)
+            {
+                String ruta = Server.MapPath("~/Temp/");
+                ruta += file.FileName;
+                modelo.SubirArchivo(ruta, file);
+                ViewBag.Error = modelo.error;
+                ViewBag.Correcto = modelo.Confirmacion;
+            }
+            return View();
+        }
     }
 }

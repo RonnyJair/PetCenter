@@ -42,24 +42,21 @@
                         </div>
                     </div>
 
+                    <div class="btn-group">
 
-                    <div class="form-group">
-                        <div class="form-group col-md-6">
-                            <div class="form-group">
-                                <div class="col-lg-5">
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                                </div>
-                                <div class="col-lg-6">
-                                    @Html.ActionLink("Guardar", "Index", "Justificacions")
-                                </div>
-                                <div class="col-lg-7">
-                                    @Html.ActionLink("Cerrar", "Index", "Justificacions")
-                                </div>
-                            </div>
-                        </div>
+                        @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+                        @Html.ActionLink("Adjuntar", "SubirArchivo", "Justificacions", new { @class = "btn btn-default btn-block" })
+
+                        @Html.ActionLink("Guardar", "Index", "Justificacions", new { @class = "btn btn-default btn-block" })
+
+                        @Html.ActionLink("Cerrar", "Index", "Justificacions", new { @class = "btn btn-default btn-block" })
+
                     </div>
 
+
+                    <hr />
                 </form>
+
             </div>
         </div>
     </div>
@@ -67,11 +64,19 @@
 
     <br />
 
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <div class="col-lg-6">
+            <button type="submit">Subir</button>
+            @Html.ActionLink("Atras", "Justificar", "Justificacions")
+        </div>
+
+
+    </form>
+
+    <br />
 
     <div class="container">
-        <h2>Modal Example</h2>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -84,7 +89,16 @@
                         <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Some text in the modal.</p>
+                        <h2>Subir Archivo</h2>
+                        <h2 class="text-danger">@ViewBag.Error</h2>
+                        <h2 class="text-success">@ViewBag.Correcto</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" />
+                            <div class="col-lg-6">
+                                <button type="submit">Subir</button>
+                                @Html.ActionLink("Atras", "Justificar", "Justificacions")
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

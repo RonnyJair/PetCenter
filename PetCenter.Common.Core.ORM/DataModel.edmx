@@ -87,6 +87,7 @@
           <Property Name="FechaInicio" Type="datetime" />
           <Property Name="FechaTermino" Type="datetime" />
           <Property Name="Estado" Type="nchar" MaxLength="10" />
+          <Property Name="RutaArchivo" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -176,7 +177,7 @@
           <Property Name="JustificacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FaltaId" Type="int" />
           <Property Name="Descripcion" Type="varchar" MaxLength="500" />
-          <Property Name="Documento" Type="varbinary(max)" />
+          <Property Name="Documento" Type="varchar(max)" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="UsuarioAprueba" Type="int" />
           <Property Name="FechaAprobacion" Type="datetime" />
@@ -902,6 +903,7 @@
           <Property Name="Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Empleado" Relationship="BdPetCenterModel.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
           <NavigationProperty Name="Ubigeo" Relationship="BdPetCenterModel.FK_Contrato_Ubigeo" FromRole="Contrato" ToRole="Ubigeo" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -1012,7 +1014,7 @@
           <Property Name="JustificacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FaltaId" Type="Int32" />
           <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Documento" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="UsuarioAprueba" Type="Int32" />
           <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
@@ -1510,6 +1512,7 @@
           <EntitySetMapping Name="Contratoes">
             <EntityTypeMapping TypeName="BdPetCenterModel.Contrato">
               <MappingFragment StoreEntitySet="Contrato">
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />

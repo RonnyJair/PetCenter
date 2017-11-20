@@ -131,6 +131,23 @@ namespace PetCenter.Infrastucture.Data
             }
         }
 
+        public List<Empleado> GetEmpleados()
+        {
+            try
+            {
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    List<Empleado> Empleado = (from x in contexto.Empleadoes
+                                         select x).ToList();
+                    return Empleado;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<ConceptoDetalleBoleta> GetConceptoPorEmpleado(Int32 EmpleadoId)
         {
             try

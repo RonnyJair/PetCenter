@@ -55,5 +55,7 @@ namespace PetCenter.Presentation.MVC.Models
         public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Justificacion> Justificacions { get; set; }
 
         public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Falta> Faltas { get; set; }
+
+        public System.Data.Entity.DbSet<PetCenter.Common.Core.Entities.Contrato> Contratoes { get; set; }
     }
 }

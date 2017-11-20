@@ -17,7 +17,7 @@ namespace PetCenter.Common.Core.Entities
         public int JustificacionId { get; set; }
         public Nullable<int> FaltaId { get; set; }
         public string Descripcion { get; set; }
-        public byte[] Documento { get; set; }
+        public string Documento { get; set; }
         public bool Estado { get; set; }
         public Nullable<int> UsuarioAprueba { get; set; }
         public Nullable<System.DateTime> FechaAprobacion { get; set; }

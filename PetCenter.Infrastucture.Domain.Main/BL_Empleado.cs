@@ -151,7 +151,21 @@ namespace PetCenter.Infrastucture.Domain.Main
             }
         }
 
-        
+        public List<Empleado> GetEmpleados()
+        {
+            DA_Empleado DAEmpleado = new DA_Empleado();
+            try
+            {
+                return DAEmpleado.GetEmpleados();
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
+
 
         public Empleado GuardarEmpleado(Empleado empleado)
         {

@@ -11,8 +11,7 @@ namespace PetCenter.Common.Core.Entities
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Concepto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +19,7 @@ namespace PetCenter.Common.Core.Entities
         {
             this.PlanillaEmpleadoConceptoes = new HashSet<PlanillaEmpleadoConcepto>();
         }
-
+    
         public int ConceptoId { get; set; }
         public string Nombre { get; set; }
         public Nullable<short> Tipo { get; set; }
@@ -31,7 +30,6 @@ namespace PetCenter.Common.Core.Entities
         public string calculo4 { get; set; }
         public string calculo5 { get; set; }
         public string calculo6 { get; set; }
-        
         public string Operador1 { get; set; }
         public string Operador2 { get; set; }
         public string Operador3 { get; set; }
@@ -56,7 +54,7 @@ namespace PetCenter.Common.Core.Entities
         public Nullable<decimal> Importe5 { get; set; }
         public Nullable<decimal> Importe6 { get; set; }
         public Nullable<bool> Aprobado { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlanillaEmpleadoConcepto> PlanillaEmpleadoConceptoes { get; set; }
     }

@@ -12,6 +12,7 @@ using PetCenter.Presentation.MVC.Models;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
+    [Authorize]
     public class AsistenciasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

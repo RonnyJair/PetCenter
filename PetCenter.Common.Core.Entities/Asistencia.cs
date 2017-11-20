@@ -21,6 +21,5 @@ namespace PetCenter.Common.Core.Entities
         public Nullable<System.DateTime> FechaSalida { get; set; }
     
         public virtual Empleado Empleado { get; set; }
-        public string DNI { get; set; }
     }
 }

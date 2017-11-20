@@ -38,9 +38,9 @@ namespace RestService
             using(StreamReader sr = new StreamReader(String.Format(@"D:\DataJson\{0}{1}.txt", Mes, Anio)))
             {
                 // Read the stream to a string, and write the string to the console.
-                 line = sr.ReadToEnd();
+                line = sr.ReadToEnd();
             }
-            
+
             string[] items = line.Split('@');
             List<Asistencia> asistencias = new List<Asistencia>();
             foreach(string item in items)
@@ -48,13 +48,13 @@ namespace RestService
                 string[] detalle = item.Split(',');
                 asistencias.Add(new Asistencia()
                 {
-                    DNI = detalle[0].Trim(),
+                    AsistenciaId = Convert.ToInt32(detalle[0]),
                     FechaSalida = Convert.ToDateTime(detalle[1]),
                     Fecha = Convert.ToDateTime(detalle[1]),
                     FechaIngreso = Convert.ToDateTime(detalle[1])
                 });
             }
-            
+
             DA_Asistencia DAAsistencia = new DA_Asistencia();
             foreach(var item in asistencias)
             {
@@ -65,6 +65,6 @@ namespace RestService
             return true;
         }
 
-       
+
     }
 }

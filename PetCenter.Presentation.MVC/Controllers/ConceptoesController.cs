@@ -21,34 +21,39 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Conceptoes
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            ViewBag.CurrentSort = sortOrder;
+             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Nombre" : "";
             //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            if(searchString != null)
-            {
+            if(searchString != null)            
                 page = 1;
-            }
             else
-            {
                 searchString = currentFilter;
-            }
-
+            
             ViewBag.CurrentFilter = searchString;
 
             BL_Concepto BLConcepto = new BL_Concepto();
-            var conceptos = searchString == null ? BLConcepto.ListarConceptos() : BLConcepto.ListarConceptosFiltro(searchString);
-
-            switch(sortOrder)
+           
+            try
             {
-                case "Nombre":
-                    conceptos = conceptos.OrderByDescending(s => s.Nombre).ToList();
-                    break;
-            }
+                var conceptos = searchString == null ? BLConcepto.ListarConceptos() : BLConcepto.ListarConceptosFiltro(searchString);
 
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(conceptos.ToPagedList(pageNumber, pageSize));
+                switch(sortOrder)
+                {
+                    case "Nombre":
+                        conceptos = conceptos.OrderByDescending(s => s.Nombre).ToList();
+                        break;
+                }
+
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+                return View(conceptos.ToPagedList(pageNumber, pageSize));
+            }
+            catch
+            {
+                return null;
+            }
+           
         }
 
         // GET: Conceptoes/Details/5

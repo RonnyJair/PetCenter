@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DA_Asistencia.cs" />
+    <Compile Include="DA_Contrato.cs" />
     <Compile Include="DA_Banco.cs" />
     <Compile Include="DA_Falta.cs" />
     <Compile Include="DA_Justificacion.cs" />

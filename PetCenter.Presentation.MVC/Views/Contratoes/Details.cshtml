@@ -1,0 +1,90 @@
+﻿@model PetCenter.Common.Core.Entities.Contrato
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.CodigoEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.CodigoEmpleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubigeo.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubigeo.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EsAfp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EsAfp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SueldoBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SueldoBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JornadaTrabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JornadaTrabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenumeracionLetra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenumeracionLetra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTermino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTermino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContratoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

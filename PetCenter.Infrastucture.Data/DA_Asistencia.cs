@@ -43,7 +43,7 @@ namespace PetCenter.Infrastucture.Data
                         if(Asistencia.EmpleadoId == 0)
                         {
                             List<Empleado> empleados = (from x in contexto.Empleadoes
-                                                       where  x.Documento.Equals(Asistencia.DNI)
+                                                       where  x.EmpleadoId.Equals(Asistencia.EmpleadoId)
                                                        select x).ToList();
 
                             Asistencia.EmpleadoId = empleados.First().EmpleadoId;

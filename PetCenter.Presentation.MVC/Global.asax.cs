@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
+using PetCenter.Presentation.MVC.Controllers;
 
 namespace PetCenter.Presentation.MVC
 {
@@ -36,6 +37,24 @@ namespace PetCenter.Presentation.MVC
                     HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
                 }
             }
+        }
+
+        protected void Application_Error(Object sender, EventArgs e)
+        {
+            HttpContextWrapper contextWrapper = new HttpContextWrapper(this.Context);
+
+            RouteData routeData = new RouteData();
+            routeData.Values.Add("controller", "Error");
+            routeData.Values.Add("action", "Index");
+
+            IController controller = new HomeController();
+
+            RequestContext requestContext = new RequestContext(contextWrapper, routeData);
+
+            controller.Execute(requestContext);
+            Response.End();
+
+
         }
     }
 }
