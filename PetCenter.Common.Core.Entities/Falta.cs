@@ -14,21 +14,15 @@ namespace PetCenter.Common.Core.Entities
     
     public partial class Falta
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Falta()
-        {
-            this.Justificacions = new HashSet<Justificacion>();
-        }
-    
         public int FaltaId { get; set; }
         public int EmpleadoId { get; set; }
+        public Nullable<int> JustificacionId { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaTermino { get; set; }
         public Nullable<System.DateTime> CantidadDias { get; set; }
     
         public virtual Empleado Empleado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Justificacion> Justificacions { get; set; }
+        public virtual Justificacion Justificacion { get; set; }
     }
 }

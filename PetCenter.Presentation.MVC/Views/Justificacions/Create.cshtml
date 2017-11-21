@@ -1,24 +1,24 @@
 ﻿@model PetCenter.Common.Core.Entities.Justificacion
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Justificacion";
 }
 
-<h2>Create</h2>
+<h2>Crear Justificación</h2>
 
-@using (Html.BeginForm()) 
+@using(Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Justificacion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.FaltaId, "FaltaId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EmpleadoId, "EmpleadoId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FaltaId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FaltaId, "", new { @class = "text-danger" })
+                @Html.DropDownList("EmpleadoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmpleadoId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -27,14 +27,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Documento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Documento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Documento, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -49,35 +41,46 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UsuarioAprueba, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UsuarioAprueba, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UsuarioAprueba, "", new { @class = "text-danger" })
+                <input type="file" name="UploadFile" accept="application/pdf" id="txtUploadFile" class="btn btn-default makethispretty" />
+                <div id="lblMensajeCarga"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaAprobacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaAprobacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaAprobacion, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.UsuarioAprueba, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UsuarioAprueba, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UsuarioAprueba, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UsuarioNiega, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UsuarioNiega, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UsuarioNiega, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaAprobacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaAprobacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaAprobacion, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaNegacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaNegacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaNegacion, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UsuarioNiega, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UsuarioNiega, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UsuarioNiega, "", new { @class = "text-danger" })
+                </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaNegacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaNegacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaNegacion, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div id="divPartialView">
+            <!-- something like this in your ASP.NET View -->
+            <%= Html.RenderPartial("MyPartialView", Model) %>
         </div>
 
         <div class="form-group">
@@ -91,3 +94,54 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script type="text/javascript">
+    // assuming you're using jQuery
+    $("#EmpleadoId").change(function (event) {
+        $.ajax({
+            url: "GetPartialGraph/" + $(this).val(),
+            data: { id: $(this).val() /* add other additional parameters */ },
+            cache: false,
+            type: "POST",
+            dataType: "html",
+
+            success: function (data, textStatus, XMLHttpRequest) {
+                $("#divPartialView").html(data); // HTML DOM replace
+            }
+        });
+    });
+
+    $('#txtUploadFile').on('change', function (e) {
+        debugger;
+        var files = e.target.files;
+        if (files.length > 0) {
+            var items = document.getElementById("EmpleadoId");
+            var myID = items[items.selectedIndex].value;
+
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Justificacions/UploadHomeReport?id=' + myID,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        $("lblMensajeCarga").append(JSON.parse(result.responseText).Message);
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        var err = "Error " + " " + status + " " + p3 + " " + p4;
+                        if (xhr.responseText && xhr.responseText[0] == "{")
+                            err = JSON.parse(xhr.responseText).Message;
+                        $("lblMensajeCarga").append(err);
+                    }
+                });
+            } else {
+                alert("This browser doesn't support HTML5 file uploads!");
+            }
+        }
+    });
+</script>

@@ -16,15 +16,15 @@ namespace PetCenter.Infrastucture.Data
         {
             try
             {
-                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
-                    List<Justificacion> Justificacion = (from x in contexto.Justificacions
-                                                select x).ToList();
+                    List<Justificacion> Justificacion = (from x in contexto.Justificacions.Include("Empleado")
+                                                         select x).ToList();
 
                     return Justificacion;
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -35,16 +35,16 @@ namespace PetCenter.Infrastucture.Data
         {
             try
             {
-                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
                     List<Justificacion> Justificacion = (from x in contexto.Justificacions
-                                                where x.Descripcion.Contains(Descripcion)
-                                                select x).ToList();
+                                                         where x.Descripcion.Contains(Descripcion)
+                                                         select x).ToList();
 
                     return Justificacion;
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -55,46 +55,53 @@ namespace PetCenter.Infrastucture.Data
         {
             try
             {
-                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
                     List<Justificacion> Justificacion = (from x in contexto.Justificacions
-                                                where x.JustificacionId.Equals(JustificacionId)
-                                                select x).ToList();
+                                                         where x.JustificacionId.Equals(JustificacionId)
+                                                         select x).ToList();
 
                     return Justificacion.First();
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
             }
         }
 
-
-
-        //public Concepto GuardarConcepto(Concepto concepto)
-        //{
-        //    try
-        //    {
-        //        using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
-        //        {
-        //            Concepto objeto = new Concepto();
-        //            if (concepto.ConceptoId <= 0) objeto = contexto.Conceptoes.Add(concepto);
-        //            else
-        //            {
-        //                contexto.Entry(concepto).State = EntityState.Modified;
-        //                objeto = concepto;
-        //            }
-        //            if (contexto.SaveChanges() > 0) return objeto;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message.ToString());
-        //    }
-        //    return null;
-        //}
+        public Justificacion GuardarJustificacion(Justificacion justificacion)
+        {
+            try
+            {
+                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    Justificacion objeto = new Justificacion();
+                    if(justificacion.JustificacionId <= 0) objeto = contexto.Justificacions.Add(justificacion);
+                    else
+                    {
+                        contexto.Entry(justificacion).State = EntityState.Modified;
+                        objeto = justificacion;
+                    }
+                    if(contexto.SaveChanges() > 0)
+                    {
+                        foreach(var falta in justificacion.Faltas)
+                        {
+                            falta.JustificacionId = justificacion.JustificacionId;
+                            contexto.Entry(falta).State = EntityState.Modified;
+                            contexto.SaveChanges();
+                        }
+                        return objeto;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+            return null;
+        }
 
         //public Concepto EliminarConcepto(Concepto concepto)
         //{

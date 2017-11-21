@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Falta>
+
+
+<table class="table">
+    <tr>
+         <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaTermino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadDias)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaTermino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadDias)
+        </td>
+    
+    </tr>
+}
+
+</table>

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ContratoesController.cs" />
     <Compile Include="Controllers\EmpleadoesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FaltasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JustificacionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -345,13 +346,6 @@
     <Content Include="Views\Asistencias\Details.cshtml" />
     <Content Include="Views\Asistencias\Edit.cshtml" />
     <Content Include="Views\Asistencias\Index.cshtml" />
-    <Content Include="Views\Justificacions\Create.cshtml" />
-    <Content Include="Views\Justificacions\Delete.cshtml" />
-    <Content Include="Views\Justificacions\Details.cshtml" />
-    <Content Include="Views\Justificacions\Edit.cshtml" />
-    <Content Include="Views\Justificacions\Index.cshtml" />
-    <Content Include="Views\Justificacions\Justificar.cshtml" />
-    <Content Include="Views\Justificacions\SubirArchivo.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Contratoes\Create.cshtml" />
     <Content Include="Views\Contratoes\Delete.cshtml" />
@@ -359,6 +353,17 @@
     <Content Include="Views\Contratoes\Edit.cshtml" />
     <Content Include="Views\Contratoes\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Justificacions\Create.cshtml" />
+    <Content Include="Views\Justificacions\Delete.cshtml" />
+    <Content Include="Views\Justificacions\Details.cshtml" />
+    <Content Include="Views\Justificacions\Edit.cshtml" />
+    <Content Include="Views\Justificacions\Index.cshtml" />
+    <Content Include="Views\Faltas\Create.cshtml" />
+    <Content Include="Views\Faltas\Delete.cshtml" />
+    <Content Include="Views\Faltas\Details.cshtml" />
+    <Content Include="Views\Faltas\Edit.cshtml" />
+    <Content Include="Views\Faltas\Index.cshtml" />
+    <Content Include="Views\Justificacions\VPartialFalta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

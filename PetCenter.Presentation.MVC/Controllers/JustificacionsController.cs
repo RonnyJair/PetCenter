@@ -2,97 +2,176 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
-using PagedList;
-using IronPdf;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
     [Authorize]
-    public class JustificacionsController :BaseController
+    public class JustificacionsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        IronPdf.HtmlToPdf Renderer = new IronPdf.HtmlToPdf();
+        //private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Justificacions
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Descripcion" : "";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            BL_Justificacion BLJustificacion = new BL_Justificacion();
-            var justificacion = searchString == null ? BLJustificacion.ListarJustificacion() : BLJustificacion.ListarJustificacionFiltro(searchString);
-
-            switch (sortOrder)
-            {
-                case "Descripcion":
-                    justificacion = justificacion.OrderByDescending(s => s.Descripcion).ToList();
-                    break;
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(justificacion.ToPagedList(pageNumber, pageSize));
+            BL_Justificacion BlJustificacion = new BL_Justificacion();
+            return View(BlJustificacion.ListarJustificacion().ToList());
         }
 
-        // GET: Conceptoes/Details/5
+        // GET: Justificacions/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BL_Justificacion BLJustificacion = new BL_Justificacion();
-            Justificacion justificacion = BLJustificacion.GetJustificacion((Int32)id);
-            if (justificacion == null)
+            BL_Justificacion BlJustificacion = new BL_Justificacion();
+            Justificacion justificacion = BlJustificacion.GetJustificacion((Int32)id);
+            if(justificacion == null)
             {
                 return HttpNotFound();
             }
             return View(justificacion);
         }
 
-        public ActionResult Justificar()
+        // GET: Justificacions/Create
+        public ActionResult Create()
         {
-            ViewBag.Message = "Your contact page.";
-
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
             return View();
         }
 
-        //Get Subir Archivo
-        public ActionResult SubirArchivo()
-        {
-            return View();
-        }
-        //Post SubirArchivo
+        // POST: Justificacions/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult SubirArchivo(HttpPostedFileBase file)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "JustificacionId,EmpleadoId,Descripcion,Documento,Estado,UsuarioAprueba,FechaAprobacion,UsuarioNiega,FechaNegacion")] Justificacion justificacion)
         {
-            SubirArchivosModelo modelo = new SubirArchivosModelo();
-            if(file != null)
+            if(ModelState.IsValid)
             {
-                String ruta = Server.MapPath("~/Temp/");
-                ruta += file.FileName;
-                modelo.SubirArchivo(ruta, file);
-                ViewBag.Error = modelo.error;
-                ViewBag.Correcto = modelo.Confirmacion;
+                BL_Justificacion BlJustificacion = new BL_Justificacion();
+                BL_Falta BLFalta = new BL_Falta();
+                var Faltas = BLFalta.ListarFaltasPorMesAndEmpleado(DateTime.Now, (Int32)justificacion.EmpleadoId);
+                var path = Path.Combine(Server.MapPath("~/Temp"), "Justificacion_ID_" + justificacion.EmpleadoId.ToString());
+                justificacion.Documento = path;
+
+                foreach(var falta in Faltas)
+                {
+                    justificacion.Faltas.Add(falta);
+                }
+                var item = BlJustificacion.GuardarJustificacion(justificacion);
+                return RedirectToAction("Index");
             }
-            return View();
+
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
+            return View(justificacion);
+        }
+
+        // GET: Justificacions/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BL_Justificacion BlJustificacion = new BL_Justificacion();
+            Justificacion justificacion = BlJustificacion.GetJustificacion((Int32)id);
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
+
+            if(justificacion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(justificacion);
+        }
+
+        // POST: Justificacions/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "JustificacionId,FaltaId,Descripcion,Documento,Estado,UsuarioAprueba,FechaAprobacion,UsuarioNiega,FechaNegacion")] Justificacion justificacion)
+        {
+            if(ModelState.IsValid)
+            {
+                BL_Justificacion BlJustificacion = new BL_Justificacion();
+                var item = BlJustificacion.GuardarJustificacion(justificacion);
+                return RedirectToAction("Index");
+            }
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
+            return View(justificacion);
+        }
+
+        [HttpPost]
+        public PartialViewResult GetPartialGraph(int id /* drop down value */)
+        {
+            BL_Falta BLFalta = new BL_Falta();
+            var model = BLFalta.ListarFaltasPorMesAndEmpleado(DateTime.Now, id);
+
+            return PartialView("VPartialFalta", model);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UploadHomeReport(string id)
+        {
+            try
+            {
+                foreach(string file in Request.Files)
+                {
+                    var fileContent = Request.Files[file];
+                    if(fileContent != null && fileContent.ContentLength > 0)
+                    {
+                        // get a streamj
+                        var stream = fileContent.InputStream;
+                        // and optionally write the file to disk
+                        var fileName = "Justificacion_ID_" + id;
+                        var path = Path.Combine(Server.MapPath("~/Temp"), fileName);
+                        using(var fileStream = System.IO.File.Create(path))
+                        {
+                            stream.CopyTo(fileStream);
+                        }
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Error al subir archivo :(");
+            }
+
+            return Json("Archivo Cargado");
+        }
+
+        [HttpGet]
+        public ActionResult Download(string id)
+        {
+            string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Justificacion_ID_" + id);
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Justificacion_ID_" + id);
+
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                //db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

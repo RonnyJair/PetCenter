@@ -165,6 +165,7 @@
           </Key>
           <Property Name="FaltaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="JustificacionId" Type="int" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="FechaInicio" Type="datetime" Nullable="false" />
           <Property Name="FechaTermino" Type="datetime" />
@@ -175,7 +176,7 @@
             <PropertyRef Name="JustificacionId" />
           </Key>
           <Property Name="JustificacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FaltaId" Type="int" />
+          <Property Name="EmpleadoId" Type="int" />
           <Property Name="Descripcion" Type="varchar" MaxLength="500" />
           <Property Name="Documento" Type="varchar(max)" />
           <Property Name="Estado" Type="bit" Nullable="false" />
@@ -467,15 +468,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Justificacion_Falta">
-          <End Role="Falta" Type="Self.Falta" Multiplicity="0..1" />
+        <Association Name="FK_Falta_Justificacion">
+          <End Role="Justificacion" Type="Self.Justificacion" Multiplicity="0..1" />
+          <End Role="Falta" Type="Self.Falta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Justificacion">
+              <PropertyRef Name="JustificacionId" />
+            </Principal>
+            <Dependent Role="Falta">
+              <PropertyRef Name="JustificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Justificacion_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Justificacion" Type="Self.Justificacion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Falta">
-              <PropertyRef Name="FaltaId" />
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
             </Principal>
             <Dependent Role="Justificacion">
-              <PropertyRef Name="FaltaId" />
+              <PropertyRef Name="EmpleadoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -656,8 +669,12 @@
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Falta" EntitySet="Falta" />
           </AssociationSet>
-          <AssociationSet Name="FK_Justificacion_Falta" Association="Self.FK_Justificacion_Falta">
+          <AssociationSet Name="FK_Falta_Justificacion" Association="Self.FK_Falta_Justificacion">
+            <End Role="Justificacion" EntitySet="Justificacion" />
             <End Role="Falta" EntitySet="Falta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Justificacion_Empleado" Association="Self.FK_Justificacion_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Justificacion" EntitySet="Justificacion" />
           </AssociationSet>
           <AssociationSet Name="FK_Planilla_Empleado" Association="Self.FK_Planilla_Empleado">
@@ -778,6 +795,10 @@
             <End Role="Empleado" EntitySet="Empleadoes" />
             <End Role="Falta" EntitySet="Faltas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Justificacion_Empleado" Association="BdPetCenterModel.FK_Justificacion_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Justificacion" EntitySet="Justificacions" />
+          </AssociationSet>
           <AssociationSet Name="FK_Planilla_Empleado" Association="BdPetCenterModel.FK_Planilla_Empleado">
             <End Role="Empleado" EntitySet="Empleadoes" />
             <End Role="Planilla" EntitySet="Planillas" />
@@ -794,9 +815,9 @@
             <End Role="Onp" EntitySet="Onps" />
             <End Role="EmpleadoOnp" EntitySet="EmpleadoOnps" />
           </AssociationSet>
-          <AssociationSet Name="FK_Justificacion_Falta" Association="BdPetCenterModel.FK_Justificacion_Falta">
-            <End Role="Falta" EntitySet="Faltas" />
+          <AssociationSet Name="FK_Falta_Justificacion" Association="BdPetCenterModel.FK_Falta_Justificacion">
             <End Role="Justificacion" EntitySet="Justificacions" />
+            <End Role="Falta" EntitySet="Faltas" />
           </AssociationSet>
           <AssociationSet Name="FK_Planilla_SueldoMinimo" Association="BdPetCenterModel.FK_Planilla_SueldoMinimo">
             <End Role="SueldoMinimo" EntitySet="SueldoMinimoes" />
@@ -901,9 +922,9 @@
           <Property Name="FechaInicio" Type="DateTime" Precision="3" />
           <Property Name="FechaTermino" Type="DateTime" Precision="3" />
           <Property Name="Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Empleado" Relationship="BdPetCenterModel.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
           <NavigationProperty Name="Ubigeo" Relationship="BdPetCenterModel.FK_Contrato_Ubigeo" FromRole="Contrato" ToRole="Ubigeo" />
-          <Property Name="RutaArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -949,6 +970,7 @@
           <NavigationProperty Name="EmpleadoOnps" Relationship="BdPetCenterModel.FK_EmpleadoOnp_Empleado" FromRole="Empleado" ToRole="EmpleadoOnp" />
           <NavigationProperty Name="EmpleadoSueldoBases" Relationship="BdPetCenterModel.FK_EmpleadoSueldoBase_Empleado" FromRole="Empleado" ToRole="EmpleadoSueldoBase" />
           <NavigationProperty Name="Faltas" Relationship="BdPetCenterModel.FK_Falta_Empleado" FromRole="Empleado" ToRole="Falta" />
+          <NavigationProperty Name="Justificacions" Relationship="BdPetCenterModel.FK_Justificacion_Empleado" FromRole="Empleado" ToRole="Justificacion" />
           <NavigationProperty Name="Planillas" Relationship="BdPetCenterModel.FK_Planilla_Empleado" FromRole="Empleado" ToRole="Planilla" />
           <NavigationProperty Name="PlanillaEmpleadoes" Relationship="BdPetCenterModel.FK_PlanillaEmpleado_Empleado" FromRole="Empleado" ToRole="PlanillaEmpleado" />
           <NavigationProperty Name="Tardanzas" Relationship="BdPetCenterModel.FK_Tardanza_Empleado" FromRole="Empleado" ToRole="Tardanza" />
@@ -1000,27 +1022,29 @@
           </Key>
           <Property Name="FaltaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="JustificacionId" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaTermino" Type="DateTime" Precision="3" />
           <Property Name="CantidadDias" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Empleado" Relationship="BdPetCenterModel.FK_Falta_Empleado" FromRole="Falta" ToRole="Empleado" />
-          <NavigationProperty Name="Justificacions" Relationship="BdPetCenterModel.FK_Justificacion_Falta" FromRole="Falta" ToRole="Justificacion" />
+          <NavigationProperty Name="Justificacion" Relationship="BdPetCenterModel.FK_Falta_Justificacion" FromRole="Falta" ToRole="Justificacion" />
         </EntityType>
         <EntityType Name="Justificacion">
           <Key>
             <PropertyRef Name="JustificacionId" />
           </Key>
           <Property Name="JustificacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FaltaId" Type="Int32" />
+          <Property Name="EmpleadoId" Type="Int32" />
           <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Documento" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Documento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="UsuarioAprueba" Type="Int32" />
           <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioNiega" Type="Int32" />
           <Property Name="FechaNegacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Falta" Relationship="BdPetCenterModel.FK_Justificacion_Falta" FromRole="Justificacion" ToRole="Falta" />
+          <NavigationProperty Name="Empleado" Relationship="BdPetCenterModel.FK_Justificacion_Empleado" FromRole="Justificacion" ToRole="Empleado" />
+          <NavigationProperty Name="Faltas" Relationship="BdPetCenterModel.FK_Falta_Justificacion" FromRole="Justificacion" ToRole="Falta" />
         </EntityType>
         <EntityType Name="Moneda">
           <Key>
@@ -1323,6 +1347,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Justificacion_Empleado">
+          <End Type="BdPetCenterModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="BdPetCenterModel.Justificacion" Role="Justificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Justificacion">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Planilla_Empleado">
           <End Type="BdPetCenterModel.Empleado" Role="Empleado" Multiplicity="0..1" />
           <End Type="BdPetCenterModel.Planilla" Role="Planilla" Multiplicity="*" />
@@ -1371,15 +1407,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Justificacion_Falta">
-          <End Type="BdPetCenterModel.Falta" Role="Falta" Multiplicity="0..1" />
-          <End Type="BdPetCenterModel.Justificacion" Role="Justificacion" Multiplicity="*" />
+        <Association Name="FK_Falta_Justificacion">
+          <End Type="BdPetCenterModel.Justificacion" Role="Justificacion" Multiplicity="0..1" />
+          <End Type="BdPetCenterModel.Falta" Role="Falta" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Falta">
-              <PropertyRef Name="FaltaId" />
+            <Principal Role="Justificacion">
+              <PropertyRef Name="JustificacionId" />
             </Principal>
-            <Dependent Role="Justificacion">
-              <PropertyRef Name="FaltaId" />
+            <Dependent Role="Falta">
+              <PropertyRef Name="JustificacionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1608,6 +1644,7 @@
                 <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="JustificacionId" ColumnName="JustificacionId" />
                 <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
                 <ScalarProperty Name="FaltaId" ColumnName="FaltaId" />
               </MappingFragment>
@@ -1623,7 +1660,7 @@
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Documento" ColumnName="Documento" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="FaltaId" ColumnName="FaltaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
                 <ScalarProperty Name="JustificacionId" ColumnName="JustificacionId" />
               </MappingFragment>
             </EntityTypeMapping>

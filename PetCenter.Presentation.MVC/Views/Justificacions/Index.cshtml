@@ -1,191 +1,75 @@
-﻿@{
-    ViewBag.Title = "Listado de Justificacion";
+﻿@model IEnumerable<PetCenter.Common.Core.Entities.Justificacion>
+
+@{
+    ViewBag.Title = "Listado de Justificaciones";
 }
 
-<h2>Listado de Justificación</h2>
+<h2>Listado de Justificaciones</h2>
 
+<p>
+    @Html.ActionLink("Crear Justificación", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Empleado
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+            Ruta Documento
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Usuario Aprobado
+        </th>
+        <th>
+            Fecha Aprobación
+        </th>
+        <th>
+            Usuario Niega
+        </th>
+        <th>
+            Fecha Negacion
+        </th>
+        <th></th>
+    </tr>
 
-@*@using (Html.BeginForm("Index", "Justificacions", FormMethod.Get))
-    {
-        <p>
-            Buscar por Concepto: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Buscar" />
-        </p>
-    }*@
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.XNombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioAprueba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAprobacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioNiega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNegacion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.JustificacionId }) |
+            @Html.ActionLink("Aprobar", "Aprobar", new { id=item.JustificacionId }) |
+            @Html.ActionLink("Anular", "Anular", new { id=item.JustificacionId })
+        </td>
+    </tr>
+}
 
-
-
-<body>
-    <div class="container">
-        <br>
-        <div class="panel panel-primary">
-            <div class="panel-heading">Justificar Faltas Pendientes</div>
-            <div class="panel-body">
-                <form id="form" class="form-horizontal " role="form">
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="ejemplo_email_3" class="col-lg-5 control-label" name="nombre">DNI</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="text_nom1" id="text_nom1" required />
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha de Falta</label>
-                            <div class="col-lg-5">
-                                <input type="date" class="form-control" name="text_nom2" id="text_nom2">
-                            </div>
-                            <div class="btn-group" data-toggle="buttons">
-                                <button type="button" id="btn_enviar" class="btn btn-primary">Filtrar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Nombre del Empleado</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" name="text_ape1" id="text_ape1">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                DNI
-                                            </th>
-                                            <th>
-                                                Nombre de Empleado
-                                            </th>
-                                            <th>
-                                                Fecha
-                                            </th>
-                                            <th>Estado</th>
-                                            <th>Acción 1</th>
-                                            <th>Acción 2</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @*@foreach (var item in Model)
-                                        {*@
-                                            <tr>
-                                                <td>
-                                                    45229631
-                                                </td>
-                                                <td>
-                                                    José Perez Rojas
-                                                </td>
-                                                <td>
-                                                    12/11/2017
-                                                </td>
-                                                <td>Pendiente</td>
-                                                <td>
-                                                        <!-- Button -->
-                                                        
-                                                                
-                                                    @Html.ActionLink("Justificar", "Justificar", "Justificacions")
-                                                        
-                                                </td>
-                                                <td>
-                                                            @*<button id="btn_enviar2" name="btn_enviar2" class="btn btn-danger">Aprobar</button>*@
-                                                    @Html.ActionLink("Aprobar", "Index", "Justificacions")    
-                                                </td>
-
-                                            </tr>
-                                        @*}*@
-
-                                    </tbody>
-                                </table>
-
-                    </div>
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-
-        @*<form class="form-horizontal">
-            <fieldset>
-
-                <!-- Form Name -->
-                <legend>Form Name</legend>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_nom1">Primer nombre</label>
-                    <div class="col-md-4">
-                        <input id="text_nom1" name="text_nom1" placeholder="Primer nombre" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_nom2">Segundo nombre</label>
-                    <div class="col-md-4">
-                        <input id="text_nom2" name="text_nom2" placeholder="Segundo nombre" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_ape1">Primer apellido</label>
-                    <div class="col-md-4">
-                        <input id="text_ape1" name="text_ape1" placeholder="Primer apellido" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_ape2">Segundo apellido</label>
-                    <div class="col-md-4">
-                        <input id="text_ape2" name="text_ape2" placeholder="Segundo apellido" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_ciu_nom">Ciudad nombre</label>
-                    <div class="col-md-4">
-                        <input id="text_ciu_nom" name="text_ciu_nom" placeholder="Ciudad nombre" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_dep">Departamento</label>
-                    <div class="col-md-4">
-                        <input id="text_dep" name="text_dep" placeholder="Departamento" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="text_ciu_cod">Ciudad Código</label>
-                    <div class="col-md-4">
-                        <input id="text_ciu_cod" name="text_ciu_cod" placeholder="Ciudad Código" class="form-control input-md" type="text">
-
-                    </div>
-                </div>
-
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btn_enviar"></label>
-                    <div class="col-md-4">
-                        <button id="btn_enviar" name="btn_enviar" class="btn btn-default">Enviar</button>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>*@
-        <br />
-</body>
+</table>

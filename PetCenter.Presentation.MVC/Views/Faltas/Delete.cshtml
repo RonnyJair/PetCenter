@@ -1,4 +1,4 @@
-﻿@model PetCenter.Common.Core.Entities.Asistencia
+﻿@model PetCenter.Common.Core.Entities.Falta
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Estas seguro de eliminar este item?</h3>
 <div>
-    <h4>Asistencia</h4>
+    <h4>Falta</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Justificacion.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Justificacion.Descripcion)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Fecha)
         </dt>
 
@@ -28,19 +36,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaIngreso)
+            @Html.DisplayNameFor(model => model.FechaInicio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaIngreso)
+            @Html.DisplayFor(model => model.FechaInicio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaSalida)
+            @Html.DisplayNameFor(model => model.FechaTermino)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaSalida)
+            @Html.DisplayFor(model => model.FechaTermino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadDias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadDias)
         </dd>
 
     </dl>

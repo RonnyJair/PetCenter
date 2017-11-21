@@ -82,5 +82,19 @@ namespace PetCenter.Infrastucture.Domain.Main
                 throw new Exception(e.Message.ToString());
             }
         }
+
+        public Justificacion GuardarJustificacion(Justificacion justificacion)
+        {
+            DA_Justificacion DAJustificacion = new DA_Justificacion();
+            try
+            {
+                return DAJustificacion.GuardarJustificacion(justificacion);
+            }
+            catch(Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
     }
 }
