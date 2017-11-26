@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PetCenter.Common.Core.Entities.Contrato>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado de Contratos";
 }
 
-<h2>Index</h2>
+<h2>Listado de Contratos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear contrato", "Create")
 </p>
 <table class="table">
     <tr>
@@ -72,9 +72,19 @@
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ContratoId }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ContratoId })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ContratoId })|
+            @Html.ActionLink("Download", "Download", new { id = item.EmpleadoId })
         </td>
     </tr>
 }
 
 </table>
+
+@if(TempData["contratomsg"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            bootbox.alert("@TempData["contratomsg"]");
+        };
+    </script>
+}

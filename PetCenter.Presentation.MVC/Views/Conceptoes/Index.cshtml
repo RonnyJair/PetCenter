@@ -59,6 +59,7 @@
         <th>Calculo 6</th>
         <th>Porcentaje 6</th>
         <th>Importe 6</th>
+        <th>Aprobado</th>
         <th>Acción</th>
     </tr>
 
@@ -102,6 +103,7 @@
             <td>@Html.DisplayFor(modelItem => item.calculo6)</td>
             <td>@Html.DisplayFor(modelItem => item.Porcentaje6)</td>
             <td>@Html.DisplayFor(modelItem => item.Importe6)</td>
+            <td>@Html.DisplayFor(modelItem => item.Aprobado)</td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.ConceptoId }) |
                 @if(item.Aprobado != true)
@@ -121,11 +123,11 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-@if(ViewBag.Message != null)
+@if(TempData["conceptomsg"] != null)
 {
     <script type="text/javascript">
-            window.onload = function () {
-                alert("@ViewBag.Message");
-            };
+        window.onload = function () {
+            bootbox.alert("@TempData["conceptomsg"]");
+        };
     </script>
 }

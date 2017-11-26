@@ -67,6 +67,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                  var path = Path.Combine(Server.MapPath("~/Temp"), "Contrato_ID_" + contrato.EmpleadoId.ToString());
                 contrato.RutaArchivo = path;
                 var contratos = BLContrato.GuardarContrato(contrato);
+                TempData["contratomsg"] = string.Format("El contrato {0} se ha creado correctamente", contrato.ContratoId);
                 return RedirectToAction("Index");
             }
 
@@ -181,8 +182,11 @@ namespace PetCenter.Presentation.MVC.Controllers
             string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Contrato_ID_" + id);
             
             byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
-
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato_ID_" + id);
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            List<Empleado> Empleado = new List<Empleado>();
+            Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
+            var Empleo = Empleado.First();
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato__" + Empleo.XNombreCompleto);
 
         }
         protected override void Dispose(bool disposing)

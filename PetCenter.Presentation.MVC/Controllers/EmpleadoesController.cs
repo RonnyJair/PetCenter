@@ -199,7 +199,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             Empleado.Add(BLEmpleado.GetEmpleadoId((int)id));
 
             List<ConceptoDetalleBoleta> conceptos = BLEmpleado.GetConceptoPorEmpleado((int)id);
-            
+
 
             #endregion Datos dummy
 
@@ -224,7 +224,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             return File(new MemoryStream(file).ToArray(),
                       System.Net.Mime.MediaTypeNames.Application.Octet,
                       /*Esto para forzar la descarga del archivo*/
-                      string.Format("{0}{1}", "archivoprueba.", "PDF"));
+                      string.Format("BOL_{0}_{1}_{2}.pdf", Empleado.First().XNombreCompleto, TempData["mes"], TempData["ano"]));
         }
 
         protected override void Dispose(bool disposing)

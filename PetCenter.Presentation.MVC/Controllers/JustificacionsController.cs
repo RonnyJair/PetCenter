@@ -70,6 +70,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                     justificacion.Faltas.Add(falta);
                 }
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
+                TempData["justificacionomsg"] = string.Format("La justificación {0} se ha creado correctamente", justificacion.JustificacionId);
                 return RedirectToAction("Index");
             }
 
@@ -161,9 +162,32 @@ namespace PetCenter.Presentation.MVC.Controllers
             string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Justificacion_ID_" + id);
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            List<Empleado> Empleado = new List<Empleado>();
+            Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
+            var Empleo = Empleado.First();
 
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Justificacion_ID_" + id);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Justificacion_" + Empleo.XNombreCompleto);
 
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Aprobar(Int32 id)
+        {
+            BL_Justificacion BlJustificacion = new BL_Justificacion();
+            Justificacion justificacion = BlJustificacion.GetJustificacion((Int32)id);
+
+            if(ModelState.IsValid)
+            {
+                justificacion.UsuarioAprueba = 1;
+                justificacion.FechaAprobacion = DateTime.Now;
+                var item = BlJustificacion.GuardarJustificacion(justificacion);
+                return RedirectToAction("Index");
+            }
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
+            TempData["justificacionomsg"] = string.Format("La justificación {0} se ha Aprobado", justificacion.JustificacionId);
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {

@@ -29,21 +29,19 @@ namespace PetCenter.Presentation.MVC.Controllers
         public ActionResult ProcesarAsistencias()
         {
             BL_Asistencia BLAsistencia = new BL_Asistencia();
-            var a = BLAsistencia.ProcesarAsistencia("11", "2017");
-
-
+            var a = BLAsistencia.ProcesarAsistencia(DateTime.Now.Month.ToString(), DateTime.Now.Year.ToString());
             return RedirectToAction("Index");
         }
 
         // GET: Asistencias/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Asistencia asistencia = db.Asistencias.Find(id);
-            if (asistencia == null)
+            if(asistencia == null)
             {
                 return HttpNotFound();
             }
@@ -64,7 +62,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AsistenciaId,EmpleadoId,Fecha,FechaIngreso,FechaSalida")] Asistencia asistencia)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 db.Asistencias.Add(asistencia);
                 db.SaveChanges();
@@ -78,12 +76,12 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Asistencias/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Asistencia asistencia = db.Asistencias.Find(id);
-            if (asistencia == null)
+            if(asistencia == null)
             {
                 return HttpNotFound();
             }
@@ -98,7 +96,7 @@ namespace PetCenter.Presentation.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AsistenciaId,EmpleadoId,Fecha,FechaIngreso,FechaSalida")] Asistencia asistencia)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 db.Entry(asistencia).State = EntityState.Modified;
                 db.SaveChanges();
@@ -111,12 +109,12 @@ namespace PetCenter.Presentation.MVC.Controllers
         // GET: Asistencias/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Asistencia asistencia = db.Asistencias.Find(id);
-            if (asistencia == null)
+            if(asistencia == null)
             {
                 return HttpNotFound();
             }
@@ -136,7 +134,7 @@ namespace PetCenter.Presentation.MVC.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if(disposing)
             {
                 db.Dispose();
             }

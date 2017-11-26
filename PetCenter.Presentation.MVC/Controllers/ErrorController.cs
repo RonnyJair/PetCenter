@@ -8,9 +8,9 @@ namespace PetCenter.Presentation.MVC.Controllers
 {
     public class ErrorController : Controller
     {
-        public ViewResult Index()
+        public ViewResult Index(HandleErrorInfo err)
         {
-            return View("Error");
+            return View("Error", err);
         }
         public ViewResult NotFound()
         {

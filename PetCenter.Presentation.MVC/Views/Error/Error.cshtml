@@ -7,13 +7,13 @@
 </div>
 <div class="list-sfs-holder">
     <div class="alert alert-error">
-        A ocurrido un error, no seas loco pe. Por favor con el Administrador.
+        A ocurrido un error. Por favor comunicarse con el Administrador.
     </div>
     @if(Model != null && HttpContext.Current.IsDebuggingEnabled)
     {
         <div>
             <p>
-                <b>Excepci[on:</b> @Model.Exception.Message<br />
+                <b>Excepción:</b> @Model.Exception.Message<br />
                 <b>Controller:</b> @Model.ControllerName<br />
                 <b>Action:</b> @Model.ActionName
             </p>

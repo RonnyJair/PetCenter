@@ -18,9 +18,6 @@
             Descripción
         </th>
         <th>
-            Ruta Documento
-        </th>
-        <th>
             Estado
         </th>
         <th>
@@ -29,47 +26,52 @@
         <th>
             Fecha Aprobación
         </th>
-        <th>
-            Usuario Niega
-        </th>
-        <th>
-            Fecha Negacion
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.XNombreCompleto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Documento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsuarioAprueba)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaAprobacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsuarioNiega)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaNegacion)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.JustificacionId }) |
-            @Html.ActionLink("Aprobar", "Aprobar", new { id=item.JustificacionId }) |
-            @Html.ActionLink("Anular", "Anular", new { id=item.JustificacionId })
-        </td>
-    </tr>
-}
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.XNombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @if(item.UsuarioAprueba != null)
+                {
+                    @Html.Label("Admin");
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.UsuarioAprueba)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAprobacion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.JustificacionId }) |
+                @Html.ActionLink("Download", "Download", new { id = item.Empleado.EmpleadoId }) |
+                @if(item.UsuarioAprueba == null)
+                {
+                    @Html.ActionLink("Aprobar", "Aprobar", new { id = item.JustificacionId })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@if(TempData["justificacionomsg"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            bootbox.alert("@TempData["justificacionomsg"]");
+        };
+    </script>
+}
