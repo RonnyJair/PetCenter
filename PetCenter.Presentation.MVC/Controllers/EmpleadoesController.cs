@@ -221,6 +221,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             Reporte.LocalReport.Refresh();
             byte[] file = Reporte.LocalReport.Render("PDF");
 
+
             return File(new MemoryStream(file).ToArray(),
                       System.Net.Mime.MediaTypeNames.Application.Octet,
                       /*Esto para forzar la descarga del archivo*/
