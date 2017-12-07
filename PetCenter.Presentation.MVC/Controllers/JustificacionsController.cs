@@ -70,7 +70,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                     justificacion.Faltas.Add(falta);
                 }
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
-                TempData["justificacionomsg"] = string.Format("La justificación {0} se ha creado correctamente", justificacion.JustificacionId);
+                TempData["justificacionomsg"] = string.Format("La justificación se ha creado correctamente", justificacion.JustificacionId);
                 return RedirectToAction("Index");
             }
 
@@ -109,6 +109,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 BL_Justificacion BlJustificacion = new BL_Justificacion();
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
+                TempData["justificacionomsg"] = string.Format("La justificación se ha modificado correctamente", justificacion.JustificacionId);
                 return RedirectToAction("Index");
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
@@ -159,15 +160,24 @@ namespace PetCenter.Presentation.MVC.Controllers
         [HttpGet]
         public ActionResult Download(string id)
         {
-            string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Justificacion_ID_" + id);
 
-            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
-            BL_Empleado BLEmpleado = new BL_Empleado();
-            List<Empleado> Empleado = new List<Empleado>();
-            Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
-            var Empleo = Empleado.First();
+            try
+            {
+                string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Justificacion_ID_" + id);
 
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Justificacion_" + Empleo.XNombreCompleto);
+                byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+                BL_Empleado BLEmpleado = new BL_Empleado();
+                List<Empleado> Empleado = new List<Empleado>();
+                Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
+                var Empleo = Empleado.First();
+
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Justificacion_" + Empleo.XNombreCompleto + ".pdf");
+
+            }
+            catch (Exception ) {
+                return View("Error");
+            }
+           
 
         }
 
@@ -186,7 +196,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
-            TempData["justificacionomsg"] = string.Format("La justificación {0} se ha Aprobado", justificacion.JustificacionId);
+            TempData["justificacionomsg"] = string.Format("La justificación se ha aprobado", justificacion.JustificacionId);
             return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)

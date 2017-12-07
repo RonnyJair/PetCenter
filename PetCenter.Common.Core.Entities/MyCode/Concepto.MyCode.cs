@@ -69,15 +69,15 @@ namespace PetCenter.Common.Core.Entities
 
         public int ConceptoId { get; set; }
         [Required(ErrorMessage ="Ingresar Nombre")]
-        [RegularExpression(@" ^[a-zA-Z_\s]*$", ErrorMessage = "Solo ingresar letras")]
         [StringLength(150, MinimumLength = 3)]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Ingresar tipo")]
+        [Range(0, 1, ErrorMessage = "El valor del campo Tipo debe estar entre 0 y 1")]
         public Nullable<short> Tipo { get; set; }
 
         [Required(ErrorMessage = "Ingresar Tipo Concepto")]
-        [Range(0,1,ErrorMessage ="El tipo concepto esta entre 0 y 1")]
+        [Range(0,1,ErrorMessage = "El valor del campo Tipo concepto debe estar entre 0 y 1")]
         public Nullable<short> TipoConcepto { get; set; }
 
         [Required(ErrorMessage = "Ingresar calculo1")]

@@ -11,7 +11,8 @@ namespace PetCenter.Common.Core.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Justificacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,12 @@ namespace PetCenter.Common.Core.Entities
         }
     
         public int JustificacionId { get; set; }
+        [Required(ErrorMessage = "Ingresar empleado")]
         public Nullable<int> EmpleadoId { get; set; }
+        [Required(ErrorMessage ="Ingresar descripción")]
         public string Descripcion { get; set; }
         public string Documento { get; set; }
+        [Required(ErrorMessage = "seleccionar estado")]
         public bool Estado { get; set; }
         public Nullable<int> UsuarioAprueba { get; set; }
         public Nullable<System.DateTime> FechaAprobacion { get; set; }
