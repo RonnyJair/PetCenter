@@ -31,6 +31,26 @@ namespace PetCenter.Infrastucture.Data
             }
         }
 
+        public List<Contrato> ListarContratosFiltro(string EmpleadoId)
+        {
+            try
+            {
+                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    List<Contrato> Contratos = (from x in contexto.Contratoes
+                                                where x.EmpleadoId.Equals(EmpleadoId)
+                                                select x).ToList();
+
+                    return Contratos;
+                }
+            }
+            catch (Exception e)
+            {
+                EventLogger.EscribirLog(e.Message.ToString());
+                throw new Exception(e.Message.ToString());
+            }
+        }
+
         public Contrato GetContrato(int ContratoId)
         {
             try

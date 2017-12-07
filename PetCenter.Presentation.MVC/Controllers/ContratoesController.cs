@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
+using PagedList;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
@@ -20,11 +21,43 @@ namespace PetCenter.Presentation.MVC.Controllers
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Contratoes
+        //public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         public ActionResult Index()
         {
-            BL_Contrato BLConcepto = new BL_Contrato();
-            var contratoes = BLConcepto.ListarContratos();
-            return View(contratoes.ToList());
+           // ViewBag.CurrentSort = sortOrder;
+           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "EmpleadoId" : "";
+
+//            if (searchString != "")
+  //              page = 1;
+    //        else
+      //          searchString = currentFilter;
+
+        //    ViewBag.CurrentFilter = searchString;
+
+            BL_Contrato BLContrato = new BL_Contrato();
+            List<Contrato> contratos = BLContrato.ListarContratos();
+
+            //            try
+            //          {
+            //            var contratos = searchString == "" ? BLContrato.ListarContratos() : BLContrato.ListarContratosFiltro(searchString);
+
+            //          switch (sortOrder)
+            //        {
+            //            case "EmpleadoId":
+            //contratos = contratos.OrderByDescending(s => s.EmpleadoId).ToList();
+            //break;
+            //}
+
+
+            //int pageSize = 10;
+            //int pageNumber = (page ?? 1);
+            return View(contratos.ToList());
+
+            //} catch
+
+            //{
+            //return null;
+            // }
         }
 
         // GET: Contratoes/Details/5

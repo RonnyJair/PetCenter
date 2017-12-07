@@ -4,7 +4,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Common.Utilities;
 using PetCenter.Infrastucture.Data;

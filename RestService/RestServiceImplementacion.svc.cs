@@ -33,38 +33,44 @@ namespace RestService
 
         public bool ProcesarAsistencia(string Mes, string Anio)
         {
-            string line;
-
-            using(StreamReader sr = new StreamReader(String.Format(@"D:\DataJson\{0}{1}.txt", Mes, Anio)))
+            try
             {
-                // Read the stream to a string, and write the string to the console.
-                line = sr.ReadToEnd();
-            }
-
-            string[] items = line.Split('@');
-            List<Asistencia> asistencias = new List<Asistencia>();
-            foreach(string item in items)
-            {
-                string[] detalle = item.Split(',');
-                asistencias.Add(new Asistencia()
+                string line;
+              
+                using (StreamReader sr = new StreamReader(String.Format(@"C:\DataJson\{0}{1}.txt", Mes, Anio)))
                 {
-                    DNI = Convert.ToString(detalle[0].Trim()),
-                    FechaSalida = Convert.ToDateTime(detalle[1]),
-                    Fecha = Convert.ToDateTime(detalle[1]),
-                    FechaIngreso = Convert.ToDateTime(detalle[1])
-                });
-            }
+                    // Read the stream to a string, and write the string to the console.
+                    line = sr.ReadToEnd();
+                }
 
-            DA_Asistencia DAAsistencia = new DA_Asistencia();
-            foreach(var item in asistencias)
+                string[] items = line.Split('@');
+                List<Asistencia> asistencias = new List<Asistencia>();
+                foreach (string item in items)
+                {
+                    string[] detalle = item.Split(',');
+                    asistencias.Add(new Asistencia()
+                    {
+                        DNI = Convert.ToString(detalle[0].Trim()),
+                        FechaSalida = Convert.ToDateTime(detalle[1]),
+                        Fecha = Convert.ToDateTime(detalle[1]),
+                        FechaIngreso = Convert.ToDateTime(detalle[1])
+                    });
+                }
+
+                DA_Asistencia DAAsistencia = new DA_Asistencia();
+                foreach (var item in asistencias)
+                {
+
+                    DAAsistencia.GuardarAsistencia(item);
+                }
+
+                return true;
+            }
+            catch
             {
 
-                DAAsistencia.GuardarAsistencia(item);
+                return false;
             }
-
-            return true;
         }
-
-
     }
 }
