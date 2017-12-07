@@ -16,23 +16,25 @@ namespace PetCenter.Common.Core.Entities
 
         public Nullable<bool> EsAfp { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar sueldo base")]
         public decimal SueldoBase { get; set; }
 
         public int UbigeoId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Ingresar jornada de trabajo")]
         public Nullable<decimal> JornadaTrabajo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar Remuneracion en letra")]
         public string RenumeracionLetra { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Ingresar fecha inicio")]
         public Nullable<System.DateTime> FechaInicio { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Ingresar fecha termino")]
         public Nullable<System.DateTime> FechaTermino { get; set; }
     }
 }

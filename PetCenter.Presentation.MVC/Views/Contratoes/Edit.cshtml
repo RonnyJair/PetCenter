@@ -35,7 +35,7 @@
         <div class="form-group">
             <div class="control-label col-md-2">Sueldo Base</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SueldoBase, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SueldoBase, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1", @value = "0" } })
                 @Html.ValidationMessageFor(model => model.SueldoBase, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <div class="control-label col-md-2">Jornada de Trabajo</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.JornadaTrabajo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.JornadaTrabajo, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1", @value = "0" } })
                 @Html.ValidationMessageFor(model => model.JornadaTrabajo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="form-group">
             <div class="control-label col-md-2">Estado</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1", @value = "0" } })
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
         </div>

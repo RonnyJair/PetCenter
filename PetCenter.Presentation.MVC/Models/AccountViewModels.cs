@@ -5,7 +5,7 @@ namespace PetCenter.Presentation.MVC.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="LALA")]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
     }
@@ -48,13 +48,15 @@ namespace PetCenter.Presentation.MVC.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Correo electrónico inválido")]
         [Display(Name = "Correo electrónico")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage ="El correo electrónico ingresado no tiene el formato correcto: xx@xxx.xxx")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Contraseña inválida")]
         [DataType(DataType.Password)]
+        [StringLength(6, ErrorMessage = "La contraseña no debe exceder los 6 caracteres")]
+        [MaxLength(6, ErrorMessage ="No puede ser mayor a 6 caracteres la contraseña")]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 

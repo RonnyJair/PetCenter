@@ -95,7 +95,7 @@ namespace PetCenter.Presentation.MVC.Controllers
 
             else
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("", "Intento invalido de inicio de sesión");
                 return View(model);
             }
         }

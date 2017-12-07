@@ -219,7 +219,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             List<Empleado> Empleado = new List<Empleado>();
             Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
             var Empleo = Empleado.First();
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato__" + Empleo.XNombreCompleto);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato__" + Empleo.XNombreCompleto + ".pdf");
 
         }
         protected override void Dispose(bool disposing)

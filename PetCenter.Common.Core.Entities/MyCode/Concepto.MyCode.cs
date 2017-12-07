@@ -68,57 +68,83 @@ namespace PetCenter.Common.Core.Entities
         }
 
         public int ConceptoId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Ingresar Nombre")]
+        [RegularExpression(@" ^[a-zA-Z_\s]*$", ErrorMessage = "Solo ingresar letras")]
         [StringLength(150, MinimumLength = 3)]
         public string Nombre { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar tipo")]
         public Nullable<short> Tipo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar Tipo Concepto")]
+        [Range(0,1,ErrorMessage ="El tipo concepto esta entre 0 y 1")]
         public Nullable<short> TipoConcepto { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar calculo1")]
         public string calculo1 { get; set; }
+        [Required(ErrorMessage = "Ingresar calculo2")]
         public string calculo2 { get; set; }
+        [Required(ErrorMessage = "Ingresar calculo3")]
         public string calculo3 { get; set; }
+        [Required(ErrorMessage = "Ingresar calculo4")]
         public string calculo4 { get; set; }
+        [Required(ErrorMessage = "Ingresar calculo5")]
         public string calculo5 { get; set; }
+        [Required(ErrorMessage = "Ingresar calculo6")]
         public string calculo6 { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar operacion1")]
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador1 { get; set; }
+        [Required(ErrorMessage = "Ingresar operacion2")]
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador2 { get; set; }
+        [Required(ErrorMessage = "Ingresar operacion3")]
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador3 { get; set; }
+        [Required(ErrorMessage = "Ingresar operacion4")]
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador4 { get; set; }
+        [Required(ErrorMessage = "Ingresar operacion5")]
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador5 { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar escala1")]
         public decimal Escala1 { get; set; }
+        [Required(ErrorMessage = "Ingresar escala2")]
         public Nullable<decimal> Escala2 { get; set; }
+        [Required(ErrorMessage = "Ingresar escala3")]
         public Nullable<decimal> Escala3 { get; set; }
+        [Required(ErrorMessage = "Ingresar escala4")]
         public Nullable<decimal> Escala4 { get; set; }
+        [Required(ErrorMessage = "Ingresar escala5")]
         public Nullable<decimal> Escala5 { get; set; }
+        [Required(ErrorMessage = "Ingresar escala6")]
         public Nullable<decimal> Escala6 { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ingresar procentaje1")]
         public decimal Porcentaje1 { get; set; }
+        [Required(ErrorMessage = "Ingresar procentaje2")]
         public Nullable<decimal> Porcentaje2 { get; set; }
+        [Required(ErrorMessage = "Ingresar procentaje3")]
         public Nullable<decimal> Porcentaje3 { get; set; }
+        [Required(ErrorMessage = "Ingresar procentaje4")]
         public Nullable<decimal> Porcentaje4 { get; set; }
+        [Required(ErrorMessage = "Ingresar procentaje5")]
         public Nullable<decimal> Porcentaje5 { get; set; }
+        [Required(ErrorMessage = "Ingresar procentaje6")]
         public Nullable<decimal> Porcentaje6 { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ingresar importe1")]
         public decimal Importe1 { get; set; }
+        [Required(ErrorMessage = "Ingresar importe2")]
         public Nullable<decimal> Importe2 { get; set; }
+        [Required(ErrorMessage = "Ingresar importe3")]
         public Nullable<decimal> Importe3 { get; set; }
+        [Required(ErrorMessage = "Ingresar importe4")]
         public Nullable<decimal> Importe4 { get; set; }
+        [Required(ErrorMessage = "Ingresar importe5")]
         public Nullable<decimal> Importe5 { get; set; }
+        [Required(ErrorMessage = "Ingresar importe6")]
         public Nullable<decimal> Importe6 { get; set; }
     }
     public enum TipoConceptoEnum
