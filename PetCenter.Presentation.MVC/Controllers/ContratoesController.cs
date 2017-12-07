@@ -100,7 +100,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                  var path = Path.Combine(Server.MapPath("~/Temp"), "Contrato_ID_" + contrato.EmpleadoId.ToString());
                 contrato.RutaArchivo = path;
                 var contratos = BLContrato.GuardarContrato(contrato);
-                TempData["contratomsg"] = string.Format("El contrato {0} se ha creado correctamente", contrato.ContratoId);
+                TempData["contratomsg"] = string.Format("El contrato se ha creado correctamente", contrato.ContratoId);
                 return RedirectToAction("Index");
             }
 
@@ -142,12 +142,14 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 BL_Contrato BLContrato = new BL_Contrato();
                 var Contratos = BLContrato.GuardarContrato(contrato);
+                TempData["contratomsg"] = string.Format("El contrato se ha modificado correctamente", contrato.ContratoId);
                 return RedirectToAction("Index");
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             BL_Ubigeo BLUbigeo = new BL_Ubigeo();
             ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
             ViewBag.UbigeoId = new SelectList(BLUbigeo.ListarUbigeo(), "UbigeoId", "XNombreCompleto");
+            
             return View(contrato);
         }
 
@@ -212,14 +214,23 @@ namespace PetCenter.Presentation.MVC.Controllers
         [HttpGet]
          public ActionResult Download(string id)
         {
-            string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Contrato_ID_" + id);
+            try
+            {
+                string fullPath = Path.Combine(Server.MapPath("~/Temp"), "Contrato_ID_" + id);
+
+                byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+                BL_Empleado BLEmpleado = new BL_Empleado();
+                List<Empleado> Empleado = new List<Empleado>();
+                Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
+                var Empleo = Empleado.First();
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato__" + Empleo.XNombreCompleto + ".pdf");
+
+            }
+            catch
+            {
+                return View("Error");
+            }
             
-            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
-            BL_Empleado BLEmpleado = new BL_Empleado();
-            List<Empleado> Empleado = new List<Empleado>();
-            Empleado.Add(BLEmpleado.GetEmpleadoId(Convert.ToInt32(id)));
-            var Empleo = Empleado.First();
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, "Contrato__" + Empleo.XNombreCompleto + ".pdf");
 
         }
         protected override void Dispose(bool disposing)

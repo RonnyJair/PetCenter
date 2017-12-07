@@ -135,6 +135,15 @@
                 'mes1': {
                     required: true
                 }
+
+            },
+            messages: {
+                'mes1': "Ingrese el mes",
+                'ano1': {
+                    required: "Ingrese el año",
+                    minlength: jQuery.format("Al menos debe tener 4 digitos"),
+                    maxlength: jQuery.format("No debe exceder los 4 digitos")
+                }
             },
             highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error');

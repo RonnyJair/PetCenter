@@ -11,9 +11,12 @@ namespace PetCenter.Common.Core.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contrato
     {
+        [Required(ErrorMessage="Ingrese el estado")]
+        [Range(0, 1, ErrorMessage = "El valor del campo Tipo concepto debe estar entre 0 y 1")]
         public string Estado { get; set; }
         public string RutaArchivo { get; set; }
     

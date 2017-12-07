@@ -22,6 +22,7 @@ namespace PetCenter.Common.Core.Entities
         public int UbigeoId { get; set; }
 
         [Required(ErrorMessage ="Ingresar jornada de trabajo")]
+        [Range(4, 8, ErrorMessage = "El valor del campo Jornada de Trabajo debe estar entre 4 y 8")]
         public Nullable<decimal> JornadaTrabajo { get; set; }
 
         [Required(ErrorMessage = "Ingresar Remuneracion en letra")]

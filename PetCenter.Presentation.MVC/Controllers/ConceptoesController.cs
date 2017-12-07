@@ -101,7 +101,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                     BL_Concepto BLConcepto = new BL_Concepto();
                     var conceptos = BLConcepto.GuardarConcepto(concepto);
 
-                    TempData["conceptomsg"] = string.Format("El Concepto {0} se ha generado correctamente", conceptos.Nombre);
+                    TempData["conceptomsg"] = string.Format("El Concepto se ha generado correctamente");
 
                     return RedirectToAction("Index");
                 }
@@ -144,6 +144,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                 {
                     BL_Concepto BLConcepto = new BL_Concepto();
                     var conceptos = BLConcepto.GuardarConcepto(concepto);
+                    TempData["conceptomsg"] = string.Format("El Concepto se ha modificado correctamente", conceptos.Tipo);
                 }
                 return View(concepto);
             }
@@ -224,7 +225,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                     concepto.Aprobado = true;
                     var conceptos = BLConcepto.GuardarConcepto(concepto);
                 }
-                TempData["conceptomsg"] = string.Format("El Concepto {0} se ha aprobado correctamente", concepto.Nombre);
+                TempData["conceptomsg"] = string.Format("El Concepto se ha aprobado correctamente", concepto.Nombre);
                 return RedirectToAction("Index");
             }
             catch(Exception ex)

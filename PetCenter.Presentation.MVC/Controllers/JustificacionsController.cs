@@ -70,7 +70,7 @@ namespace PetCenter.Presentation.MVC.Controllers
                     justificacion.Faltas.Add(falta);
                 }
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
-                TempData["justificacionomsg"] = string.Format("La justificación se ha creado correctamente", justificacion.JustificacionId);
+                TempData["justificacionomsg"] = string.Format("La justificación se ha creado correctamente");
                 return RedirectToAction("Index");
             }
 
@@ -109,7 +109,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             {
                 BL_Justificacion BlJustificacion = new BL_Justificacion();
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
-                TempData["justificacionomsg"] = string.Format("La justificación se ha modificado correctamente", justificacion.JustificacionId);
+                TempData["justificacionomsg"] = string.Format("La justificación se ha modificado correctamente");
                 return RedirectToAction("Index");
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
@@ -196,7 +196,7 @@ namespace PetCenter.Presentation.MVC.Controllers
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
-            TempData["justificacionomsg"] = string.Format("La justificación se ha aprobado", justificacion.JustificacionId);
+            TempData["justificacionomsg"] = string.Format("La justificación se ha aprobado");
             return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
