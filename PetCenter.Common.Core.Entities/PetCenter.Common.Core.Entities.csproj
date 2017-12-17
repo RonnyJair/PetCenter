@@ -88,7 +88,7 @@
     <Compile Include="MyCode\Asistencia.MyCode.cs" />
     <Compile Include="MyCode\Concepto.MyCode.cs" />
     <Compile Include="MyCode\ConceptoDetalleBoleta.cs" />
-    <Compile Include="MyCode\Contrato.NyCode.cs" />
+    <Compile Include="MyCode\Contrato.MyCode.cs" />
     <Compile Include="MyCode\Empleado.MyCode.cs" />
     <Compile Include="MyCode\Repository.MyCode.cs" />
     <Compile Include="MyCode\Ubigeo.MyCode.cs" />

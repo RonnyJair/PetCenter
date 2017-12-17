@@ -69,6 +69,7 @@ namespace PetCenter.Common.Core.Entities
 
         public int ConceptoId { get; set; }
         [Required(ErrorMessage ="Ingresar Nombre")]
+        [Range(3, 30, ErrorMessage = "El valor del campo Nombre debe estar entre 3 y 30")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Ingresar tipo")]
@@ -80,6 +81,7 @@ namespace PetCenter.Common.Core.Entities
         public Nullable<short> TipoConcepto { get; set; }
 
         [Required(ErrorMessage = "Ingresar calculo1")]
+        [Range(0, 30, ErrorMessage = "El valor del campo Calculo 1 debe estar entre 0 y 30")]
         public string calculo1 { get; set; }
         public string calculo2 { get; set; }
         public string calculo3 { get; set; }
@@ -99,6 +101,7 @@ namespace PetCenter.Common.Core.Entities
         [RegularExpression(@"^[-+*/]*", ErrorMessage = "Solo caracteres * - / + ")]
         public string Operador5 { get; set; }
 
+        [Range(0, 100, ErrorMessage = "El valor del campo Escala 1 debe estar entre 0 y 100")]
         [Required(ErrorMessage = "Ingresar escala1")]
         public decimal Escala1 { get; set; }
         public Nullable<decimal> Escala2 { get; set; }
@@ -107,6 +110,7 @@ namespace PetCenter.Common.Core.Entities
         public Nullable<decimal> Escala5 { get; set; }
         public Nullable<decimal> Escala6 { get; set; }
 
+        [Range(0, 100, ErrorMessage = "El valor del campo Porcentaje 1 debe estar entre 0 y 100")]
         [Required(ErrorMessage = "Ingresar procentaje1")]
         public decimal Porcentaje1 { get; set; }
         public Nullable<decimal> Porcentaje2 { get; set; }
@@ -114,6 +118,8 @@ namespace PetCenter.Common.Core.Entities
         public Nullable<decimal> Porcentaje4 { get; set; }
         public Nullable<decimal> Porcentaje5 { get; set; }
         public Nullable<decimal> Porcentaje6 { get; set; }
+
+        [Range(0, 999999, ErrorMessage = "El valor del campo Importe 1 debe estar entre 1 y 999999")]
         [Required(ErrorMessage = "Ingresar importe1")]
         public decimal Importe1 { get; set; }
         public Nullable<decimal> Importe2 { get; set; }

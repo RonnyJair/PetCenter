@@ -5,7 +5,6 @@ namespace PetCenter.Presentation.MVC.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required(ErrorMessage ="LALA")]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
     }
