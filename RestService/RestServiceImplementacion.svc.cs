@@ -18,7 +18,7 @@ namespace RestService
         public List<BE_AsistenciaArchivo> GetArchivo(string id)
         {
             List<BE_AsistenciaArchivo> items = new List<BE_AsistenciaArchivo>();
-            for(int i = 0; i < 15; i++)
+            for (int i = 0; i < 15; i++)
             {
                 DateTime date = DateTime.Now.AddDays(i);
                 items.Add(new BE_AsistenciaArchivo()
@@ -35,14 +35,21 @@ namespace RestService
         {
             try
             {
+                int n;
+                if (String.IsNullOrEmpty(Anio) || Anio.Length != 4 || int.TryParse(Anio, out n)) return false;
+                if (String.IsNullOrEmpty(Mes) || Mes.Length > 2 || int.TryParse(Mes, out n)) return false;
+
                 string line;
-              
-                using (StreamReader sr = new StreamReader(String.Format(@"C:\DataJson\{0}{1}.txt", Mes, Anio)))
+                string path = @"C:\DataJson\{0}{1}.txt";
+                if (!File.Exists(path)) return false;
+                DA_Asistencia DAAsistencia = new DA_Asistencia();
+                DAAsistencia.EliminarAsistenciaDelMes(Convert.ToInt32(Mes), Convert.ToInt32(Anio));
+                using (StreamReader sr = new StreamReader(String.Format(path, Mes, Anio)))
                 {
                     // Read the stream to a string, and write the string to the console.
                     line = sr.ReadToEnd();
                 }
-
+               
                 string[] items = line.Split('@');
                 List<Asistencia> asistencias = new List<Asistencia>();
                 foreach (string item in items)
@@ -57,10 +64,8 @@ namespace RestService
                     });
                 }
 
-                DA_Asistencia DAAsistencia = new DA_Asistencia();
                 foreach (var item in asistencias)
                 {
-
                     DAAsistencia.GuardarAsistencia(item);
                 }
 

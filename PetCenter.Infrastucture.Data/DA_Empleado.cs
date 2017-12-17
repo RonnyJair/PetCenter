@@ -164,11 +164,12 @@ namespace PetCenter.Infrastucture.Data
                                  join d in contexto.Conceptoes
                                  on c.ConceptoId equals d.ConceptoId
                                  where b.EmpleadoId == EmpleadoId
-                                 group new { c, d } by new { d.Nombre, c.Importe } into g
+                                 group new { c, d } by new { d.Nombre, c.Importe, c.Concepto.Tipo, } into g
                                  select new
                                  {
                                      g.Key.Nombre,
-                                     g.Key.Importe
+                                     g.Key.Importe,
+                                     g.Key.Tipo
                                  }).ToList();
 
                     foreach(var item in items)
@@ -176,7 +177,8 @@ namespace PetCenter.Infrastucture.Data
                         itemx.Add(new ConceptoDetalleBoleta()
                         {
                             Concepto = item.Nombre,
-                            Importe = item.Importe.ToString()
+                            Importe = item.Importe.ToString(),
+                            TipoImporte = item.Tipo.ToString(),
                         });
                     }
                     return itemx;

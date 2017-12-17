@@ -16,15 +16,15 @@ namespace PetCenter.Infrastucture.Data
         {
             try
             {
-                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
                     List<Asistencia> Asistencias = (from x in contexto.Asistencias.Include("Empleado")
-                                               select x).ToList();
+                                                    select x).ToList();
 
                     return Asistencias;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 EventLogger.EscribirLog(e.Message.ToString());
                 throw new Exception(e.Message.ToString());
@@ -35,29 +35,49 @@ namespace PetCenter.Infrastucture.Data
         {
             try
             {
-                using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
                     Asistencia objeto = new Asistencia();
-                    if(Asistencia.EmpleadoId <= 0)
+                    if (Asistencia.EmpleadoId <= 0)
                     {
-                        if(Asistencia.EmpleadoId == 0)
+                        if (Asistencia.EmpleadoId == 0)
                         {
                             List<Empleado> empleados = (from x in contexto.Empleadoes
-                                                       where  x.Documento.Equals(Asistencia.DNI)
-                                                       select x).ToList();
+                                                        where x.Documento.Equals(Asistencia.DNI)
+                                                        select x).ToList();
 
                             Asistencia.EmpleadoId = empleados.First().EmpleadoId;
                         }
                         objeto = contexto.Asistencias.Add(Asistencia);
                     }
-                    if(contexto.SaveChanges() > 0) return objeto;
+                    if (contexto.SaveChanges() > 0) return objeto;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
             return null;
+        }
+
+        public bool EliminarAsistenciaDelMes(Int32 Mes, Int32 Anio)
+        {
+            try
+            {
+                using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
+                {
+                    var x = (from y in contexto.Asistencias
+                             where y.Fecha.Month == Mes && y.Fecha.Year == Anio
+                             select y);
+                    contexto.Asistencias.RemoveRange(x);
+                    contexto.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+            return true;
         }
     }
 }
