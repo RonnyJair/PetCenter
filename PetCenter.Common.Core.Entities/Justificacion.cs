@@ -22,14 +22,7 @@ namespace PetCenter.Common.Core.Entities
         }
     
         public int JustificacionId { get; set; }
-        [Required(ErrorMessage = "Ingresar empleado")]
-        public Nullable<int> EmpleadoId { get; set; }
-        [Required(ErrorMessage ="Ingresar descripción")]
-        public string Descripcion { get; set; }
-        public string Documento { get; set; }
-        [Required(ErrorMessage = "seleccionar estado")]
-        public bool Estado { get; set; }
-        public Nullable<int> UsuarioAprueba { get; set; }
+          public Nullable<int> UsuarioAprueba { get; set; }
         public Nullable<System.DateTime> FechaAprobacion { get; set; }
         public Nullable<int> UsuarioNiega { get; set; }
         public Nullable<System.DateTime> FechaNegacion { get; set; }

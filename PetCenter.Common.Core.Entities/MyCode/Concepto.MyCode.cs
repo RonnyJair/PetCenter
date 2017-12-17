@@ -70,6 +70,7 @@ namespace PetCenter.Common.Core.Entities
         public int ConceptoId { get; set; }
         [Required(ErrorMessage ="Ingresar Nombre")]
         [Range(3, 30, ErrorMessage = "El valor del campo Nombre debe estar entre 3 y 30")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Usar solo letras")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Ingresar tipo")]

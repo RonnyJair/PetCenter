@@ -19,46 +19,80 @@ namespace PetCenter.Presentation.MVC.Controllers
     public class ContratoesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Contratoes
-        //public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-           // ViewBag.CurrentSort = sortOrder;
-           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "EmpleadoId" : "";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "ContratoId" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-//            if (searchString != "")
-  //              page = 1;
-    //        else
-      //          searchString = currentFilter;
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
 
-        //    ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentFilter = searchString;
 
             BL_Contrato BLContrato = new BL_Contrato();
-            List<Contrato> contratos = BLContrato.ListarContratos();
+            try
+            {
+                var contratos = searchString == null ? BLContrato.ListarContratos() : BLContrato.ListarContratosFiltro(searchString);
 
-            //            try
-            //          {
-            //            var contratos = searchString == "" ? BLContrato.ListarContratos() : BLContrato.ListarContratosFiltro(searchString);
+                switch (sortOrder)
+                {
+                    case "ContratoId":
+                        contratos = contratos.OrderByDescending(s => s.ContratoId).ToList();
+                        break;
+                }
 
-            //          switch (sortOrder)
-            //        {
-            //            case "EmpleadoId":
-            //contratos = contratos.OrderByDescending(s => s.EmpleadoId).ToList();
-            //break;
-            //}
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+                return View(contratos.ToPagedList(pageNumber, pageSize));
+            }
+            catch
+            {
+                return null;
+            }
 
-
-            //int pageSize = 10;
-            //int pageNumber = (page ?? 1);
-            return View(contratos.ToList());
-
-            //} catch
-
-            //{
-            //return null;
-            // }
         }
+        // GET: Contratoes
+        //public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+//        public ActionResult Index()
+//        {
+//           // ViewBag.CurrentSort = sortOrder;
+//           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "EmpleadoId" : "";
+
+////            if (searchString != "")
+//  //              page = 1;
+//    //        else
+//      //          searchString = currentFilter;
+
+//        //    ViewBag.CurrentFilter = searchString;
+
+//            BL_Contrato BLContrato = new BL_Contrato();
+//            List<Contrato> contratos = BLContrato.ListarContratos();
+
+//            //            try
+//            //          {
+//            //            var contratos = searchString == "" ? BLContrato.ListarContratos() : BLContrato.ListarContratosFiltro(searchString);
+
+//            //          switch (sortOrder)
+//            //        {
+//            //            case "EmpleadoId":
+//            //contratos = contratos.OrderByDescending(s => s.EmpleadoId).ToList();
+//            //break;
+//            //}
+
+
+//            //int pageSize = 10;
+//            //int pageNumber = (page ?? 1);
+//            return View(contratos.ToList());
+
+//            //} catch
+
+//            //{
+//            //return null;
+//            // }
+//        }
 
         // GET: Contratoes/Details/5
         public ActionResult Details(int? id)
@@ -82,6 +116,8 @@ namespace PetCenter.Presentation.MVC.Controllers
             Contrato contrato = new Contrato();
             BL_Empleado BLEmpleado = new BL_Empleado();
             BL_Ubigeo BLUbigeo = new BL_Ubigeo();
+        
+
             ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
             ViewBag.UbigeoId = new SelectList(BLUbigeo.ListarUbigeo(), "UbigeoId", "XNombreCompleto");
             return View(contrato);

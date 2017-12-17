@@ -31,14 +31,14 @@ namespace PetCenter.Infrastucture.Data
             }
         }
 
-        public List<Contrato> ListarContratosFiltro(string EmpleadoId)
+        public List<Contrato> ListarContratosFiltro(string ContratoId)
         {
             try
             {
                 using (BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
-                    List<Contrato> Contratos = (from x in contexto.Contratoes
-                                                where x.EmpleadoId.Equals(EmpleadoId)
+                    List<Contrato> Contratos = (from x in contexto.Contratoes.Include("Empleado").Include("Ubigeo")
+                                                where ((double)x.ContratoId).ToString().Contains(ContratoId)
                                                 select x).ToList();
 
                     return Contratos;

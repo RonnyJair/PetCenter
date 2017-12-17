@@ -25,12 +25,12 @@ namespace PetCenter.Infrastucture.Domain.Main
             }
         }
 
-        public List<Contrato> ListarContratosFiltro(string EmpleadoId)
+        public List<Contrato> ListarContratosFiltro(string NroContrato)
         {
             DA_Contrato DAContrato = new DA_Contrato();
             try
             {
-                return DAContrato.ListarContratosFiltro(EmpleadoId);
+                return DAContrato.ListarContratosFiltro(NroContrato);
             }
             catch (Exception e)
             {

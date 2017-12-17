@@ -90,6 +90,7 @@
     <Compile Include="MyCode\ConceptoDetalleBoleta.cs" />
     <Compile Include="MyCode\Contrato.MyCode.cs" />
     <Compile Include="MyCode\Empleado.MyCode.cs" />
+    <Compile Include="MyCode\Justificacion.MyCode.cs" />
     <Compile Include="MyCode\Repository.MyCode.cs" />
     <Compile Include="MyCode\Ubigeo.MyCode.cs" />
     <Compile Include="MyCode\User.MyCode.cs" />

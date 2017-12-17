@@ -180,7 +180,9 @@ namespace PetCenter.Presentation.MVC.Controllers
                 BL_Planilla BLPlanilla = new BL_Planilla();
                 BL_Empleado BLEmpleado = new BL_Empleado();
                 List<Planilla> Planilla = BLPlanilla.getPlanillaAndDetalle(Fecha);
+                if(Planilla == null || Planilla.Count() <= 0) return View(new List<Empleado>());
                 var empleadoes = BLEmpleado.ListarEmpleadosActivoporPlanilla(Planilla);
+                if (empleadoes == null || empleadoes.Count() <= 0) return View(new List<Empleado>());
                 return View(empleadoes.ToList());
 
             }

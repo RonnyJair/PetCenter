@@ -37,8 +37,8 @@ namespace PetCenter.Infrastucture.Data
             {
                 using(BdPetCenterEntities1 contexto = new BdPetCenterEntities1())
                 {
-                    List<Justificacion> Justificacion = (from x in contexto.Justificacions
-                                                         where x.Descripcion.Contains(Descripcion)
+                    List<Justificacion> Justificacion = (from x in contexto.Justificacions.Include("Empleado")
+                                                         where x.Empleado.XNombreCompleto.Contains(Descripcion)
                                                          select x).ToList();
 
                     return Justificacion;

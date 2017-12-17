@@ -13,7 +13,7 @@ namespace PetCenter.Common.Core.Entities
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             Contrato contrato = (Contrato)validationContext.ObjectInstance;
-
+            if (contrato.EmpleadoId <= 0 ) yield return new ValidationResult("Seleccionar Empleado.");
             if (contrato.FechaInicio.Value.CompareTo((DateTime)contrato.FechaTermino.Value)==1) yield return new ValidationResult("La fecha de Inicio tiene que ser mayor a la de termino.");
 
             TimeSpan ts = (DateTime)contrato.FechaTermino - (DateTime)contrato.FechaInicio;
@@ -25,7 +25,7 @@ namespace PetCenter.Common.Core.Entities
 
         public int ContratoId { get; set; }
 
-        [Required(ErrorMessage = "Ingrese el Id Del empleado")]
+        [Required(ErrorMessage = "Ingrese el empleado")]
         public int EmpleadoId { get; set; }
 
         public Nullable<bool> EsAfp { get; set; }

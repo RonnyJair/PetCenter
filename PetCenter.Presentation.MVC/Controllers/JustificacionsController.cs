@@ -11,19 +11,48 @@ using System.Web.Mvc;
 using PetCenter.Common.Core.Entities;
 using PetCenter.Infrastucture.Domain.Main;
 using PetCenter.Presentation.MVC.Models;
+using PagedList;
 
 namespace PetCenter.Presentation.MVC.Controllers
 {
     [Authorize]
     public class JustificacionsController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Justificacions
-        public ActionResult Index()
+     
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Empleado" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
             BL_Justificacion BlJustificacion = new BL_Justificacion();
-            return View(BlJustificacion.ListarJustificacion().ToList());
+            try
+            {
+                var justificacion = searchString == null ? BlJustificacion.ListarJustificacion() : BlJustificacion.ListarJustificacionFiltro(searchString);
+
+                switch (sortOrder)
+                {
+                    case "Empleado":
+                        justificacion = justificacion.OrderByDescending(s => s.Empleado.XNombreCompleto).ToList();
+                        break;
+                }
+
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+                return View(justificacion.ToPagedList(pageNumber, pageSize));
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         // GET: Justificacions/Details/5
@@ -192,11 +221,11 @@ namespace PetCenter.Presentation.MVC.Controllers
                 justificacion.UsuarioAprueba = 1;
                 justificacion.FechaAprobacion = DateTime.Now;
                 var item = BlJustificacion.GuardarJustificacion(justificacion);
+                TempData["justificacionomsg"] = string.Format("La justificación se ha aprobado");
                 return RedirectToAction("Index");
             }
             BL_Empleado BLEmpleado = new BL_Empleado();
             ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
-            TempData["justificacionomsg"] = string.Format("La justificación se ha aprobado");
             return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)

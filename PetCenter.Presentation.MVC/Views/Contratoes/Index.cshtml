@@ -1,4 +1,6 @@
-﻿@model IEnumerable<PetCenter.Common.Core.Entities.Contrato>
+﻿@model PagedList.IPagedList<PetCenter.Common.Core.Entities.Contrato>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Listado de Contratos";
@@ -9,10 +11,22 @@
 <p>
     @Html.ActionLink("Crear contrato", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Contratoes", FormMethod.Get))
+{
+    <p>
+        Buscar por Contrato: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-           Codigo Empleado
+            @Html.ActionLink("ContratoId", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+       </th>
+        <th>
+            Codigo Empleado
         </th>
         <th>
             Ubigeo
@@ -46,6 +60,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.ContratoId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Empleado.CodigoEmpleado)
         </td>
         <td>
@@ -74,13 +91,20 @@
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ContratoId }) |
-            @Html.ActionLink("Aprobar", "Delete", new { id = item.ContratoId })|
             @Html.ActionLink("Descargar", "Download", new { id = item.EmpleadoId })
+            @*@if (item.UsuarioAprueba == null)
+            {
+                |
+                @Html.ActionLink("Aprobar", "Aprobar", new { id = item.ContratoId })
+            }*@
         </td>
     </tr>
 }
 </table>
 <br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 @if(TempData["contratomsg"] != null)
 {
