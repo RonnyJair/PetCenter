@@ -9,6 +9,10 @@ namespace PetCenter.Common.Core.Entities
 {
     public partial class Contrato : IValidatableObject
     {
+        public Contrato()
+        {
+            Estado = "0";
+        }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

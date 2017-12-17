@@ -24,7 +24,7 @@
     <tr>
         <th>
             @Html.ActionLink("ContratoId", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-       </th>
+        </th>
         <th>
             Codigo Empleado
         </th>
@@ -41,7 +41,7 @@
             Jornada de Trabajo
         </th>
         <th>
-            Remuneración 
+            Remuneración
         </th>
         <th>
             Fecha Inicio
@@ -50,63 +50,71 @@
             Fecha Termino
         </th>
         <th>
-            Estado
+            Aprobado
         </th>
         <th>
             Acciones
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContratoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.CodigoEmpleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ubigeo.Codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EsAfp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SueldoBase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JornadaTrabajo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RenumeracionLetra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaTermino)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ContratoId }) |
-            @Html.ActionLink("Descargar", "Download", new { id = item.EmpleadoId })
-            @*@if (item.UsuarioAprueba == null)
-            {
-                |
-                @Html.ActionLink("Aprobar", "Aprobar", new { id = item.ContratoId })
-            }*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContratoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.XNombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ubigeo.XNombreCompleto)
+            </td>
+            <td>
+                @if (item.EsAfp == null)
+                {     @Html.Label("")
+                }
+                else if ((bool)item.EsAfp)
+                {     @Html.Label("Es AFP")
+                }
+                else if (!(bool)item.EsAfp)
+                {   @Html.Label("NO es AFP")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SueldoBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JornadaTrabajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RenumeracionLetra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaTermino)
+            </td>
+            <td>
+                @Html.Label(item.Estado == null ? "" :  item.Estado.Trim() == "0" ? "Por Aprobar" : "Aprobado")
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ContratoId }) |
+                @Html.ActionLink("Descargar", "Download", new { id = item.EmpleadoId })
+                @if (item.Estado == null || item.Estado.Trim() == "0")
+                {
+                    @Html.ActionLink("Aprobar", "Aprobar", new { id = item.ContratoId })
+                }
+            </td>
+        </tr>
+    }
 </table>
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-@if(TempData["contratomsg"] != null)
+@if (TempData["contratomsg"] != null)
 {
     <script type="text/javascript">
         window.onload = function () {

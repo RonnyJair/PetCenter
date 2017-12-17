@@ -269,6 +269,27 @@ namespace PetCenter.Presentation.MVC.Controllers
             
 
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Aprobar(Int32 id)
+        {
+            BL_Contrato BLContrato = new BL_Contrato();
+            Contrato contrato = BLContrato.GetContrato((Int32)id);
+
+            if (ModelState.IsValid)
+            {
+                contrato.Estado = "1";
+                var item = BLContrato.GuardarContrato(contrato);
+                TempData["contratomsg"] = string.Format("El contrato se ha aprobado");
+                return RedirectToAction("Index");
+            }
+            BL_Empleado BLEmpleado = new BL_Empleado();
+            BL_Ubigeo BLUbigeo = new BL_Ubigeo();
+            ViewBag.EmpleadoId = new SelectList(BLEmpleado.GetEmpleados(), "EmpleadoId", "XNombreCompleto");
+            ViewBag.UbigeoId = new SelectList(BLUbigeo.ListarUbigeo(), "UbigeoId", "XNombreCompleto");
+
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if(disposing)
